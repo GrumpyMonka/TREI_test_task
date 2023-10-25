@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<CONF type="17172" name="M533U" comment="Модуль универсальный"> <!--0x4314-->
+  <PARAM name="Reaction Time" value="10" comment="Время реакции модуля (*10мкс)"/>
+	<BLK num="0" attr="RREQ" name="Конфигурация блоков" hidden="dict" struct_name="configuration">
+		<VAR size="16" value="17172" comment="тип модуля"/>
+		<VAR size="16"             comment="версия ПО"/>
+		<VAR size="16"             comment="версия аппаратной части"/>
+		<VAR size="16" value="3"   comment="версия конфигурации"/>
+		<VAR size="16" value="13"  comment="кол-во блоков"/>
+		<VAR size="16" value="0"   comment="номер блока"/>
+		<VAR size="16" value="62"  comment="размер блока"/>
+		<VAR size="16" value="1"   comment="номер блока"/>
+		<VAR size="16" value="27"  comment="размер блока"/>
+		<VAR size="16" value="2"   comment="номер блока"/>
+		<VAR size="16" value="95"  comment="размер блока"/>
+		<VAR size="16" value="3"   comment="номер блока"/>
+		<VAR size="16" value="290" comment="размер блока"/>
+		<VAR size="16" value="4"   comment="номер блока"/>
+		<VAR size="16" value="1"  comment="размер блока"/>
+		<VAR size="16" value="6"   comment="номер блока"/>
+		<VAR size="16" value="1"  comment="размер блока"/>
+		<VAR size="16" value="7"   comment="номер блока"/>
+		<VAR size="16" value="24"  comment="размер блока"/>
+		<VAR size="16" value="8"   comment="номер блока"/>
+		<VAR size="16" value="0"  comment="размер блока"/>
+		<VAR size="16" value="9"   comment="номер блока"/>
+		<VAR size="16" value="1"   comment="размер блока"/>
+		<VAR size="16" value="10"  comment="номер блока"/>
+		<VAR size="16" value="252" comment="размер блока"/>
+		<VAR size="16" value="11"  comment="номер блока"/>
+		<VAR size="16" value="16"  comment="размер блока"/>
+		<VAR size="16" value="12"  comment="номер блока"/>
+		<VAR size="16" value="30"  comment="размер блока"/>
+		<VAR size="16" value="13"  comment="номер блока"/>
+		<VAR size="16" value="12"  comment="размер блока"/>
+	</BLK>
+	<BLK num="1" attr="RREQ" type="STAT" name="Статистика" struct_name="statistic">
+		<VAR size="32" name="Work_Time"               comment="Время наработки, сек"/>
+		<VAR size="32" name="Line1_Err"               comment="Счетчик ошибок STBUS по линии1"/>
+		<VAR size="32" name="Line2_Err"               comment="Счетчик ошибок STBUS по линии2"/>
+		<VAR size="08" name="Reset_code"              comment="Код сброса"/>
+		<VAR size="32" name="Mod_temp"                comment="Температура модуля"/>
+		<VAR size="01" name="Stbus_line1_err"         comment="Ошибки связи с мастером (линия 1)"/>
+		<VAR size="01" name="Stbus_line2_err"         comment="Ошибки связи с мастером (линия 2)"/>
+		<VAR size="01" name="Err_sequence"            comment="Нарушение последовательности STBUS"/>
+		<VAR size="01" name="Mod_power_low"           comment="Питание модуля ниже нормы"/>
+		<VAR size="01" name="Mod_power_high"          comment="Питание модуля выше нормы"/>
+		<VAR size="01" name="CH_A_power_low"          comment="Питание аналоговых каналов ниже нормы"/>
+		<VAR size="01" name="CH_D_power_low"          comment="Питание дискретных каналов ниже нормы"/>
+		<VAR size="01" name="Not_support"             comment="Установлен неподдерживаемый юнит"/>
+		<VAR size="01" name="Err_unit_type"           comment="Ошибка привязки юнитов"/>
+		<VAR size="01" name="Err_chn_diag"            comment="Ошибка диагностики каналов"/>
+		<VAR size="06" name="Rez1"                    comment="Резерв" hidden="all"/>
+		<VAR size="02" type="int" name="Metro_U1_C01" comment="Флаги метрологии, юнит  1 канал 1"/>
+		<VAR size="02" type="int" name="Metro_U1_C02" comment="Флаги метрологии, юнит  1 канал 2"/>
+		<VAR size="02" type="int" name="Metro_U1_C03" comment="Флаги метрологии, юнит  1 канал 3"/>
+		<VAR size="02" type="int" name="Metro_U1_C04" comment="Флаги метрологии, юнит  1 канал 4"/>
+		<VAR size="02" type="int" name="Metro_U2_C01" comment="Флаги метрологии, юнит  2 канал 1"/>
+		<VAR size="02" type="int" name="Metro_U2_C02" comment="Флаги метрологии, юнит  2 канал 2"/>
+		<VAR size="02" type="int" name="Metro_U2_C03" comment="Флаги метрологии, юнит  2 канал 3"/>
+		<VAR size="02" type="int" name="Metro_U2_C04" comment="Флаги метрологии, юнит  2 канал 4"/>
+		<VAR size="02" type="int" name="Metro_U3_C01" comment="Флаги метрологии, юнит  3 канал 1"/>
+		<VAR size="02" type="int" name="Metro_U3_C02" comment="Флаги метрологии, юнит  3 канал 2"/>
+		<VAR size="02" type="int" name="Metro_U3_C03" comment="Флаги метрологии, юнит  3 канал 3"/>
+		<VAR size="02" type="int" name="Metro_U3_C04" comment="Флаги метрологии, юнит  3 канал 4"/>
+		<VAR size="02" type="int" name="Metro_U4_C01" comment="Флаги метрологии, юнит  4 канал 1"/>
+		<VAR size="02" type="int" name="Metro_U4_C02" comment="Флаги метрологии, юнит  4 канал 2"/>
+		<VAR size="02" type="int" name="Metro_U4_C03" comment="Флаги метрологии, юнит  4 канал 3"/>
+		<VAR size="02" type="int" name="Metro_U4_C04" comment="Флаги метрологии, юнит  4 канал 4"/>
+		<VAR size="02" type="int" name="Metro_U5_C01" comment="Флаги метрологии, юнит  5 канал 1"/>
+		<VAR size="02" type="int" name="Metro_U5_C02" comment="Флаги метрологии, юнит  5 канал 2"/>
+		<VAR size="02" type="int" name="Metro_U5_C03" comment="Флаги метрологии, юнит  5 канал 3"/>
+		<VAR size="02" type="int" name="Metro_U5_C04" comment="Флаги метрологии, юнит  5 канал 4"/>
+		<VAR size="02" type="int" name="Metro_U6_C01" comment="Флаги метрологии, юнит  6 канал 1"/>
+		<VAR size="02" type="int" name="Metro_U6_C02" comment="Флаги метрологии, юнит  6 канал 2"/>
+		<VAR size="02" type="int" name="Metro_U6_C03" comment="Флаги метрологии, юнит  6 канал 3"/>
+		<VAR size="02" type="int" name="Metro_U6_C04" comment="Флаги метрологии, юнит  6 канал 4"/>
+		<VAR size="02" type="int" name="Metro_U7_C01" comment="Флаги метрологии, юнит  7 канал 1"/>
+		<VAR size="02" type="int" name="Metro_U7_C02" comment="Флаги метрологии, юнит  7 канал 2"/>
+		<VAR size="02" type="int" name="Metro_U7_C03" comment="Флаги метрологии, юнит  7 канал 3"/>
+		<VAR size="02" type="int" name="Metro_U7_C04" comment="Флаги метрологии, юнит  7 канал 4"/>
+		<VAR size="02" type="int" name="Metro_U8_C01" comment="Флаги метрологии, юнит  8 канал 1"/>
+		<VAR size="02" type="int" name="Metro_U8_C02" comment="Флаги метрологии, юнит  8 канал 2"/>
+		<VAR size="02" type="int" name="Metro_U8_C03" comment="Флаги метрологии, юнит  8 канал 3"/>
+		<VAR size="02" type="int" name="Metro_U8_C04" comment="Флаги метрологии, юнит  8 канал 4"/>
+	</BLK>
+	<BLK num="2" attr="REQ" type="METRO" name="Метрология" hidden="all" struct_name="metro">
+		<VAR size="08" name="ToDo"     comment="Действие"/>
+		<VAR size="16" name="Code"     comment="Код платы ввода-вывода"/>
+		<VAR size="08" name="Num"      comment="Номер юнита"/>
+		<VAR size="08" name="CH"       comment="Номер канала"/>
+		<VAR size="08" name="CH_type"  comment="Тип канала"/>
+		<VAR size="08" name="Block"    comment="Блокировка"/>
+		<VAR size="32" name="ADC_DAC"  comment="Код АЦП-ЦАП"/>
+		<VAR size="32" name="Value"    comment="Физическое значение"/>
+		<VAR size="32" name="Maximum1" comment="Максимум"/>
+		<VAR size="32" name="Minimum1" comment="Минимум"/>
+		<VAR size="32" name="Maximum2" comment="Максимум"/>
+		<VAR size="32" name="Minimum2" comment="Минимум"/>
+		<VAR size="32" name="Maximum3" comment="Максимум"/>
+		<VAR size="32" name="Minimum3" comment="Минимум"/>
+		<VAR size="32" name="Maximum4" comment="Максимум"/>
+		<VAR size="32" name="Minimum4" comment="Минимум"/>
+		<VAR size="32" name="Maximum5" comment="Максимум"/>
+		<VAR size="32" name="Minimum5" comment="Минимум"/>
+		<VAR size="32" name="Maximum6" comment="Максимум"/>
+		<VAR size="32" name="Minimum6" comment="Минимум"/>
+		<VAR size="32" name="Maximum7" comment="Максимум"/>
+		<VAR size="32" name="Minimum7" comment="Минимум"/>
+		<VAR size="32" name="Maximum8" comment="Максимум"/>
+		<VAR size="32" name="Minimum8" comment="Минимум"/>
+		<VAR size="32" name="Maximum9" comment="Максимум"/>
+		<VAR size="32" name="Minimum9" comment="Минимум"/>
+		<VAR size="32" name="Maximum10" comment="Максимум"/>
+		<VAR size="32" name="Minimum10" comment="Минимум"/>
+	</BLK>
+	<BLK num="3" attr="REQ" type="PARAM" name="Параметры" struct_name="param">
+		<SUBBLK type="UNITS" name="Конфигурация юнитов" hidden="dict" struct_name="units">
+			<VAR size="16" name="Code_Unit_01" comment="код"/>
+			<VAR size="16" name="Mask_Unit_01" comment="маска каналов"/>
+			<VAR size="16" name="Code_Unit_02" comment="код"/>
+			<VAR size="16" name="Mask_Unit_02" comment="маска каналов"/>
+			<VAR size="16" name="Code_Unit_03" comment="код"/>
+			<VAR size="16" name="Mask_Unit_03" comment="маска каналов"/>
+			<VAR size="16" name="Code_Unit_04" comment="код"/>
+			<VAR size="16" name="Mask_Unit_04" comment="маска каналов"/>
+			<VAR size="16" name="Code_Unit_05" comment="код"/>
+			<VAR size="16" name="Mask_Unit_05" comment="маска каналов"/>
+			<VAR size="16" name="Code_Unit_06" comment="код"/>
+			<VAR size="16" name="Mask_Unit_06" comment="маска каналов"/>
+			<VAR size="16" name="Code_Unit_07" comment="код"/>
+			<VAR size="16" name="Mask_Unit_07" comment="маска каналов"/>
+			<VAR size="16" name="Code_Unit_08" comment="код"/>
+			<VAR size="16" name="Mask_Unit_08" comment="маска каналов"/>
+		</SUBBLK>
+		<SUBBLK name="Общие параметры" struct_name="common">
+			<VAR size="16" name="Timeout"  comment="Таймаут связи с мастером, мсек" value="0"/>
+		</SUBBLK>
+		<SUBBLK type="UNITS_PARAMS" name="Параметры юнита U1" struct_name="U1">
+			<VAR size="32" name="Param_01_U_01"     comment="Параметр 1 юнита U1" value="0" hidden="all"/>
+			<VAR size="32" name="Param_02_U_01"     comment="Параметр 2 юнита U1" value="0" hidden="all"/>
+			<VAR size="32" name="Param_03_U_01"     comment="Параметр 3 юнита U1" value="0" hidden="all"/>
+			<VAR size="32" name="Param_04_U_01"     comment="Параметр 4 юнита U1" value="0" hidden="all"/>
+			<VAR size="32" name="Param_05_U_01"     comment="Параметр 5 юнита U1" value="0" hidden="all"/>
+			<VAR size="32" name="Param_06_U_01"     comment="Параметр 6 юнита U1" value="0" hidden="all"/>
+			<VAR size="32" name="Param_07_U_01"     comment="Параметр 7 юнита U1" value="0" hidden="all"/>
+			<VAR size="32" name="Param_08_U_01"     comment="Параметр 8 юнита U1" value="0" hidden="all"/>
+        	</SUBBLK>
+		<SUBBLK type="UNITS_PARAMS" name="Параметры юнита U2" struct_name="U2">
+			<VAR size="32" name="Param_01_U_02"     comment="Параметр 1 юнита U2" value="0" hidden="all"/>
+			<VAR size="32" name="Param_02_U_02"     comment="Параметр 2 юнита U2" value="0" hidden="all"/>
+			<VAR size="32" name="Param_03_U_02"     comment="Параметр 3 юнита U2" value="0" hidden="all"/>
+			<VAR size="32" name="Param_04_U_02"     comment="Параметр 4 юнита U2" value="0" hidden="all"/>
+			<VAR size="32" name="Param_05_U_02"     comment="Параметр 5 юнита U2" value="0" hidden="all"/>
+			<VAR size="32" name="Param_06_U_02"     comment="Параметр 6 юнита U2" value="0" hidden="all"/>
+			<VAR size="32" name="Param_07_U_02"     comment="Параметр 7 юнита U2" value="0" hidden="all"/>
+			<VAR size="32" name="Param_08_U_02"     comment="Параметр 8 юнита U2" value="0" hidden="all"/>
+                 </SUBBLK>
+		<SUBBLK type="UNITS_PARAMS" name="Параметры юнита U3" struct_name="U3">
+			<VAR size="32" name="Param_01_U_03"     comment="Параметр 1 юнита U3" value="0" hidden="all"/>
+			<VAR size="32" name="Param_02_U_03"     comment="Параметр 2 юнита U3" value="0" hidden="all"/>
+			<VAR size="32" name="Param_03_U_03"     comment="Параметр 3 юнита U3" value="0" hidden="all"/>
+			<VAR size="32" name="Param_04_U_03"     comment="Параметр 4 юнита U3" value="0" hidden="all"/>
+			<VAR size="32" name="Param_05_U_03"     comment="Параметр 5 юнита U3" value="0" hidden="all"/>
+			<VAR size="32" name="Param_06_U_03"     comment="Параметр 6 юнита U3" value="0" hidden="all"/>
+			<VAR size="32" name="Param_07_U_03"     comment="Параметр 7 юнита U3" value="0" hidden="all"/>
+			<VAR size="32" name="Param_08_U_03"     comment="Параметр 8 юнита U3" value="0" hidden="all"/>
+        	</SUBBLK>
+		<SUBBLK type="UNITS_PARAMS" name="Параметры юнита U4" struct_name="U4">
+			<VAR size="32" name="Param_01_U_04"     comment="Параметр 1 юнита U4" value="0" hidden="all"/>
+			<VAR size="32" name="Param_02_U_04"     comment="Параметр 2 юнита U4" value="0" hidden="all"/>
+			<VAR size="32" name="Param_03_U_04"     comment="Параметр 3 юнита U4" value="0" hidden="all"/>
+			<VAR size="32" name="Param_04_U_04"     comment="Параметр 4 юнита U4" value="0" hidden="all"/>
+			<VAR size="32" name="Param_05_U_04"     comment="Параметр 5 юнита U4" value="0" hidden="all"/>
+			<VAR size="32" name="Param_06_U_04"     comment="Параметр 6 юнита U4" value="0" hidden="all"/>
+			<VAR size="32" name="Param_07_U_04"     comment="Параметр 7 юнита U4" value="0" hidden="all"/>
+			<VAR size="32" name="Param_08_U_04"     comment="Параметр 8 юнита U4" value="0" hidden="all"/>
+        	</SUBBLK>
+		<SUBBLK type="UNITS_PARAMS" name="Параметры юнита U5" struct_name="U5">
+			<VAR size="32" name="Param_01_U_05"     comment="Параметр 1 юнита U5" value="0" hidden="all"/>
+			<VAR size="32" name="Param_02_U_05"     comment="Параметр 2 юнита U5" value="0" hidden="all"/>
+			<VAR size="32" name="Param_03_U_05"     comment="Параметр 3 юнита U5" value="0" hidden="all"/>
+			<VAR size="32" name="Param_04_U_05"     comment="Параметр 4 юнита U5" value="0" hidden="all"/>
+			<VAR size="32" name="Param_05_U_05"     comment="Параметр 5 юнита U5" value="0" hidden="all"/>
+			<VAR size="32" name="Param_06_U_05"     comment="Параметр 6 юнита U5" value="0" hidden="all"/>
+			<VAR size="32" name="Param_07_U_05"     comment="Параметр 7 юнита U5" value="0" hidden="all"/>
+			<VAR size="32" name="Param_08_U_05"     comment="Параметр 8 юнита U5" value="0" hidden="all"/>
+        	</SUBBLK>
+		<SUBBLK type="UNITS_PARAMS" name="Параметры юнита U6" struct_name="U6">
+			<VAR size="32" name="Param_01_U_06"     comment="Параметр 1 юнита U6" value="0" hidden="all"/>
+			<VAR size="32" name="Param_02_U_06"     comment="Параметр 2 юнита U6" value="0" hidden="all"/>
+			<VAR size="32" name="Param_03_U_06"     comment="Параметр 3 юнита U6" value="0" hidden="all"/>
+			<VAR size="32" name="Param_04_U_06"     comment="Параметр 4 юнита U6" value="0" hidden="all"/>
+			<VAR size="32" name="Param_05_U_06"     comment="Параметр 5 юнита U6" value="0" hidden="all"/>
+			<VAR size="32" name="Param_06_U_06"     comment="Параметр 6 юнита U6" value="0" hidden="all"/>
+			<VAR size="32" name="Param_07_U_06"     comment="Параметр 7 юнита U6" value="0" hidden="all"/>
+			<VAR size="32" name="Param_08_U_06"     comment="Параметр 8 юнита U6" value="0" hidden="all"/>
+        	</SUBBLK>
+		<SUBBLK type="UNITS_PARAMS" name="Параметры юнита U7" struct_name="U7">
+			<VAR size="32" name="Param_01_U_07"     comment="Параметр 1 юнита U7" value="0" hidden="all"/>
+			<VAR size="32" name="Param_02_U_07"     comment="Параметр 2 юнита U7" value="0" hidden="all"/>
+			<VAR size="32" name="Param_03_U_07"     comment="Параметр 3 юнита U7" value="0" hidden="all"/>
+			<VAR size="32" name="Param_04_U_07"     comment="Параметр 4 юнита U7" value="0" hidden="all"/>
+			<VAR size="32" name="Param_05_U_07"     comment="Параметр 5 юнита U7" value="0" hidden="all"/>
+			<VAR size="32" name="Param_06_U_07"     comment="Параметр 6 юнита U7" value="0" hidden="all"/>
+			<VAR size="32" name="Param_07_U_07"     comment="Параметр 7 юнита U7" value="0" hidden="all"/>
+			<VAR size="32" name="Param_08_U_07"     comment="Параметр 8 юнита U7" value="0" hidden="all"/>
+       		</SUBBLK>
+		<SUBBLK type="UNITS_PARAMS" name="Параметры юнита U8" struct_name="U8">
+			<VAR size="32" name="Param_01_U_08"     comment="Параметр 1 юнита U8" value="0" hidden="all"/>
+			<VAR size="32" name="Param_02_U_08"     comment="Параметр 2 юнита U8" value="0" hidden="all"/>
+			<VAR size="32" name="Param_03_U_08"     comment="Параметр 3 юнита U8" value="0" hidden="all"/>
+			<VAR size="32" name="Param_04_U_08"     comment="Параметр 4 юнита U8" value="0" hidden="all"/>
+			<VAR size="32" name="Param_05_U_08"     comment="Параметр 5 юнита U8" value="0" hidden="all"/>
+			<VAR size="32" name="Param_06_U_08"     comment="Параметр 6 юнита U8" value="0" hidden="all"/>
+			<VAR size="32" name="Param_07_U_08"     comment="Параметр 7 юнита U8" value="0" hidden="all"/>
+			<VAR size="32" name="Param_08_U_08"     comment="Параметр 8 юнита U8" value="0" hidden="all"/>
+        	</SUBBLK>
+	</BLK>
+	<BLK num="4" attr="R" name="Рабочие данные на чтение" struct_name="in">
+		<SUBBLK type="STATE" name="Состояние" struct_name="state">
+			<VAR size="01" name="No_param"       comment="Нет параметров"/>
+			<VAR size="01" name="Err_hard"       comment="Аппаратная ошибка" ftype="Err_hard"/>
+			<VAR size="01" name="Err_ext_con"    comment="Ошибка внешних подключений"/>
+			<VAR size="01" name="Err_stbus"      comment="Ошибки связи STBUS"/>
+			<VAR size="01" name="Err_mod_power"  comment="Ошибка питания модуля"/>
+			<VAR size="01" name="Err_CH_power"   comment="Ошибка питания каналов"/>		
+			<VAR size="02" name="rezerv1"        comment="Зарезервировано" hidden="all" />
+		</SUBBLK>
+		<SUBBLK type="CH_DIAG" name="Поканальная диагностика" struct_name="error">
+		</SUBBLK>
+		<SUBBLK type="CANAL" name="Каналы ввода" struct_name="value">
+		</SUBBLK>
+	</BLK>
+	<BLK num="7" attr="REQ" type="CFG" name="Заводские идентификаторы" hidden="all" struct_name="factory_id">
+		<VAR size="32" name="datetime"               comment="дата изготовления"/>
+		<VAR size="64" name="serial"                 comment="серийный номер"/>
+		<VAR size="16" name="type"                   comment="подтип"/>
+		<VAR size="32" name="CRC_FW"                 comment="контрольная сумма прошивки"/>
+		<VAR size="16" name="CRC_PRJ"                comment="контрольная сумма проекта"/>
+		<VAR size="16" name="CRC_METRO__CALIB_TERMO" comment="контрольная сумма метрологии и калибровка термодатчика"/>
+		<VAR size="16" name="HW_VER"                 comment="аппаратная версия платы"/>
+	</BLK>
+	<BLK num="8" attr="W" name="Рабочие данные на запись" struct_name="out">
+		<SUBBLK type="CANAL" name="Каналы вывода" struct_name="value">
+		</SUBBLK>
+	</BLK>
+	<BLK num="9" attr="REQ" type="FW_CTL" name="Управление загрузкой firmware" hidden="all" struct_name="fw_ctrl">
+		<VAR size="08" comment="команда управления"/>
+	</BLK>
+	<BLK num="10" attr="REQ" type="FW" name="Загрузка firmware" hidden="all" struct_name="fw">
+		<VAR size="32"   comment="адрес"/>
+		<VAR size="1984" comment="данные на запись"/> <!--248*8-->
+	</BLK>
+    	<BLK num="11" attr="REQ" name="Типы установленных юнитов" hidden="all" struct_name="installed_type" cut_begin="2">
+		<VAR size="16" name="U1_installed_type"  comment="Код типа установленного юнита U1"/>
+		<VAR size="16" name="U2_installed_type"  comment="Код типа установленного юнита U2"/>
+		<VAR size="16" name="U3_installed_type"  comment="Код типа установленного юнита U3"/>
+		<VAR size="16" name="U4_installed_type"  comment="Код типа установленного юнита U4"/>
+		<VAR size="16" name="U5_installed_type"  comment="Код типа установленного юнита U5"/>
+		<VAR size="16" name="U6_installed_type"  comment="Код типа установленного юнита U6"/>
+		<VAR size="16" name="U7_installed_type"  comment="Код типа установленного юнита U7"/>
+		<VAR size="16" name="U8_installed_type"  comment="Код типа установленного юнита U8"/>
+	</BLK>
+    	<BLK num="12" attr="REQ" type="UNIT_CFG" name="Конфигурация юнита" hidden="all" struct_name="unit_cfg">
+		<VAR size="08" name="num" comment="Номер посадочного места юнита"/>
+		<VAR size="08" name="cmd" comment="Команда операции с конфигурацией"/>
+		<VAR size="16" name="code" comment="Код типа установленного юнита"/>
+		<VAR size="16" name="HW_ver" comment="Аппаратная версия юнита"/>
+		<VAR size="08" name="rez0" comment="Резерв 0 конфигурации юнита"/>
+		<VAR size="32" name="ser0" comment="серийный номер"/>
+		<VAR size="24" name="ser1" comment="серийный номер"/>
+		<VAR size="32" name="rez1" comment="Дата поверки юнита"/>
+		<VAR size="32" name="date" comment="Дата изготовления юнита"/>
+		<VAR size="32" name="rez2" comment="Резерв 2 конфигурации юнита"/>
+		<VAR size="32" name="rez3" comment="Резерв 3 конфигурации юнита"/>
+	</BLK>
+      <UNITS comment="Поддерживаемые юниты">
+	  <UNIT code="00" version="01" comment="EMPTY"/>
+	  <UNIT code="01" version="01" comment="U2D"/>
+	  <UNIT code="02" version="01" comment="U2OD"/>
+	  <UNIT code="03" version="01" comment="U2OS"/>
+	  <UNIT code="04" version="01" comment="U2O"/>
+	  <UNIT code="05" version="01" comment="UI"/>
+	  <UNIT code="06" version="01" comment="USCD"/>
+	  <UNIT code="08" version="01" comment="URO"/>
+	  <UNIT code="09" version="01" comment="UOS"/>
+	  <UNIT code="10" version="01" comment="UA"/>
+	  <UNIT code="11" version="01" comment="UV"/>
+	  <UNIT code="12" version="01" comment="U2TC"/>
+	  <UNIT code="13" version="01" comment="UTR"/>
+	  <UNIT code="16" version="01" comment="U2G"/>
+	  <UNIT code="17" version="01" comment="UPWM"/>
+	  <UNIT code="19" version="01" comment="U4O"/>
+	  <UNIT code="20" version="01" comment="U4D"/>
+	  <UNIT code="21" version="01" comment="U2V"/>
+	  <UNIT code="22" version="01" comment="U4A"/>
+	  <UNIT code="23" version="01" comment="UI2"/>
+	  <UNIT code="24" version="01" comment="U4DN"/>
+      </UNITS>
+</CONF>

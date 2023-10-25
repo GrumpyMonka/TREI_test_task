@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<CONF type="4884" name="M531I" comment="8-канальный импульсный ввод"> <!--0x1314-->
+  <PARAM name="Reaction Time" value="10" comment="Время реакции модуля (*10мкс)"/>
+	<BLK num="0" attr="RREQ" name="Конфигурация блоков" hidden="dict" struct_name="configuration">
+		<VAR size="16" value="4884" comment="тип модуля"/>
+		<VAR size="16"             comment="версия ПО"/>
+		<VAR size="16"             comment="версия аппаратной части"/>
+		<VAR size="16" value="4"   comment="версия конфигурации"/>
+		<VAR size="16" value="8"   comment="кол-во блоков"/>
+		<VAR size="16" value="0"   comment="номер блока"/>
+		<VAR size="16" value="42"  comment="размер блока"/>
+		<VAR size="16" value="1"   comment="номер блока"/>
+		<VAR size="16" value="14"  comment="размер блока"/>
+		<VAR size="16" value="2"   comment="номер блока"/>
+		<VAR size="16" value="22"  comment="размер блока"/>
+		<VAR size="16" value="3"   comment="номер блока"/>
+		<VAR size="16" value="202" comment="размер блока"/>
+		<VAR size="16" value="4"   comment="номер блока"/>
+		<VAR size="16" value="70"  comment="размер блока"/>
+		<VAR size="16" value="7"   comment="номер блока"/>
+		<VAR size="16" value="24"  comment="размер блока"/>
+		<VAR size="16" value="8"   comment="номер блока"/>
+		<VAR size="16" value="2"   comment="размер блока"/>
+		<VAR size="16" value="9"   comment="номер блока"/>
+		<VAR size="16" value="1"   comment="размер блока"/>
+		<VAR size="16" value="10"  comment="номер блока"/>
+		<VAR size="16" value="252" comment="размер блока"/>
+	</BLK>
+	<BLK num="1" attr="RREQ" type="STAT" name="Статистика" struct_name="statistic">
+		<VAR size="32"                 name="Work_Time"      comment="Время наработки, сек"/>
+		<VAR size="32"                 name="Line1_Err"         comment="Счетчик ошибок STBUS по линии1"/>
+		<VAR size="32"                 name="Line2_Err"         comment="Счетчик ошибок STBUS по линии2"/>
+		<VAR size="08"                 name="Reset_code"     comment="Код сброса"/>
+		<VAR size="01" type="int" name="Metro_CH_01" comment="Флаги метрологии, канал  1"/>
+		<VAR size="01" type="int" name="Metro_CH_02" comment="Флаги метрологии, канал  2"/>
+		<VAR size="01" type="int" name="Metro_CH_03" comment="Флаги метрологии, канал  3"/>
+		<VAR size="01" type="int" name="Metro_CH_04" comment="Флаги метрологии, канал  4"/>
+		<VAR size="01" type="int" name="Metro_CH_05" comment="Флаги метрологии, канал  5"/>
+		<VAR size="01" type="int" name="Metro_CH_06" comment="Флаги метрологии, канал  6"/>
+		<VAR size="01" type="int" name="Metro_CH_07" comment="Флаги метрологии, канал  7"/>
+		<VAR size="01" type="int" name="Metro_CH_08" comment="Флаги метрологии, канал  8"/>
+	</BLK>
+	<BLK num="2" attr="REQ" type="METRO" name="Метрология" hidden="all" struct_name="metro">
+		<VAR size="08" name="ToDo" comment="Действие"/>
+		<VAR size="16" name="Code" comment="Код платы ввода-вывода"/>
+		<VAR size="08" name="Num" comment="Номер юнита"/>
+		<VAR size="08" name="CH" comment="Номер канала"/>
+		<VAR size="08" name="Block" comment="Блокировка"/>
+		<VAR size="32" name="ADC_DAC" comment="Код АЦП-ЦАП"/>
+		<VAR size="32" name="Value" comment="Физическое значение"/>
+		<VAR size="32" name="Maximum" comment="Максимум"/>
+		<VAR size="32" name="Minimum" comment="Минимум"/>
+	</BLK>
+	<BLK num="3" attr="REQ" type="PARAM" name="Параметры" struct_name="param">
+		<SUBBLK name="Режим работы" struct_name="mode" cut_end="5">
+			<VAR size="08" name="Mode_CH_01" comment="Режим работы, канал 1" value="1"/>
+			<VAR size="08" name="Mode_CH_02" comment="Режим работы, канал 2" value="1"/>
+			<VAR size="08" name="Mode_CH_03" comment="Режим работы, канал 3" value="1"/>
+			<VAR size="08" name="Mode_CH_04" comment="Режим работы, канал 4" value="1"/>
+			<VAR size="08" name="Mode_CH_05" comment="Режим работы, канал 5" value="1"/>
+			<VAR size="08" name="Mode_CH_06" comment="Режим работы, канал 6" value="1"/>
+			<VAR size="08" name="Mode_CH_07" comment="Режим работы, канал 7" value="1"/>
+			<VAR size="08" name="Mode_CH_08" comment="Режим работы, канал 8" value="1"/>
+                </SUBBLK>
+               <SUBBLK name="Минимальная длительность входного импульса" struct_name="min_imp" cut_end="5">
+			<VAR type="rea" name="Min_imp_CH_01" comment="Минимальная длительность входного импульса в мкс, канал 1" value="20.0"/>
+			<VAR type="rea" name="Min_imp_CH_02" comment="Минимальная длительность входного импульса в мкс, канал 2" value="20.0"/>
+			<VAR type="rea" name="Min_imp_CH_03" comment="Минимальная длительность входного импульса в мкс, канал 3" value="20.0"/>
+			<VAR type="rea" name="Min_imp_CH_04" comment="Минимальная длительность входного импульса в мкс, канал 4" value="20.0"/>
+			<VAR type="rea" name="Min_imp_CH_05" comment="Минимальная длительность входного импульса в мкс, канал 5" value="20.0"/>
+			<VAR type="rea" name="Min_imp_CH_06" comment="Минимальная длительность входного импульса в мкс, канал 6" value="20.0"/>
+			<VAR type="rea" name="Min_imp_CH_07" comment="Минимальная длительность входного импульса в мкс, канал 7" value="20.0"/>
+			<VAR type="rea" name="Min_imp_CH_08" comment="Минимальная длительность входного импульса в мкс, канал 8" value="20.0"/>
+                </SUBBLK>
+                <SUBBLK name="Время усреднения" struct_name="aver_time" cut_end="5">
+		        <VAR type="rea" name="Aver_time_CH_01" comment="Время усреднения в секундах, канал 1" value="0.1"/>
+                        <VAR type="rea" name="Aver_time_CH_02" comment="Время усреднения в секундах, канал 2" value="0.1"/>
+                        <VAR type="rea" name="Aver_time_CH_03" comment="Время усреднения в секундах, канал 3" value="0.1"/>
+                        <VAR type="rea" name="Aver_time_CH_04" comment="Время усреднения в секундах, канал 4" value="0.1"/>
+                        <VAR type="rea" name="Aver_time_CH_05" comment="Время усреднения в секундах, канал 5" value="0.1"/>
+                        <VAR type="rea" name="Aver_time_CH_06" comment="Время усреднения в секундах, канал 6" value="0.1"/>
+                        <VAR type="rea" name="Aver_time_CH_07" comment="Время усреднения в секундах, канал 7" value="0.1"/>
+                        <VAR type="rea" name="Aver_time_CH_08" comment="Время усреднения в секундах, канал 8" value="0.1"/>
+                 </SUBBLK>
+		<SUBBLK name="Число периодов усреднения" struct_name="aver_cycle" cut_end="5">
+		        <VAR size="32" name="Aver_cycle_CH_01" comment="Число периодов усреднения, канал 1" value="0"/>
+                        <VAR size="32" name="Aver_cycle_CH_02" comment="Число периодов усреднения, канал 2" value="0"/>
+                        <VAR size="32" name="Aver_cycle_CH_03" comment="Число периодов усреднения, канал 3" value="0"/>
+                        <VAR size="32" name="Aver_cycle_CH_04" comment="Число периодов усреднения, канал 4" value="0"/>
+                        <VAR size="32" name="Aver_cycle_CH_05" comment="Число периодов усреднения, канал 5" value="0"/>
+                        <VAR size="32" name="Aver_cycle_CH_06" comment="Число периодов усреднения, канал 6" value="0"/>
+                        <VAR size="32" name="Aver_cycle_CH_07" comment="Число периодов усреднения, канал 7" value="0"/>
+                        <VAR size="32" name="Aver_cycle_CH_08" comment="Число периодов усреднения, канал 8" value="0"/>
+                 </SUBBLK>
+		 <SUBBLK name="Порог срабатывания" struct_name="threshold" cut_end="5">
+                        <VAR type="rea" name="Threshold_CH_01" comment="Порог срабатывания в вольтах, канал 1" value="12.0"/>
+                        <VAR type="rea" name="Threshold_CH_02" comment="Порог срабатывания в вольтах, канал 2" value="12.0"/>
+                        <VAR type="rea" name="Threshold_CH_03" comment="Порог срабатывания в вольтах, канал 3" value="12.0"/>
+                        <VAR type="rea" name="Threshold_CH_04" comment="Порог срабатывания в вольтах, канал 4" value="12.0"/>
+                        <VAR type="rea" name="Threshold_CH_05" comment="Порог срабатывания в вольтах, канал 5" value="12.0"/>
+                        <VAR type="rea" name="Threshold_CH_06" comment="Порог срабатывания в вольтах, канал 6" value="12.0"/>
+                        <VAR type="rea" name="Threshold_CH_07" comment="Порог срабатывания в вольтах, канал 7" value="12.0"/>
+                        <VAR type="rea" name="Threshold_CH_08" comment="Порог срабатывания в вольтах, канал 8" value="12.0"/>
+                 </SUBBLK>
+                 <SUBBLK name="Гистерезис порога срабатывания" struct_name="hyst_thres" cut_end="5">
+                        <VAR type="rea" name="Hyst_thres_CH_01" comment="Гистерезис порога срабатывания в вольтах, канал 1" value="1.0"/>
+                        <VAR type="rea" name="Hyst_thres_CH_02" comment="Гистерезис порога срабатывания в вольтах, канал 2" value="1.0"/>
+                        <VAR type="rea" name="Hyst_thres_CH_03" comment="Гистерезис порога срабатывания в вольтах, канал 3" value="1.0"/>
+                        <VAR type="rea" name="Hyst_thres_CH_04" comment="Гистерезис порога срабатывания в вольтах, канал 4" value="1.0"/>
+                        <VAR type="rea" name="Hyst_thres_CH_05" comment="Гистерезис порога срабатывания в вольтах, канал 5" value="1.0"/>
+                        <VAR type="rea" name="Hyst_thres_CH_06" comment="Гистерезис порога срабатывания в вольтах, канал 6" value="1.0"/>
+                        <VAR type="rea" name="Hyst_thres_CH_07" comment="Гистерезис порога срабатывания в вольтах, канал 7" value="1.0"/>
+                        <VAR type="rea" name="Hyst_thres_CH_08" comment="Гистерезис порога срабатывания в вольтах, канал 8" value="1.0"/>
+                 </SUBBLK>
+                 <SUBBLK name="Минимальное значение для дифференциального входа" struct_name="min_input_diff" cut_end="5">
+		        <VAR size="32" name="Min_input_diff_CH_01" comment="Минимальное значение для дифференциального входа, канал 1" value="50"/>
+                        <VAR size="32" name="Min_input_diff_CH_02" comment="Минимальное значение для дифференциального входа, канал 2" value="50"/>
+                        <VAR size="32" name="Min_input_diff_CH_03" comment="Минимальное значение для дифференциального входа, канал 3" value="50"/>
+                        <VAR size="32" name="Min_input_diff_CH_04" comment="Минимальное значение для дифференциального входа, канал 4" value="50"/>
+                        <VAR size="32" name="Min_input_diff_CH_05" comment="Минимальное значение для дифференциального входа, канал 5" value="50"/>
+                        <VAR size="32" name="Min_input_diff_CH_06" comment="Минимальное значение для дифференциального входа, канал 6" value="50"/>
+                        <VAR size="32" name="Min_input_diff_CH_07" comment="Минимальное значение для дифференциального входа, канал 7" value="50"/>
+                        <VAR size="32" name="Min_input_diff_CH_08" comment="Минимальное значение для дифференциального входа, канал 8" value="50"/>
+                 </SUBBLK>
+		 <SUBBLK name="Общие параметры" struct_name="common">
+			<VAR size="16" name="Timeout"  comment="Таймаут связи с мастером, мсек" value="0"/>
+		 </SUBBLK>
+	</BLK>
+	<BLK num="4" attr="R" name="Рабочие данные на чтение" struct_name="in">
+		<SUBBLK type="STATE" name="Состояние" struct_name="state">
+			<VAR size="01"  name="No_param"              comment="Нет параметров"/>
+			<VAR size="01"  name="Power_low1"            comment="Питание ниже нормы (линия 1)"/>
+			<VAR size="01"  name="Power_high1"           comment="Питание выше нормы (линия 1)"/>
+			<VAR size="01"  name="Power_low2"            comment="Питание ниже нормы (линия 2)"/>
+			<VAR size="01"  name="Power_high2"           comment="Питание выше нормы (линия 2)"/>
+			<VAR size="01"  name="Err_line1"             comment="Ошибки связи с мастером (линия 1)"/>
+			<VAR size="01"  name="Err_line2"             comment="Ошибки связи с мастером (линия 2)"/>
+			<VAR size="01"  name="Not_Ready"             comment="Значения модуля недостоверны" ftype="Not_Ready" hidden="all"/>
+			<VAR size="01"  name="Energy_save"           comment="Режим энергосбережения" ftype="Energy_save"/>
+			<VAR size="01"  name="Err_hard"              comment="Аппаратная ошибка модуля"/>
+			<VAR size="01"  name="Ext_conn_err"          comment="Ошибка внешних подключений юнитов"/>
+			<VAR size="05"  name="rezerv10"              comment="Зарезервировано" hidden="all"/>
+		</SUBBLK>
+		<SUBBLK type="CANAL" name="Каналы измерения частоты" alg="CNT" struct_name="value">
+			<VAR type="rea" name="Freq_CH_01" comment="Частота, канал  1" farg="1"/>
+			<VAR size="32" name="Count_CH_01" comment="Количество импульсов, канал  1" farg="2"/>
+			<VAR type="rea" name="Freq_CH_02" comment="Частота, канал  2" farg="3"/>
+			<VAR size="32" name="Count_CH_02" comment="Количество импульсов, канал  2" farg="4"/>
+			<VAR type="rea" name="Freq_CH_03" comment="Частота, канал  3" farg="5"/>
+			<VAR size="32" name="Count_CH_03" comment="Количество импульсов, канал  3" farg="6"/>
+			<VAR type="rea" name="Freq_CH_04" comment="Частота, канал  4" farg="7"/>
+			<VAR size="32" name="Count_CH_04" comment="Количество импульсов, канал  4" farg="8"/>
+			<VAR type="rea" name="Freq_CH_05" comment="Частота, канал  5" farg="9"/>
+			<VAR size="32" name="Count_CH_05" comment="Количество импульсов, канал  5" farg="10"/>
+			<VAR type="rea" name="Freq_CH_06" comment="Частота, канал  6" farg="11"/>
+			<VAR size="32" name="Count_CH_06" comment="Количество импульсов, канал  6" farg="12"/>
+			<VAR type="rea" name="Freq_CH_07" comment="Частота, канал  7" farg="13"/>
+			<VAR size="32" name="Count_CH_07" comment="Количество импульсов, канал  7" farg="14"/>
+			<VAR type="rea" name="Freq_CH_08" comment="Частота, канал  8" farg="15"/>
+			<VAR size="32" name="Count_CH_08" comment="Количество импульсов, канал  8" farg="16"/>
+		</SUBBLK>
+		<SUBBLK type="CH_DIAG" name="Поканальная диагностика" struct_name="error" cut_end="5">
+			<VAR size="04" name="Err_CH_01" comment="Ошибки, канал 1" farg="1" values="1"/>
+			<VAR size="04" name="Err_CH_02" comment="Ошибки, канал 2" farg="3" values="1"/>
+			<VAR size="04" name="Err_CH_03" comment="Ошибки, канал 3" farg="5" values="1"/>
+			<VAR size="04" name="Err_CH_04" comment="Ошибки, канал 4" farg="7" values="1"/>
+			<VAR size="04" name="Err_CH_05" comment="Ошибки, канал 5" farg="9" values="1"/>
+			<VAR size="04" name="Err_CH_06" comment="Ошибки, канал 6" farg="11" values="1"/>
+			<VAR size="04" name="Err_CH_07" comment="Ошибки, канал 7" farg="13" values="1"/>
+			<VAR size="04" name="Err_CH_08" comment="Ошибки, канал 8" farg="15" values="1"/>
+		</SUBBLK>
+	</BLK>
+	<BLK num="7" attr="REQ" type="CFG" name="Заводские идентификаторы" hidden="all" struct_name="factory_id">
+		<VAR size="32" name="datetime"               comment="дата изготовления"/>
+		<VAR size="64" name="serial"                 comment="серийный номер"/>
+		<VAR size="16" name="type"                   comment="подтип"/>
+		<VAR size="32" name="CRC_FW"                 comment="контрольная сумма прошивки"/>
+		<VAR size="16" name="CRC_PRJ"                comment="контрольная сумма проекта"/>
+		<VAR size="16" name="CRC_METRO__CALIB_TERMO" comment="контрольная сумма метрологии и калибровка термодатчика"/>
+		<VAR size="16" name="HW_VER"                 comment="аппаратная версия платы"/>
+	</BLK>
+	<BLK num="8" attr="W" name="Рабочие данные на запись" struct_name="out">
+		<SUBBLK type="CANAL" name="Команды">
+		<VAR size="02" name="Cmd_CH_01" comment="Команда, канал 1" farg="17"/>
+		<VAR size="02" name="Cmd_CH_02" comment="Команда, канал 2" farg="18"/>
+		<VAR size="02" name="Cmd_CH_03" comment="Команда, канал 3" farg="19"/>
+		<VAR size="02" name="Cmd_CH_04" comment="Команда, канал 4" farg="20"/>
+		<VAR size="02" name="Cmd_CH_05" comment="Команда, канал 5" farg="21"/>
+		<VAR size="02" name="Cmd_CH_06" comment="Команда, канал 6" farg="22"/>
+		<VAR size="02" name="Cmd_CH_07" comment="Команда, канал 7" farg="23"/>
+		<VAR size="02" name="Cmd_CH_08" comment="Команда, канал 8" farg="24"/>
+		</SUBBLK>
+	</BLK>
+	<BLK num="9" attr="REQ" type="FW_CTL" name="Управление загрузкой firmware" hidden="all" struct_name="fw_ctrl">
+		<VAR size="08" comment="команда управления"/>
+	</BLK>
+	<BLK num="10" attr="REQ" type="FW" name="Загрузка firmware" hidden="all" struct_name="fw">
+		<VAR size="32"   comment="адрес"/>
+		<VAR size="1984" comment="данные на запись"/> <!--248*8-->
+	</BLK>
+  <FIELD_VALUES>
+    <VALUES num="1">
+       <VALUE val="0" comment="Нет ошибок"/>
+       <VALUE val="1" comment="Отсутствие частоты"/>
+       <VALUE val="2" comment="Частота выше пороговой или резкое увеличение частоты"/>
+       <VALUE val="3" comment="Резкое снижение частоты"/>
+       <VALUE val="4" comment="Аппаратная ошибка"/>
+       <VALUE val="5" comment="Обрыв"/>
+       <VALUE val="6" comment="короткое замыкание"/>
+       <VALUE val="7" comment="Канал выключен в конфигурации"/>
+       <VALUE val="8" comment="Канал не откалиброван"/>
+       <VALUE val="9" comment="Канал заблокирован"/>
+    </VALUES>
+  </FIELD_VALUES>
+</CONF>

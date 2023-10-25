@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<CONF test="1" type="4119" name="M171N" comment="3-фазный счетчик электроэнергии"> <!--0x1017-->
+  <PARAM name="Reaction Time" value="10" comment="Время реакции модуля (*10мкс)"/>
+	<BLK num="0" attr="RREQ" name="Конфигурация блоков" hidden="dict" struct_name="configuration">
+		<VAR size="16" value="4119" comment="тип модуля"/>
+		<VAR size="16"             comment="версия ПО"/>
+		<VAR size="16"             comment="версия аппаратной части"/>
+		<VAR size="16" value="1"   comment="версия конфигурации"/>
+		<VAR size="16" value="9"   comment="кол-во блоков"/>
+		<VAR size="16" value="0"   comment="номер блока"/>
+		<VAR size="16" value="46"  comment="размер блока"/>
+		<VAR size="16" value="1"   comment="номер блока"/>
+		<VAR size="16" value="19"  comment="размер блока"/>
+		<VAR size="16" value="2"   comment="номер блока"/>
+		<VAR size="16" value="28"  comment="размер блока"/>
+		<VAR size="16" value="3"   comment="номер блока"/>
+		<VAR size="16" value="20"  comment="размер блока"/>
+		<VAR size="16" value="4"   comment="номер блока"/>
+		<VAR size="16" value="55"  comment="размер блока"/>
+		<VAR size="16" value="7"   comment="номер блока"/>
+		<VAR size="16" value="24"  comment="размер блока"/>
+		<VAR size="16" value="9"   comment="номер блока"/>
+		<VAR size="16" value="1"   comment="размер блока"/>
+		<VAR size="16" value="10"  comment="номер блока"/>
+		<VAR size="16" value="252" comment="размер блока"/>
+		<VAR size="16" value="13"  comment="номер блока"/>
+		<VAR size="16" value="12"  comment="размер блока"/>
+	</BLK>
+	<BLK num="1" attr="RREQ" type="STAT" name="Статистика" struct_name="statistic">
+		<VAR size="32" name="Work_Time"      comment="Время наработки, сек"/>
+		<VAR size="32" name="Stbus_cnt_Err"  comment="Счетчик ошибок STBUS"/>
+		<VAR size="08" name="Reset_code"     comment="Код сброса"/>
+		<VAR size="32" name="Mod_temp"        comment="Температура модуля"/>
+		<VAR size="01" name="Stbus_err"       comment="Ошибки связи с мастером"/>
+		<VAR size="01" name="Err_sequence"    comment="Нарушение последовательности STBUS"/>
+		<VAR size="01" name="Mod_power_low"   comment="Питание модуля ниже нормы"/>
+		<VAR size="05" name="Rez1"            comment="Резерв" hidden="all"/>
+		<VAR size="32" name="Rez2"            comment="Резерв" hidden="all"/>
+		<VAR size="01" name="Metro_current_01" comment="Флаг метрологии, ток фазы 1"/>
+		<VAR size="01" name="Metro_current_02" comment="Флаг метрологии, ток фазы 2"/>
+		<VAR size="01" name="Metro_current_03" comment="Флаг метрологии, ток фазы 3"/>
+		<VAR size="01" name="Metro_voltage_01" comment="Флаг метрологии, напряжение фазы 1"/>
+		<VAR size="01" name="Metro_voltage_02" comment="Флаг метрологии, напряжение фазы 2"/>
+		<VAR size="01" name="Metro_voltage_03" comment="Флаг метрологии, напряжение фазы 3"/>
+		<VAR size="02" name="Rez2"            comment="Резерв" hidden="all"/>
+	</BLK>
+	<BLK num="2" attr="REQ" type="METRO" name="Метрология" hidden="all" struct_name="metro">
+		<VAR size="08"  name="ToDo"     comment="признак"/>
+		<VAR size="08"  name="CH"       comment="номер канала"/>
+		<VAR size="08"  name="Block"    comment="блокировка"/>
+		<VAR size="08"  name="Type"     comment="тип канала"/>
+		<VAR size="32"  name="ADC_DAC"  comment="код АЦП"/>
+		<VAR type="rea" name="Value"    comment="физическое значение"/>
+		<VAR size="32"  name="Maximum1" comment="максимум по току"/>
+		<VAR size="32"  name="Minimum1" comment="минимум по току"/>
+		<VAR size="32"  name="Maximum2" comment="максимум по напряжению"/>
+		<VAR size="32"  name="Minimum2" comment="минимум по напряжению"/>
+	</BLK>
+	<BLK num="3" attr="REQ" type="PARAM" name="Параметры" struct_name="param">
+            <SUBBLK name="Привязка переменных к каналам" struct_name="mode" cut_end="5">
+			<VAR size="08" name="cfg_CH_01" comment="Измеряемое значение, канал 1" farg="01" values="1"/>
+			<VAR size="08" name="cfg_CH_02" comment="Измеряемое значение, канал 2" farg="02" values="1"/>
+			<VAR size="08" name="cfg_CH_03" comment="Измеряемое значение, канал 3" farg="03" values="1"/>
+			<VAR size="08" name="cfg_CH_04" comment="Измеряемое значение, канал 4" farg="04" values="1"/>
+			<VAR size="08" name="cfg_CH_05" comment="Измеряемое значение, канал 5" farg="05" values="1"/>
+			<VAR size="08" name="cfg_CH_06" comment="Измеряемое значение, канал 6" farg="06" values="1"/>
+			<VAR size="08" name="cfg_CH_07" comment="Измеряемое значение, канал 7" farg="07" values="1"/>
+			<VAR size="08" name="cfg_CH_08" comment="Измеряемое значение, канал 8" farg="08" values="1"/>
+			<VAR size="08" name="cfg_CH_09" comment="Измеряемое значение, канал 9" farg="09" values="1"/>
+			<VAR size="08" name="cfg_CH_10" comment="Измеряемое значение, канал 10" farg="10" values="1"/>
+			<VAR size="08" name="cfg_CH_11" comment="Измеряемое значение, канал 11" farg="11" values="1"/>
+			<VAR size="08" name="cfg_CH_12" comment="Измеряемое значение, канал 12" farg="12" values="1"/>
+		</SUBBLK>
+		<SUBBLK name="Коэффициенты трансформации" struct_name="coef">
+			<VAR size="08" name="Current_trans" comment="Коэффициент трансформации тока"/>
+			<VAR size="08" name="Voltage_trans" comment="Коэффициент трансформации напряжения"/>
+		</SUBBLK>
+		<SUBBLK name="Общие параметры"  struct_name="common">
+			<VAR size="32" name="Rez2"         comment="Резерв" hidden="all"/>
+			<VAR size="16" name="Timeout"      comment="Таймаут связи с мастером, мсек" value="0"/>
+		</SUBBLK>
+	</BLK>
+	<BLK num="4" attr="R" name="Рабочие данные на чтение" struct_name="in">
+		<SUBBLK type="STATE" name="Состояние" struct_name="state">
+			<VAR size="01" name="No_param"       comment="Нет параметров"/>
+			<VAR size="01" name="Err_hard"       comment="Аппаратная ошибка" ftype="Err_hard"/>
+			<VAR size="01" name="Err_ext_con"    comment="Ошибка внешних подключений"/>
+			<VAR size="01" name="Err_stbus"      comment="Ошибки связи STBUS"/>
+			<VAR size="01" name="Err_mod_power"  comment="Ошибка питания модуля"/>
+			<VAR size="01" name="Err_CH_power"   comment="Ошибка питания каналов"/>
+			<VAR size="02" name="rez1"           comment="резерв" hidden="all"/>
+		</SUBBLK>
+		<SUBBLK type="CANAL" name="Каналы" struct_name="value">
+			<VAR size="32" type="rea" name="CH_01" comment="Значение канала 1" farg="1"/>
+			<VAR size="32" type="rea" name="CH_02" comment="Значение канала 2" farg="2"/>
+			<VAR size="32" type="rea" name="CH_03" comment="Значение канала 3" farg="3"/>
+			<VAR size="32" type="rea" name="CH_04" comment="Значение канала 4" farg="4"/>
+			<VAR size="32" type="rea" name="CH_05" comment="Значение канала 5" farg="5"/>
+			<VAR size="32" type="rea" name="CH_06" comment="Значение канала 6" farg="6"/>
+			<VAR size="32" type="rea" name="CH_07" comment="Значение канала 7" farg="7"/>
+			<VAR size="32" type="rea" name="CH_08" comment="Значение канала 8" farg="8"/>
+			<VAR size="32" type="rea" name="CH_09" comment="Значение канала 9" farg="9"/>
+			<VAR size="32" type="rea" name="CH_10" comment="Значение канала 10" farg="10"/>
+			<VAR size="32" type="rea" name="CH_11" comment="Значение канала 11" farg="11"/>
+			<VAR size="32" type="rea" name="CH_12" comment="Значение канала 12" farg="12"/>
+		</SUBBLK>
+		<SUBBLK type="CH_DIAG" name="Поканальная диагностика" struct_name="error" cut_end="5">
+			<VAR size="04"  name="Err_CH_01"     comment="Ошибки, канал  1" farg="1"  values="2"/>
+			<VAR size="04"  name="Err_CH_02"     comment="Ошибки, канал  2" farg="2"  values="2"/>
+			<VAR size="04"  name="Err_CH_03"     comment="Ошибки, канал  3" farg="3"  values="2"/>
+			<VAR size="04"  name="Err_CH_04"     comment="Ошибки, канал  4" farg="4"  values="2"/>
+			<VAR size="04"  name="Err_CH_05"     comment="Ошибки, канал  5" farg="5"  values="2"/>
+			<VAR size="04"  name="Err_CH_06"     comment="Ошибки, канал  6" farg="6"  values="2"/>
+			<VAR size="04"  name="Err_CH_07"     comment="Ошибки, канал  7" farg="7"  values="2"/>
+			<VAR size="04"  name="Err_CH_08"     comment="Ошибки, канал  8" farg="8"  values="2"/>
+			<VAR size="04"  name="Err_CH_09"     comment="Ошибки, канал  9" farg="9"  values="2"/>
+			<VAR size="04"  name="Err_CH_10"     comment="Ошибки, канал  10" farg="10"  values="2"/>
+			<VAR size="04"  name="Err_CH_11"     comment="Ошибки, канал  11" farg="11"  values="2"/>
+			<VAR size="04"  name="Err_CH_12"     comment="Ошибки, канал  12" farg="12"  values="2"/>
+		</SUBBLK>
+	</BLK>
+	<BLK num="7" attr="REQ" type="CFG" name="Заводские идентификаторы" hidden="all" struct_name="factory_id">
+		<VAR size="32" name="datetime"               comment="дата изготовления"/>
+		<VAR size="64" name="serial"                 comment="серийный номер"/>
+		<VAR size="16" name="type"                   comment="подтип"/>
+		<VAR size="32" name="CRC_FW"                 comment="контрольная сумма прошивки"/>
+		<VAR size="16" name="CRC_PRJ"                comment="контрольная сумма проекта"/>
+		<VAR size="16" name="CRC_METRO__CALIB_TERMO" comment="контрольная сумма метрологии и калибровка термодатчика"/>
+		<VAR size="16" name="HW_VER"                 comment="аппаратная версия платы"/>
+	</BLK>
+	<BLK num="9" attr="REQ" type="FW_CTL" name="Управление загрузкой firmware" hidden="all" struct_name="fw_ctrl">
+		<VAR size="08" comment="команда управления"/>
+	</BLK>
+	<BLK num="10" attr="REQ" type="FW" name="Загрузка firmware" hidden="all" struct_name="fw">
+		<VAR size="32"   comment="адрес"/>
+		<VAR size="1984" comment="данные на запись"/> <!--248*8-->
+	</BLK>
+  <FIELD_VALUES>
+    <VALUES num="1">
+        <VALUE val="0"  comment="Отключен"/>
+        <VALUE val="1"  comment="Действующее значение напряжения фазы A"/>
+        <VALUE val="2"  comment="Действующее значение напряжения фазы В"/>
+        <VALUE val="3"  comment="Действующее значение напряжения фазы С"/>
+        <VALUE val="4"  comment="Действующее значение линейного напряжения между фазами A и В"/>
+        <VALUE val="5"  comment="Действующее значение линейного напряжения между фазами В и С"/>
+        <VALUE val="6"  comment="Действующее значение линейного напряжения между фазами A и С"/>
+        <VALUE val="7"  comment="Действующее значение тока фазы А"/>
+        <VALUE val="8"  comment="Действующее значение тока фазы В"/>
+        <VALUE val="9"  comment="Действующее значение тока фазы С"/>
+        <VALUE val="10"  comment="Значение активной мощности фазы А"/>
+        <VALUE val="11"  comment="Значение активной мощности фазы В"/>
+        <VALUE val="12"  comment="Значение активной мощности фазы С"/>
+        <VALUE val="13"  comment="Суммарное значение активных мощностей фаз А,B,C"/>
+        <VALUE val="14"  comment="Значение реактивной мощности фазы А"/>
+        <VALUE val="15"  comment="Значение реактивной мощности фазы В"/>
+        <VALUE val="16"  comment="Значение реактивной мощности фазы С"/>
+        <VALUE val="17"  comment="Суммарное значение реактивных мощностей фаз"/>
+        <VALUE val="18"  comment="Значение полной мощности фазы А"/>
+        <VALUE val="19"  comment="Значение полной мощности фазы В"/>
+        <VALUE val="20"  comment="Значение полной мощности фазы С"/>
+        <VALUE val="21"  comment="Суммарное значение полных мощностей фаз"/>
+        <VALUE val="22"  comment="Cos ф фазы А"/>
+        <VALUE val="23"  comment="Cos ф фазы В"/>
+        <VALUE val="24"  comment="Cos ф фазы С"/>
+        <VALUE val="25"  comment="Cos ф средний по  фазам А,В,С"/>
+        <VALUE val="26"  comment="Частота сети средняя по  фазам А,В,С"/>
+        <VALUE val="27"  comment="Действующее значение напряжения нулевой последовательности"/>
+        <VALUE val="28"  comment="Активная прямая электроэнергия фазы А (нарастающий итог)"/>
+        <VALUE val="29"  comment="Активная прямая электроэнергия фазы В (нарастающий итог)"/>
+        <VALUE val="30"  comment="Активная прямая электроэнергия фазы С (нарастающий итог)"/>
+        <VALUE val="31"  comment="Суммарная активная прямая электроэнергия фаз A,B,C(нарастающий итог)"/>
+        <VALUE val="32"  comment="Активная обратная электроэнергия фазы А (нарастающий итог)"/>
+        <VALUE val="33"  comment="Активная обратная электроэнергия фазы В (нарастающий итог)"/>
+        <VALUE val="34"  comment="Активная обратная электроэнергия фазы С (нарастающий итог)"/>
+        <VALUE val="35"  comment="Суммарная активная обратная электроэнергия фаз A,B,C(нарастающий итог)"/>
+        <VALUE val="36"  comment="Реактивная прямая электроэнергия фазы А (нарастающий итог)"/>
+        <VALUE val="37"  comment="Реактивная прямая электроэнергия фазы В (нарастающий итог)"/>
+        <VALUE val="38"  comment="Реактивная прямая электроэнергия фазы С (нарастающий итог)"/>
+        <VALUE val="39"  comment="Суммарная реактивная прямая электроэнергия фаз A,B,C(нарастающий итог)"/>
+        <VALUE val="40"  comment="Реактивная обратная электроэнергия фазы А (нарастающий итог)"/>
+        <VALUE val="41"  comment="Реактивная обратная электроэнергия фазы В (нарастающий итог)"/>
+        <VALUE val="42"  comment="Реактивная обратная электроэнергия фазы С (нарастающий итог)"/>
+        <VALUE val="43"  comment="Суммарная реактивная обратная электроэнергия фаз A,B,C(нарастающий итог)"/>
+        <VALUE val="44"  comment="Полная электроэнергия фазы А (нарастающий итог)"/>
+        <VALUE val="45"  comment="Полная электроэнергия фазы В (нарастающий итог)"/>
+        <VALUE val="46"  comment="Полная электроэнергия фазы С (нарастающий итог)"/>
+        <VALUE val="47"  comment="Суммарная полная электроэнергия фаз A,B,C(нарастающий итог)"/>
+        <VALUE val="48"  comment="Угол между напряжением и током фазы А"/>
+        <VALUE val="49"  comment="Угол между напряжением и током фазы В"/>
+        <VALUE val="50"  comment="Угол между напряжением и током фазы С"/>
+        <VALUE val="51"  comment="Угол между напряжениями фаз А и В"/>
+        <VALUE val="52"  comment="Угол между напряжениями фаз В и С"/>
+        <VALUE val="53"  comment="Угол между напряжениями фаз А и С"/>
+    </VALUES>
+    <VALUES num="2">
+        <VALUE val="0" comment="нет ошибок"/>
+        <VALUE val="1" comment="канал неоткалиброван"/>
+        <VALUE val="2" comment="значение недостоверно"/>
+        <VALUE val="3" comment="аппаратная ошибка"/>
+        <VALUE val="4" comment="обрыв"/>
+        <VALUE val="5" comment="выход за диапазон"/>
+        <VALUE val="13" comment="канал отключен"/>
+        <VALUE val="15" comment="канал заблокирован"/>
+    </VALUES>
+  </FIELD_VALUES>
+</CONF>

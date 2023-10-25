@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<CONF type="16148" name="M582IS" comment="Модуль контроля частоты вращения"> <!--0x3F14-->
+  <PARAM name="Reaction Time" value="10" comment="Время реакции модуля (*10мкс)"/>
+	<BLK num="0" attr="RREQ" name="Конфигурация блоков" hidden="dict">
+		<VAR size="16" value="16148" comment="тип модуля"/>
+		<VAR size="16"             comment="версия ПО"/>
+		<VAR size="16"             comment="версия аппаратной части"/>
+		<VAR size="16" value="1"   comment="версия конфигурации"/>
+		<VAR size="16" value="9"  comment="кол-во блоков"/>
+		<VAR size="16" value="0"   comment="номер блока"/>
+		<VAR size="16" value="54"  comment="размер блока"/>
+		<VAR size="16" value="1"   comment="номер блока"/>
+		<VAR size="16" value="14"  comment="размер блока"/>
+		<VAR size="16" value="2"   comment="номер блока"/>
+		<VAR size="16" value="22"  comment="размер блока"/>
+		<VAR size="16" value="3"   comment="номер блока"/>
+		<VAR size="16" value="36"  comment="размер блока"/>
+		<VAR size="16" value="4"   comment="номер блока"/>
+		<VAR size="16" value="38"  comment="размер блока"/>
+		<VAR size="16" value="6"   comment="номер блока"/>
+		<VAR size="16" value="1"  comment="размер блока"/>
+		<VAR size="16" value="7"   comment="номер блока"/>
+		<VAR size="16" value="24"  comment="размер блока"/>
+		<VAR size="16" value="9"   comment="номер блока"/>
+		<VAR size="16" value="1"   comment="размер блока"/>
+		<VAR size="16" value="10"  comment="номер блока"/>
+		<VAR size="16" value="252" comment="размер блока"/>
+		<VAR size="16" value="11"  comment="номер блока"/>
+		<VAR size="16" value="16"  comment="размер блока"/>
+		<VAR size="16" value="12"  comment="номер блока"/>
+		<VAR size="16" value="30"  comment="размер блока"/>
+	</BLK>
+	<BLK num="1" attr="REQ" type="STAT" name="Статистика">
+		<VAR size="32"            name="Work_Time"   comment="Время наработки, сек"/>
+		<VAR size="32"            name="Line1_Err"   comment="Счетчик ошибок STBUS по линии1"/>
+		<VAR size="32"            name="Line2_Err"   comment="Счетчик ошибок STBUS по линии2"/>
+		<VAR size="08"            name="Reset_code"  comment="Код сброса"/>
+		<VAR size="01" type="int" name="Metro_CH_01" comment="Флаги метрологии, канал  1"/>
+		<VAR size="01" type="int" name="Metro_CH_02" comment="Флаги метрологии, канал  2"/>
+		<VAR size="01" type="int" name="Metro_CH_03" comment="Флаги метрологии, канал  3"/>
+	</BLK>
+	<BLK num="2" attr="REQ" type="METRO" name="Метрология" hidden="all">
+		<VAR size="08" name="ToDo" comment="Действие"/>
+		<VAR size="16" name="Code" comment="Код платы ввода-вывода"/>
+		<VAR size="08" name="Num" comment="Номер юнита"/>
+		<VAR size="08" name="CH" comment="Номер канала"/>
+		<VAR size="08" name="Block" comment="Блокировка"/>
+		<VAR size="32" name="ADC_DAC" comment="Код АЦП-ЦАП"/>
+		<VAR size="32" name="Value" comment="Физическое значение"/>
+		<VAR size="32" name="Maximum" comment="Максимум"/>
+		<VAR size="32" name="Minimum" comment="Минимум"/>
+	</BLK>
+	<BLK num="3" attr="REQ" type="PARAM" name="Параметры">
+		<SUBBLK name="Параметры измерительного канала 1">
+			<VAR size="16" name="Min_imp_In1"    comment="Канал 1 минимальная длительность входного импульса в мкс (фильтр частоты)" value="5"/>
+                        <VAR size="16" name="Aver_time_In1"  comment="Канал 1 время усреднения частоты в мс" value="100"/>
+                        <VAR size="16" name="Hyst_In1"       comment="Канал 1 гистерезис входного каскада" value="3"/>
+                        <VAR size="16" name="Freq_point_In1" comment="Канал 1 уставка срабатывания по частоте входного канала в Гц" value="20000"/>
+                        <VAR size="16" name="DO1_delay"      comment="Канал 1 задержка срабатывания дискретного выхода в мс" value="1000"/>
+                </SUBBLK>
+                <SUBBLK name="Параметры измерительного канала 2">
+			<VAR size="16" name="Min_imp_In2"    comment="Канал 2 минимальная длительность входного импульса в мкс (фильтр частоты)" value="5"/>
+                        <VAR size="16" name="Aver_time_In2"  comment="Канал 2 время усреднения частоты в мс" value="100"/>
+                        <VAR size="16" name="Hyst_In2"       comment="Канал 2 гистерезис входного каскада" value="3"/>
+                        <VAR size="16" name="Freq_point_In2" comment="Канал 2 уставка срабатывания по частоте входного канала в Гц" value="20000"/>
+                        <VAR size="16" name="DO2_delay"      comment="Канал 2 задержка срабатывания дискретного выхода в мс" value="1000"/>
+                </SUBBLK>
+                <SUBBLK name="Параметры измерительного канала 3">
+			<VAR size="16" name="Min_imp_In3"    comment="Канал 3 минимальная длительность входного импульса в мкс (фильтр частоты)" value="5"/>
+                        <VAR size="16" name="Aver_time_In3"  comment="Канал 3 время усреднения частоты в мс" value="100"/>
+                        <VAR size="16" name="Hyst_In3"       comment="Канал 3 гистерезис входного каскада" value="3"/>
+                        <VAR size="16" name="Freq_point_In3" comment="Канал 3 уставка срабатывания по частоте входного канала в Гц" value="20000"/>
+                        <VAR size="16" name="DO3_delay"      comment="Канал 3 задержка срабатывания дискретного выхода в мс" value="1000"/>
+                </SUBBLK>
+		<SUBBLK name="Общие параметры">
+			<VAR size="16" name="DO4_delay"      comment="Задержка срабатывания дискретного выхода Готовность в мс" value="0"/>
+			<VAR size="16" name="DO5_delay"      comment="Задержка срабатывания дискретного выхода Авария в мс" value="0"/>
+			<VAR size="16" name="Timeout"        comment="Таймаут связи с мастером, мсек" value="0"/>
+		</SUBBLK>
+	</BLK>
+	<BLK num="4" attr="R" name="Рабочие данные на чтение">
+		<SUBBLK type="STATE" name="Состояние">
+			<VAR size="01"  name="No_param"            comment="Нет параметров"/>
+			<VAR size="01"  name="Power_low1"          comment="Питание ниже нормы (линия 1)"/>
+			<VAR size="01"  name="Power_high1"         comment="Питание выше нормы (линия 1)"/>
+			<VAR size="01"  name="Power_low2"          comment="Питание ниже нормы (линия 2)"/>
+			<VAR size="01"  name="Power_high2"         comment="Питание выше нормы (линия 2)"/>
+			<VAR size="01"  name="Err_line1"           comment="Ошибки связи с мастером (линия 1)"/>
+			<VAR size="01"  name="Err_line2"           comment="Ошибки связи с мастером (линия 2)"/>
+			<VAR size="01"  name="Not_Ready"           comment="Значения модуля недостоверны" ftype="Not_Ready"/>
+			<VAR size="01"  name="Err_hard"            comment="Аппаратная ошибка модуля"/>
+			<VAR size="01"  name="Energy_save"         comment="Режим энергосбережения"/>
+			<VAR size="01"  name="Not_support"         comment="Установлен неподдерживаемый юнит"/>
+			<VAR size="01"  name="Err_ext_conn"        comment="Ошибка внешних подключений"/>
+			<VAR size="01"  name="Write_protect"       comment="Защита от записи"/>
+			<VAR size="03"  name="rezerv1"             comment="Зарезервировано" hidden="all" />
+		</SUBBLK>
+		<SUBBLK type="CH_DIAG" name="Поканальная диагностика">
+			<VAR size="04" name="Err_Freq_In1" comment="Ошибки, частотный канал 1" farg="1"  values="1"/>
+			<VAR size="04" name="Err_Freq_In2" comment="Ошибки, частотный канал 2" farg="3"  values="1"/>
+			<VAR size="04" name="Err_Freq_In3" comment="Ошибки, частотный канал 3" farg="5"  values="1"/>
+			<VAR size="04" name="Err_DI1"      comment="Ошибки, дискретный вход 1" farg="7" values="1"/>
+			<VAR size="04" name="Err_DI2"      comment="Ошибки, дискретный вход 2" farg="8" values="1"/>
+			<VAR size="04" name="Err_DO1"      comment="Ошибки, дискретный выход 1" farg="9" values="1"/>
+			<VAR size="04" name="Err_DO2"      comment="Ошибки, дискретный выход 2" farg="10" values="1"/>
+			<VAR size="04" name="Err_DO3"      comment="Ошибки, дискретный выход 3" farg="11" values="1"/>
+			<VAR size="04" name="Err_DO4"      comment="Ошибки, дискретный выход 4" farg="12" values="1"/>
+			<VAR size="04" name="Err_DO5"      comment="Ошибки, дискретный выход 5" farg="13" values="1"/>
+		</SUBBLK>
+		<SUBBLK type="CANAL" name="Каналы">
+			<VAR type="rea" name="Freq_In1"  comment="Частота входного сигнала 1 в герцах" farg="1" alg="CNT"/>
+			<VAR size="32" name="Count_In1" comment="Счетчик импульсов сигнала 1" farg="2"/>
+			<VAR type="rea" name="Freq_In2" comment="Частота входного сигнала 2 в герцах" farg="3" alg="CNT"/>
+			<VAR size="32" name="Count_In2" comment="Счетчик импульсов сигнала 2" farg="4"/>
+			<VAR type="rea" name="Freq_In3" comment="Частота входного сигнала 3 в герцах" farg="5" alg="CNT"/>
+			<VAR size="32" name="Count_In3" comment="Счетчик импульсов сигнала 3" farg="6"/>
+			<VAR size="08" name="DI1_state" comment="Состояние выхода DI1 Контроль" farg="7"/>
+			<VAR size="08" name="DI2_state" comment="Состояние выхода DI2 Деблокировка" farg="8"/>
+			<VAR size="08" name="DO1_state" comment="Состояние выхода DO1" farg="9"/>
+			<VAR size="08" name="DO2_state" comment="Состояние выхода DO2" farg="10"/>
+			<VAR size="08" name="DO3_state" comment="Состояние выхода DO3" farg="11"/>
+			<VAR size="08" name="DO4_state" comment="Состояние выхода DO4 Готовность" farg="12"/>
+			<VAR size="08" name="DO5_state" comment="Состояние выхода DO5 Авария" farg="13"/>
+		</SUBBLK>
+	</BLK>
+        <BLK num="6" attr="REQ" name="Режим энергосбережения" hidden="all">
+		<VAR size="8" comment="признак активации режима энергосбережения"/>
+	</BLK>
+	<BLK num="7" attr="REQ" type="CFG" name="Заводские идентификаторы" hidden="all">
+		<VAR size="32" name="datetime"               comment="дата изготовления"/>
+		<VAR size="64" name="serial"                 comment="серийный номер"/>
+		<VAR size="16" name="type"                   comment="подтип"/>
+		<VAR size="32" name="CRC_FW"                 comment="контрольная сумма прошивки"/>
+		<VAR size="16" name="CRC_PRJ"                comment="контрольная сумма проекта"/>
+		<VAR size="16" name="CRC_METRO__CALIB_TERMO" comment="контрольная сумма метрологии и калибровка термодатчика"/>
+		<VAR size="16" name="HW_VER"                 comment="аппаратная версия платы"/>
+	</BLK>
+	<BLK num="9" attr="REQ" type="FW_CTL" name="Управление загрузкой firmware" hidden="all">
+		<VAR size="08" comment="команда управления"/>
+	</BLK>
+	<BLK num="10" attr="REQ" type="FW" name="Загрузка firmware" hidden="all">
+		<VAR size="32"   comment="адрес"/>
+		<VAR size="1984" comment="данные на запись"/> <!--248*8-->
+	</BLK>
+	<BLK num="11" attr="REQ" name="Типы установленных юнитов" hidden="all">
+		<VAR size="16" name="U1_installed_type"  comment="Код типа установленного юнита U1"/>
+		<VAR size="16" name="U2_installed_type"  comment="Код типа установленного юнита U2"/>
+		<VAR size="16" name="U3_installed_type"  comment="Код типа установленного юнита U3"/>
+		<VAR size="16" name="U4_installed_type"  comment="Код типа установленного юнита U4"/>
+		<VAR size="16" name="U5_installed_type"  comment="Код типа установленного юнита U5"/>
+		<VAR size="16" name="U6_installed_type"  comment="Код типа установленного юнита U6"/>
+		<VAR size="16" name="U7_installed_type"  comment="Код типа установленного юнита U7"/>
+		<VAR size="16" name="U8_installed_type"  comment="Код типа установленного юнита U8"/>
+	</BLK>
+    	<BLK num="12" attr="REQ" type="UNIT_CFG" name="Конфигурация юнита" hidden="all">
+		<VAR size="08" comment="Номер посадочного места юнита"/>
+		<VAR size="08" comment="Команда операции с конфигурацией"/>
+		<VAR size="16" comment="Код типа установленного юнита"/>
+		<VAR size="16" comment="Аппаратная версия юнита"/>
+		<VAR size="08" comment="Необходимость питания 24В юнита"/>
+		<VAR size="32" comment="серийный номер"/>
+		<VAR size="24" comment="серийный номер"/>
+		<VAR size="32" comment="Дата поверки юнита"/>
+		<VAR size="32" comment="Дата изготовления юнита"/>
+		<VAR size="32" comment="Резерв 1 конфигурации юнита"/>
+		<VAR size="32" comment="Резерв 2 конфигурации юнита"/>
+	</BLK>
+  <FIELD_VALUES>
+    <VALUES num="1">
+        <VALUE val="0" comment="нет ошибок"/>
+        <VALUE val="1" comment="канал не откалиброван"/>
+        <VALUE val="2" comment="значение не достоверно"/>
+        <VALUE val="3" comment="аппаратная ошибка"/>
+        <VALUE val="4" comment="обрыв"/>
+        <VALUE val="5" comment="выход за диапазон"/>
+        <VALUE val="6" comment="ошибка внешнего питания"/>
+        <VALUE val="7" comment="ошибка выходного ключа"/>
+        <VALUE val="8" comment="короткое замыкание"/>
+        <VALUE val="9" comment="перегрузка"/>
+        <VALUE val="10" comment="юнит не поддерживается"/>
+	<VALUE val="11" comment="установлен другой юнит"/>
+	<VALUE val="12" comment="резкое изменение частоты"/>
+	<VALUE val="13" comment="канал отключен"/>
+	<VALUE val="14" comment="неисправность встроенного термодатчика"/>
+	<VALUE val="15" comment="канал заблокирован"/>
+    </VALUES>
+  </FIELD_VALUES>
+</CONF>

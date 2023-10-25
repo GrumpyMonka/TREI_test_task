@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<CONF test="1" type="4887" name="M121V" comment="4-канальный аналоговый вывод тока и напряжения"> <!--0x1317-->
+  <PARAM name="Reaction Time" value="10" comment="Время реакции модуля (*10мкс)" hidden="dict"/>
+	<BLK num="0" attr="RREQ" name="Конфигурация блоков" hidden="dict" struct_name="configuration">
+		<VAR size="16" value="4887" comment="тип модуля"/>
+		<VAR size="16"              comment="версия ПО"/>
+		<VAR size="16"              comment="версия аппаратной части"/>
+		<VAR size="16" value="1"    comment="версия конфигурации"/>
+		<VAR size="16" value="10"   comment="кол-во блоков"/>
+		<VAR size="16" value="0"    comment="номер блока"/>
+		<VAR size="16" value="50"   comment="размер блока"/>
+		<VAR size="16" value="1"    comment="номер блока"/>
+		<VAR size="16" value="19"   comment="размер блока"/>
+		<VAR size="16" value="2"    comment="номер блока"/>
+		<VAR size="16" value="40"   comment="размер блока"/>
+		<VAR size="16" value="3"    comment="номер блока"/>
+		<VAR size="16" value="23"   comment="размер блока"/>
+		<VAR size="16" value="4"    comment="номер блока"/>
+		<VAR size="16" value="3"    comment="размер блока"/>		
+		<VAR size="16" value="7"    comment="номер блока"/>
+		<VAR size="16" value="24"   comment="размер блока"/>
+		<VAR size="16" value="8"    comment="номер блока"/>
+		<VAR size="16" value="16"    comment="размер блока"/>
+		<VAR size="16" value="9"    comment="номер блока"/>
+		<VAR size="16" value="1"    comment="размер блока"/>
+		<VAR size="16" value="10"   comment="номер блока"/>
+		<VAR size="16" value="252"  comment="размер блока"/>
+		<VAR size="16" value="13"   comment="номер блока"/>
+		<VAR size="16" value="12"  comment="размер блока"/>			
+	</BLK>
+	<BLK num="1" attr="RREQ" type="STAT" name="Статистика" struct_name="statistic">
+		<VAR size="32" name="Work_Time"      comment="Время наработки, сек"/>
+		<VAR size="32" name="Stbus_cnt_Err"  comment="Счетчик ошибок STBUS"/>
+		<VAR size="08" name="Reset_code"     comment="Код сброса"/>
+		<VAR size="32" name="Mod_temp"       comment="Температура модуля"/>
+		<VAR size="01" name="Stbus_err"      comment="Ошибки связи с мастером"/>
+		<VAR size="01" name="Err_sequence"   comment="Нарушение последовательности STBUS"/>
+		<VAR size="01" name="Mod_power_low"  comment="Питание модуля ниже нормы"/>
+		<VAR size="01" name="CH_power_low"   comment="Питание каналов ниже нормы"/>
+		<VAR size="01" name="CH_power_high"  comment="Питание каналов выше нормы"/>
+		<VAR size="03" name="Rez1"            comment="Резерв" hidden="all"/> 
+		<VAR size="32" name="Rez2"            comment="Резерв" hidden="all"/> 
+		<VAR size="02" name="Metro_CH_01"     comment="Флаги метрологии, канал 1"/>
+		<VAR size="02" name="Metro_CH_02"     comment="Флаги метрологии, канал 2"/>
+		<VAR size="02" name="Metro_CH_03"     comment="Флаги метрологии, канал 3"/>
+		<VAR size="02" name="Metro_CH_04"     comment="Флаги метрологии, канал 4"/>
+	</BLK>
+	<BLK num="2" attr="REQ" type="METRO" name="Метрология" hidden="all" struct_name="metro">
+		<VAR size="08"  name="ToDo"     comment="признак"/>
+		<VAR size="08"  name="CH"       comment="номер канала"/>
+		<VAR size="08"  name="Block"    comment="блокировка"/>
+		<VAR size="08"  name="Type"     comment="тип канала"/>
+		<VAR size="32"  name="ADC_DAC"  comment="код ЦАП"/>
+		<VAR size="32"  name="Maximum1" comment="максимум по току"/>
+		<VAR size="32"  name="Minimum1" comment="минимум по току"/>
+		<VAR size="32"  name="Maximum2" comment="максимум по току"/>
+		<VAR size="32"  name="Minimum2" comment="минимум по току"/>	
+		<VAR size="32"  name="Maximum3" comment="максимум по напряжению"/>
+		<VAR size="32"  name="Minimum3" comment="минимум по напряжению"/>
+		<VAR size="32"  name="Maximum4" comment="максимум по напряжению"/>
+		<VAR size="32"  name="Minimum4" comment="минимум по напряжению"/>
+	</BLK>
+	<BLK num="3" attr="REQ" type="PARAM" name="Параметры" struct_name="param">
+		<SUBBLK name="Режим работы" struct_name="mode" cut_end="5">
+			<VAR size="02"            name="Parameter_CH_01" comment="Режим работы, канал 1" farg="1" values="2"/>
+			<VAR size="02"            name="Parameter_CH_02" comment="Режим работы, канал 2" farg="2" values="2"/>
+			<VAR size="02"            name="Parameter_CH_03" comment="Режим работы, канал 3" farg="3" values="1"/>
+			<VAR size="02"            name="Parameter_CH_04" comment="Режим работы, канал 4" farg="4" values="1"/>
+		</SUBBLK>
+		<SUBBLK name="Значение при обрыве связи" struct_name="default_out" cut_end="5">
+			<VAR size="32" type="rea" name="Default_CH_01"   comment="Значение при обрыве связи, канал 1"/>
+			<VAR size="32" type="rea" name="Default_CH_02"   comment="Значение при обрыве связи, канал 2"/>
+			<VAR size="32" type="rea" name="Default_CH_03"   comment="Значение при обрыве связи, канал 3"/>
+			<VAR size="32" type="rea" name="Default_CH_04"   comment="Значение при обрыве связи, канал 4"/>
+		</SUBBLK>
+		<SUBBLK name="Общие параметры" struct_name="common">
+			<VAR size="32"            name="Rez1"            comment="Резерв" hidden="all"/>
+			<VAR size="16"            name="Timeout"         comment="Таймаут связи с мастером, мсек"/>
+		</SUBBLK>
+	</BLK>
+	<BLK num="4" attr="R" name="Рабочие данные на чтение" struct_name="in">
+		<SUBBLK type="STATE" name="Состояние" struct_name="state">
+			<VAR size="01" name="No_param"       comment="Нет параметров"/>
+			<VAR size="01" name="Err_hard"       comment="Аппаратная ошибка" ftype="Err_hard"/>
+			<VAR size="01" name="Err_ext_con"    comment="Ошибка внешних подключений"/>
+			<VAR size="01" name="Err_stbus"      comment="Ошибки связи STBUS"/>
+			<VAR size="01" name="Err_mod_power"  comment="Ошибка питания модуля"/>
+			<VAR size="01" name="Err_CH_power"   comment="Ошибка питания каналов"/>
+			<VAR size="02" name="rez1"           comment="резерв" hidden="all"/>
+		</SUBBLK>
+		<SUBBLK type="CH_DIAG" name="Поканальная диагностика" struct_name="error" cut_end="5">
+			<VAR size="04" name="Err_CH_01" comment="Ошибки, канал 1" farg="1" values="3"/>
+			<VAR size="04" name="Err_CH_02" comment="Ошибки, канал 2" farg="2" values="3"/>
+			<VAR size="04" name="Err_CH_03" comment="Ошибки, канал 3" farg="3" values="3"/>
+			<VAR size="04" name="Err_CH_04" comment="Ошибки, канал 4" farg="4" values="3"/>
+		</SUBBLK>
+	</BLK>
+	<BLK num="7" attr="REQ" type="CFG" name="Заводские идентификаторы" hidden="all" struct_name="factory_id">
+		<VAR size="32" name="datetime"               comment="дата изготовления"/>
+		<VAR size="64" name="serial"                 comment="серийный номер"/>
+		<VAR size="16" name="type"                   comment="подтип"/>
+		<VAR size="32" name="CRC_FW"                 comment="контрольная сумма прошивки"/>
+		<VAR size="16" name="CRC_PRJ"                comment="контрольная сумма проекта"/>
+		<VAR size="16" name="CRC_METRO__CALIB_TERMO" comment="контрольная сумма метрологии и калибровка термодатчика"/>
+		<VAR size="16" name="HW_VER"                 comment="аппаратная версия платы"/>
+	</BLK>
+	<BLK num="8" attr="W" name="Рабочие данные на запись" struct_name="out">
+		<SUBBLK type="CANAL" name="Каналы" alg="OAN">
+		<VAR size="32" type="rea" name="CH_01" comment="Значение канала  1" farg="1" ui="analog_output_mA.ui"/>
+		<VAR size="32" type="rea" name="CH_02" comment="Значение канала  2" farg="2" ui="analog_output_mA.ui"/>
+		<VAR size="32" type="rea" name="CH_03" comment="Значение канала  3" farg="3" ui="analog_output_V.ui"/>
+		<VAR size="32" type="rea" name="CH_04" comment="Значение канала  4" farg="4" ui="analog_output_V.ui"/>
+		</SUBBLK>
+	</BLK>
+	<BLK num="9" attr="REQ" type="FW_CTL" name="Управление загрузкой firmware" hidden="all" struct_name="fw_ctrl">
+		<VAR size="08" comment="команда управления"/>
+	</BLK>
+	<BLK num="10" attr="REQ" type="FW" name="Загрузка firmware" hidden="all" struct_name="fw">
+		<VAR size="32"   comment="адрес"/>
+		<VAR size="1984" comment="данные на запись"/> <!--248*8-->
+	</BLK>
+  <FIELD_VALUES>
+	<VALUES num="1">
+      <VALUE val="0" comment="Отключен"/>
+      <VALUE val="1" comment="0-10 Вольт"/>
+    </VALUES>
+    <VALUES num="2">
+      <VALUE val="0" comment="Отключен"/>
+      <VALUE val="2" comment="4-20 мА"/>
+      <VALUE val="3" comment="0-20 мА"/>
+    </VALUES>
+    <VALUES num="3">
+        <VALUE val="0" comment="нет ошибок"/>
+        <VALUE val="1" comment="канал неоткалиброван"/>
+        <VALUE val="2" comment="значение недостоверно"/>
+        <VALUE val="3" comment="аппаратная ошибка"/>
+        <VALUE val="4" comment="обрыв"/>
+        <VALUE val="5" comment="выход за диапазон"/>
+        <VALUE val="6" comment="ошибка внешнего питания"/>
+        <VALUE val="7" comment="ошибка выходного ключа"/>
+        <VALUE val="8" comment="короткое замыкание"/>
+        <VALUE val="9" comment="перегрузка"/>
+        <VALUE val="10" comment="юнит не поддерживается"/>
+        <VALUE val="11" comment="установлен другой юнит"/>
+        <VALUE val="12" comment="выход за диапазон нижняя граница"/>
+        <VALUE val="13" comment="канал отключен"/>
+        <VALUE val="14" comment="неисправность встроенного термодатчика"/>
+        <VALUE val="15" comment="канал заблокирован"/>
+    </VALUES>	
+  </FIELD_VALUES>
+</CONF>

@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<CONF type="533" name="F1035A" comment="Модуль контроля пожарного шлейфа безадресный"> <!--0x0215-->
+  <PARAM name="Reaction Time" value="10" comment="Время реакции модуля (*10мкс)" hidden="dict"/>
+	<BLK num="0" attr="RREQ" name="Конфигурация блоков" hidden="dict" struct_name="configuration">
+		<VAR size="16" value="533" comment="тип модуля"/>
+		<VAR size="16"             comment="версия ПО"/>
+		<VAR size="16"             comment="версия аппаратной части"/>
+		<VAR size="16" value="3"   comment="версия конфигурации"/>
+		<VAR size="16" value="9"   comment="кол-во блоков"/>
+		<VAR size="16" value="0"   comment="номер блока"/>
+		<VAR size="16" value="46"  comment="размер блока"/>
+		<VAR size="16" value="1"   comment="номер блока"/>
+		<VAR size="16" value="25"   comment="размер блока"/>
+		<VAR size="16" value="3"   comment="номер блока"/>
+		<VAR size="16" value="162"  comment="размер блока"/>
+		<VAR size="16" value="4"   comment="номер блока"/>
+		<VAR size="16" value="6"   comment="размер блока"/>
+		<VAR size="16" value="7"   comment="номер блока"/>
+		<VAR size="16" value="24"  comment="размер блока"/>
+		<VAR size="16" value="8"   comment="номер блока"/>
+		<VAR size="16" value="1"   comment="размер блока"/>
+		<VAR size="16" value="9"   comment="номер блока"/>
+		<VAR size="16" value="1"   comment="размер блока"/>
+		<VAR size="16" value="10"  comment="номер блока"/>
+		<VAR size="16" value="252" comment="размер блока"/>
+		<VAR size="16" value="13"  comment="номер блока"/>
+		<VAR size="16" value="12"  comment="размер блока"/>
+	</BLK>
+	<BLK num="1" attr="RREQ" type="STAT" name="Статистика" struct_name="statistic">
+		<VAR size="32" name="Work_Time"      comment="Время наработки, сек"/>
+		<VAR size="32" name="Stbus_Err_Cnt"  comment="Счетчик ошибок STBUS"/>
+		<VAR size="08" name="Reset_code"     comment="Код сброса"/>
+		<VAR size="16" name="Value_CH_01"  comment="Значение линии канала 1"/>
+		<VAR size="16" name="Value_CH_02"  comment="Значение линии канала 2"/>
+		<VAR size="16" name="Value_CH_03"  comment="Значение линии канала 3"/>
+		<VAR size="16" name="Value_CH_04"  comment="Значение линии канала 4"/>
+		<VAR size="16" name="Value_CH_05"  comment="Значение линии канала 5"/>
+		<VAR size="16" name="Value_CH_06"  comment="Значение линии канала 6"/>
+		<VAR size="16" name="Value_CH_07"  comment="Значение линии канала 7"/>
+		<VAR size="16" name="Value_CH_08"  comment="Значение линии канала 8"/>
+	</BLK>
+	<BLK num="3" attr="REQ" type="PARAM" name="Параметры" struct_name="param">
+		<SUBBLK name="Параметры канала 1" struct_name="CH_01">
+			<VAR size="08" name="Type_CH_01"         cut_begin="4" comment="Тип линии канал 1" value="0" farg="1" values="2"/>
+			<VAR size="16" name="Thres_01_CH_01"     cut_begin="8" comment="Порог зон 0-1, канал 1" value="0" range="1"/>
+			<VAR size="16" name="Thres_12_CH_01"     cut_begin="8" comment="Порог зон 1-2, канал 1" value="0" range="1"/>
+			<VAR size="16" name="Thres_23_CH_01"     cut_begin="8" comment="Порог зон 2-3, канал 1" value="0" range="1"/>
+			<VAR size="16" name="Thres_34_CH_01"     cut_begin="8" comment="Порог зон 3-4, канал 1" value="0" range="1"/>
+			<VAR size="16" name="Thres_45_CH_01"     cut_begin="8" comment="Порог зон 4-5, канал 1" value="0" range="1"/>
+			<VAR size="16" name="Thres_56_CH_01"     cut_begin="8" comment="Порог зон 5-6, канал 1" value="0" range="1"/>
+			<VAR size="08" name="Zone_type_00_CH_01" cut_begin="12" comment="Тип зоны 0, канал 1" value="0" values="3"/>
+			<VAR size="08" name="Zone_type_01_CH_01" cut_begin="12" comment="Тип зоны 1, канал 1" value="0" values="3"/>
+			<VAR size="08" name="Zone_type_02_CH_01" cut_begin="12" comment="Тип зоны 2, канал 1" value="0" values="3"/>
+			<VAR size="08" name="Zone_type_03_CH_01" cut_begin="12" comment="Тип зоны 3, канал 1" value="0" values="3"/>
+			<VAR size="08" name="Zone_type_04_CH_01" cut_begin="12" comment="Тип зоны 4, канал 1" value="0" values="3"/>
+			<VAR size="08" name="Zone_type_05_CH_01" cut_begin="12" comment="Тип зоны 5, канал 1" value="0" values="3"/>
+			<VAR size="08" name="Zone_type_06_CH_01" cut_begin="12" comment="Тип зоны 6, канал 1" value="0" values="3"/>
+		</SUBBLK>
+		<SUBBLK name="Параметры канала 2" struct_name="CH_02">
+			<VAR size="08" name="Type_CH_02"         cut_begin="4" comment="Тип линии канал 2" value="0" farg="2" values="2"/>
+			<VAR size="16" name="Thres_01_CH_02"     cut_begin="8" comment="Порог зон 0-1, канал 2" value="0" range="1"/>
+			<VAR size="16" name="Thres_12_CH_02"     cut_begin="8" comment="Порог зон 1-2, канал 2" value="0" range="1"/>
+			<VAR size="16" name="Thres_23_CH_02"     cut_begin="8" comment="Порог зон 2-3, канал 2" value="0" range="1"/>
+			<VAR size="16" name="Thres_34_CH_02"     cut_begin="8" comment="Порог зон 3-4, канал 2" value="0" range="1"/>
+			<VAR size="16" name="Thres_45_CH_02"     cut_begin="8" comment="Порог зон 4-5, канал 2" value="0" range="1"/>
+			<VAR size="16" name="Thres_56_CH_02"     cut_begin="8" comment="Порог зон 5-6, канал 2" value="0" range="1"/>
+			<VAR size="08" name="Zone_type_00_CH_02" cut_begin="12" comment="Тип зоны 0, канал 2" value="0" values="3"/>
+			<VAR size="08" name="Zone_type_01_CH_02" cut_begin="12" comment="Тип зоны 1, канал 2" value="0" values="3"/>
+			<VAR size="08" name="Zone_type_02_CH_02" cut_begin="12" comment="Тип зоны 2, канал 2" value="0" values="3"/>
+			<VAR size="08" name="Zone_type_03_CH_02" cut_begin="12" comment="Тип зоны 3, канал 2" value="0" values="3"/>
+			<VAR size="08" name="Zone_type_04_CH_02" cut_begin="12" comment="Тип зоны 4, канал 2" value="0" values="3"/>
+			<VAR size="08" name="Zone_type_05_CH_02" cut_begin="12" comment="Тип зоны 5, канал 2" value="0" values="3"/>
+			<VAR size="08" name="Zone_type_06_CH_02" cut_begin="12" comment="Тип зоны 6, канал 2" value="0" values="3"/>
+		</SUBBLK>
+		<SUBBLK name="Параметры канала 3" struct_name="CH_03">
+			<VAR size="08" name="Type_CH_03"         cut_begin="4" comment="Тип линии канал 3" value="0" farg="3" values="2"/>
+			<VAR size="16" name="Thres_01_CH_03"     cut_begin="8" comment="Порог зон 0-1, канал 3" value="0" range="1"/>
+			<VAR size="16" name="Thres_12_CH_03"     cut_begin="8" comment="Порог зон 1-2, канал 3" value="0" range="1"/>
+			<VAR size="16" name="Thres_23_CH_03"     cut_begin="8" comment="Порог зон 2-3, канал 3" value="0" range="1"/>
+			<VAR size="16" name="Thres_34_CH_03"     cut_begin="8" comment="Порог зон 3-4, канал 3" value="0" range="1"/>
+			<VAR size="16" name="Thres_45_CH_03"     cut_begin="8" comment="Порог зон 4-5, канал 3" value="0" range="1"/>
+			<VAR size="16" name="Thres_56_CH_03"     cut_begin="8" comment="Порог зон 5-6, канал 3" value="0" range="1"/>
+			<VAR size="08" name="Zone_type_00_CH_03" cut_begin="12" comment="Тип зоны 0, канал 3" value="0" values="3"/>
+			<VAR size="08" name="Zone_type_01_CH_03" cut_begin="12" comment="Тип зоны 1, канал 3" value="0" values="3"/>
+			<VAR size="08" name="Zone_type_02_CH_03" cut_begin="12" comment="Тип зоны 2, канал 3" value="0" values="3"/>
+			<VAR size="08" name="Zone_type_03_CH_03" cut_begin="12" comment="Тип зоны 3, канал 3" value="0" values="3"/>
+			<VAR size="08" name="Zone_type_04_CH_03" cut_begin="12" comment="Тип зоны 4, канал 3" value="0" values="3"/>
+			<VAR size="08" name="Zone_type_05_CH_03" cut_begin="12" comment="Тип зоны 5, канал 3" value="0" values="3"/>
+			<VAR size="08" name="Zone_type_06_CH_03" cut_begin="12" comment="Тип зоны 6, канал 3" value="0" values="3"/>
+		</SUBBLK>
+		<SUBBLK name="Параметры канала 4" struct_name="CH_04">
+			<VAR size="08" name="Type_CH_04"         cut_begin="4" comment="Тип линии канал 4" value="0" farg="4" values="2"/>
+			<VAR size="16" name="Thres_01_CH_04"     cut_begin="8" comment="Порог зон 0-1, канал 4" value="0" range="1"/>
+			<VAR size="16" name="Thres_12_CH_04"     cut_begin="8" comment="Порог зон 1-2, канал 4" value="0" range="1"/>
+			<VAR size="16" name="Thres_23_CH_04"     cut_begin="8" comment="Порог зон 2-3, канал 4" value="0" range="1"/>
+			<VAR size="16" name="Thres_34_CH_04"     cut_begin="8" comment="Порог зон 3-4, канал 4" value="0" range="1"/>
+			<VAR size="16" name="Thres_45_CH_04"     cut_begin="8" comment="Порог зон 4-5, канал 4" value="0" range="1"/>
+			<VAR size="16" name="Thres_56_CH_04"     cut_begin="8" comment="Порог зон 5-6, канал 4" value="0" range="1"/>
+			<VAR size="08" name="Zone_type_00_CH_04" cut_begin="12" comment="Тип зоны 0, канал 4" value="0" values="3"/>
+			<VAR size="08" name="Zone_type_01_CH_04" cut_begin="12" comment="Тип зоны 1, канал 4" value="0" values="3"/>
+			<VAR size="08" name="Zone_type_02_CH_04" cut_begin="12" comment="Тип зоны 2, канал 4" value="0" values="3"/>
+			<VAR size="08" name="Zone_type_03_CH_04" cut_begin="12" comment="Тип зоны 3, канал 4" value="0" values="3"/>
+			<VAR size="08" name="Zone_type_04_CH_04" cut_begin="12" comment="Тип зоны 4, канал 4" value="0" values="3"/>
+			<VAR size="08" name="Zone_type_05_CH_04" cut_begin="12" comment="Тип зоны 5, канал 4" value="0" values="3"/>
+			<VAR size="08" name="Zone_type_06_CH_04" cut_begin="12" comment="Тип зоны 6, канал 4" value="0" values="3"/>
+		</SUBBLK>
+		<SUBBLK name="Параметры канала 5" struct_name="CH_05">
+			<VAR size="08" name="Type_CH_05"         cut_begin="4" comment="Тип линии канал 5" value="0" farg="5" values="2"/>
+			<VAR size="16" name="Thres_01_CH_05"     cut_begin="8" comment="Порог зон 0-1, канал 5" value="0" range="1"/>
+			<VAR size="16" name="Thres_12_CH_05"     cut_begin="8" comment="Порог зон 1-2, канал 5" value="0" range="1"/>
+			<VAR size="16" name="Thres_23_CH_05"     cut_begin="8" comment="Порог зон 2-3, канал 5" value="0" range="1"/>
+			<VAR size="16" name="Thres_34_CH_05"     cut_begin="8" comment="Порог зон 3-4, канал 5" value="0" range="1"/>
+			<VAR size="16" name="Thres_45_CH_05"     cut_begin="8" comment="Порог зон 4-5, канал 5" value="0" range="1"/>
+			<VAR size="16" name="Thres_56_CH_05"     cut_begin="8" comment="Порог зон 5-6, канал 5" value="0" range="1"/>
+			<VAR size="08" name="Zone_type_00_CH_05" cut_begin="12" comment="Тип зоны 0, канал 5" value="0" values="3"/>
+			<VAR size="08" name="Zone_type_01_CH_05" cut_begin="12" comment="Тип зоны 1, канал 5" value="0" values="3"/>
+			<VAR size="08" name="Zone_type_02_CH_05" cut_begin="12" comment="Тип зоны 2, канал 5" value="0" values="3"/>
+			<VAR size="08" name="Zone_type_03_CH_05" cut_begin="12" comment="Тип зоны 3, канал 5" value="0" values="3"/>
+			<VAR size="08" name="Zone_type_04_CH_05" cut_begin="12" comment="Тип зоны 4, канал 5" value="0" values="3"/>
+			<VAR size="08" name="Zone_type_05_CH_05" cut_begin="12" comment="Тип зоны 5, канал 5" value="0" values="3"/>
+			<VAR size="08" name="Zone_type_06_CH_05" cut_begin="12" comment="Тип зоны 6, канал 5" value="0" values="3"/>
+		</SUBBLK>
+		<SUBBLK name="Параметры канала 6" struct_name="CH_06">
+			<VAR size="08" name="Type_CH_06"         cut_begin="4" comment="Тип линии канал 6" value="0" farg="6" values="2"/>
+			<VAR size="16" name="Thres_01_CH_06"     cut_begin="8" comment="Порог зон 0-1, канал 6" value="0" range="1"/>
+			<VAR size="16" name="Thres_12_CH_06"     cut_begin="8" comment="Порог зон 1-2, канал 6" value="0" range="1"/>
+			<VAR size="16" name="Thres_23_CH_06"     cut_begin="8" comment="Порог зон 2-3, канал 6" value="0" range="1"/>
+			<VAR size="16" name="Thres_34_CH_06"     cut_begin="8" comment="Порог зон 3-4, канал 6" value="0" range="1"/>
+			<VAR size="16" name="Thres_45_CH_06"     cut_begin="8" comment="Порог зон 4-5, канал 6" value="0" range="1"/>
+			<VAR size="16" name="Thres_56_CH_06"     cut_begin="8" comment="Порог зон 5-6, канал 6" value="0" range="1"/>
+			<VAR size="08" name="Zone_type_00_CH_06" cut_begin="12" comment="Тип зоны 0, канал 6" value="0" values="3"/>
+			<VAR size="08" name="Zone_type_01_CH_06" cut_begin="12" comment="Тип зоны 1, канал 6" value="0" values="3"/>
+			<VAR size="08" name="Zone_type_02_CH_06" cut_begin="12" comment="Тип зоны 2, канал 6" value="0" values="3"/>
+			<VAR size="08" name="Zone_type_03_CH_06" cut_begin="12" comment="Тип зоны 3, канал 6" value="0" values="3"/>
+			<VAR size="08" name="Zone_type_04_CH_06" cut_begin="12" comment="Тип зоны 4, канал 6" value="0" values="3"/>
+			<VAR size="08" name="Zone_type_05_CH_06" cut_begin="12" comment="Тип зоны 5, канал 6" value="0" values="3"/>
+			<VAR size="08" name="Zone_type_06_CH_06" cut_begin="12" comment="Тип зоны 6, канал 6" value="0" values="3"/>
+		</SUBBLK>
+		<SUBBLK name="Параметры канала 7" struct_name="CH_07">
+			<VAR size="08" name="Type_CH_07"         cut_begin="4" comment="Тип линии канал 7" value="0" farg="7" values="2"/>
+			<VAR size="16" name="Thres_01_CH_07"     cut_begin="8" comment="Порог зон 0-1, канал 7" value="0" range="1"/>
+			<VAR size="16" name="Thres_12_CH_07"     cut_begin="8" comment="Порог зон 1-2, канал 7" value="0" range="1"/>
+			<VAR size="16" name="Thres_23_CH_07"     cut_begin="8" comment="Порог зон 2-3, канал 7" value="0" range="1"/>
+			<VAR size="16" name="Thres_34_CH_07"     cut_begin="8" comment="Порог зон 3-4, канал 7" value="0" range="1"/>
+			<VAR size="16" name="Thres_45_CH_07"     cut_begin="8" comment="Порог зон 4-5, канал 7" value="0" range="1"/>
+			<VAR size="16" name="Thres_56_CH_07"     cut_begin="8" comment="Порог зон 5-6, канал 7" value="0" range="1"/>
+			<VAR size="08" name="Zone_type_00_CH_07" cut_begin="12" comment="Тип зоны 0, канал 7" value="0" values="3"/>
+			<VAR size="08" name="Zone_type_01_CH_07" cut_begin="12" comment="Тип зоны 1, канал 7" value="0" values="3"/>
+			<VAR size="08" name="Zone_type_02_CH_07" cut_begin="12" comment="Тип зоны 2, канал 7" value="0" values="3"/>
+			<VAR size="08" name="Zone_type_03_CH_07" cut_begin="12" comment="Тип зоны 3, канал 7" value="0" values="3"/>
+			<VAR size="08" name="Zone_type_04_CH_07" cut_begin="12" comment="Тип зоны 4, канал 7" value="0" values="3"/>
+			<VAR size="08" name="Zone_type_05_CH_07" cut_begin="12" comment="Тип зоны 5, канал 7" value="0" values="3"/>
+			<VAR size="08" name="Zone_type_06_CH_07" cut_begin="12" comment="Тип зоны 6, канал 7" value="0" values="3"/>
+		</SUBBLK>
+		<SUBBLK name="Параметры канала 8" struct_name="CH_08">
+			<VAR size="08" name="Type_CH_08"         cut_begin="4" comment="Тип линии канал 8" value="0" farg="8" values="2"/>
+			<VAR size="16" name="Thres_01_CH_08"     cut_begin="8" comment="Порог зон 0-1, канал 8" value="0" range="1"/>
+			<VAR size="16" name="Thres_12_CH_08"     cut_begin="8" comment="Порог зон 1-2, канал 8" value="0" range="1"/>
+			<VAR size="16" name="Thres_23_CH_08"     cut_begin="8" comment="Порог зон 2-3, канал 8" value="0" range="1"/>
+			<VAR size="16" name="Thres_34_CH_08"     cut_begin="8" comment="Порог зон 3-4, канал 8" value="0" range="1"/>
+			<VAR size="16" name="Thres_45_CH_08"     cut_begin="8" comment="Порог зон 4-5, канал 8" value="0" range="1"/>
+			<VAR size="16" name="Thres_56_CH_08"     cut_begin="8" comment="Порог зон 5-6, канал 8" value="0" range="1"/>
+			<VAR size="08" name="Zone_type_00_CH_08" cut_begin="12" comment="Тип зоны 0, канал 8" value="0" values="3"/>
+			<VAR size="08" name="Zone_type_01_CH_08" cut_begin="12" comment="Тип зоны 1, канал 8" value="0" values="3"/>
+			<VAR size="08" name="Zone_type_02_CH_08" cut_begin="12" comment="Тип зоны 2, канал 8" value="0" values="3"/>
+			<VAR size="08" name="Zone_type_03_CH_08" cut_begin="12" comment="Тип зоны 3, канал 8" value="0" values="3"/>
+			<VAR size="08" name="Zone_type_04_CH_08" cut_begin="12" comment="Тип зоны 4, канал 8" value="0" values="3"/>
+			<VAR size="08" name="Zone_type_05_CH_08" cut_begin="12" comment="Тип зоны 5, канал 8" value="0" values="3"/>
+			<VAR size="08" name="Zone_type_06_CH_08" cut_begin="12" comment="Тип зоны 6, канал 8" value="0" values="3"/>
+		</SUBBLK>
+		<SUBBLK name="Общие параметры" struct_name="common">
+			<VAR size="16" name="Timeout"         comment="Таймаут связи с мастером, мсек"  value="0"/>
+		</SUBBLK>
+	</BLK>
+	<BLK num="4" attr="R" name="Рабочие данные на чтение" struct_name="in">
+		<SUBBLK type="STATE" name="Состояние" struct_name="state">
+			<VAR size="01"  name="No_param"              comment="Нет параметров"/>
+			<VAR size="01"  name="Power_low"             comment="Питание ниже нормы"/>
+			<VAR size="01"  name="Power_high"            comment="Питание выше нормы"/>
+			<VAR size="01"  name="Err_stbus"             comment="Ошибки связи с мастером"/>
+			<VAR size="01"  name="Err_sequence"          comment="Нарушение последовательности STBUS"/>
+			<VAR size="01"  name="Not_Ready"             comment="Значения модуля недостоверны" ftype="Not_Ready" hidden="all"/>
+			<VAR size="01"  name="Energy_save"           comment="Режим энергосбережения" ftype="Energy_save" hidden="all"/>
+			<VAR size="01"  name="Err_hard"              comment="Аппаратная ошибка модуля"/>
+			<VAR size="01"  name="Ext_conn_err"          comment="Ошибка внешних подключений каналов"/>
+			<VAR size="07"  name="rezerv10"              comment="Зарезервировано" hidden="all"/>
+		</SUBBLK>
+		<SUBBLK type="CANAL" name="Каналы" struct_name="value">
+			<VAR size="04" name="CH_01" comment="Состояние канала 1" farg="1" values="1"/>
+			<VAR size="04" name="CH_02" comment="Состояние канала 2" farg="2" values="1"/>
+			<VAR size="04" name="CH_03" comment="Состояние канала 3" farg="3" values="1"/>
+			<VAR size="04" name="CH_04" comment="Состояние канала 4" farg="4" values="1"/>
+			<VAR size="04" name="CH_05" comment="Состояние канала 5" farg="5" values="1"/>
+			<VAR size="04" name="CH_06" comment="Состояние канала 6" farg="6" values="1"/>
+			<VAR size="04" name="CH_07" comment="Состояние канала 7" farg="7" values="1"/>
+			<VAR size="04" name="CH_08" comment="Состояние канала 8" farg="8" values="1"/>
+		</SUBBLK>
+	</BLK>
+	<BLK num="7" attr="REQ" type="CFG" name="Заводские идентификаторы" hidden="all" struct_name="factory_id">
+		<VAR size="32" name="datetime"               comment="дата изготовления"/>
+		<VAR size="64" name="serial"                 comment="серийный номер"/>
+		<VAR size="16" name="type"                   comment="подтип"/>
+		<VAR size="32" name="CRC_FW"                 comment="контрольная сумма прошивки"/>
+		<VAR size="16" name="CRC_PRJ"                comment="контрольная сумма проекта"/>
+		<VAR size="16" name="CRC_METRO__CALIB_TERMO" comment="контрольная сумма метрологии и калибровка термодатчика"/>
+		<VAR size="16" name="HW_VER"                 comment="аппаратная версия платы"/>
+	</BLK>
+	<BLK num="8" attr="W" name="Рабочие данные на запись" struct_name="out">
+	<SUBBLK type="CANAL" name="Каналы вывода" struct_name="power" cut_end="5">
+		<VAR size="01" name="Power_CH_01" comment="Вкл./Выкл. питание канала 1" value="1"/>
+		<VAR size="01" name="Power_CH_02" comment="Вкл./Выкл. питание канала 2" value="1"/>
+		<VAR size="01" name="Power_CH_03" comment="Вкл./Выкл. питание канала 3" value="1"/>
+		<VAR size="01" name="Power_CH_04" comment="Вкл./Выкл. питание канала 4" value="1"/>
+		<VAR size="01" name="Power_CH_05" comment="Вкл./Выкл. питание канала 5" value="1"/>
+		<VAR size="01" name="Power_CH_06" comment="Вкл./Выкл. питание канала 6" value="1"/>
+		<VAR size="01" name="Power_CH_07" comment="Вкл./Выкл. питание канала 7" value="1"/>
+		<VAR size="01" name="Power_CH_08" comment="Вкл./Выкл. питание канала 8" value="1"/>
+	</SUBBLK>
+	</BLK>
+	<BLK num="9" attr="REQ" type="FW_CTL" name="Управление загрузкой firmware" hidden="all" struct_name="fw_ctrl">
+		<VAR size="08" comment="команда управления"/>
+	</BLK>
+	<BLK num="10" attr="REQ" type="FW" name="Загрузка firmware" hidden="all" struct_name="fw">
+		<VAR size="32"   comment="адрес"/>
+		<VAR size="1984" comment="данные на запись"/> <!--248*8-->
+	</BLK>
+  <FIELD_VALUES>
+    <VALUES num="1">
+      <VALUE val="2"  comment="Обрыв"/>
+      <VALUE val="4"  comment="Аппаратная ошибка"/>
+      <VALUE val="6"  comment="Короткое замыкание"/>
+      <VALUE val="7"  comment="Дежурный/выкл"/>
+      <VALUE val="8"  comment="Пожар/вкл"/>
+      <VALUE val="9"  comment="Значение не достоверно"/>
+      <VALUE val="10" comment="Неверные параметры канала"/>
+      <VALUE val="11"  comment="Внимание"/>
+      <VALUE val="12"  comment="Неисправность линии"/>
+      <VALUE val="13"  comment="Нет питания канала"/>
+      <VALUE val="14"  comment="Канал отключен"/>
+    </VALUES>
+    <VALUES num="2">
+      <VALUE val="0"  comment="Отключен"/>
+      <VALUE val="1"  comment="Пожарный шлейф последовательный"/>
+      <VALUE val="2"  comment="Пожарный шлейф параллельный"/>
+      <VALUE val="3"  comment="Пожарный шлейф 2 вида контактов"/>
+      <VALUE val="4"  comment="Пожарный шлейф комбинированный"/>
+      <VALUE val="5"  comment="Пожарный шлейф Набат"/>
+      <VALUE val="6"  comment="Дискретный вход"/>
+      <VALUE val="7"  comment="Дискретный вход с диагностикой"/>
+      <VALUE val="8"  comment="Пожарный шлейф с заданием зон по сопротивлению"/>
+      <VALUE val="9"  comment="Пожарный шлейф с заданием зон по току"/>
+    </VALUES>
+    <VALUES num="3">
+      <VALUE val="0"  comment="Дежурный/выкл"/>
+      <VALUE val="1"  comment="Пожар/вкл"/>
+      <VALUE val="2"  comment="Обрыв"/>
+      <VALUE val="3"  comment="Короткое замыкание"/>
+      <VALUE val="4"  comment="Внимание"/>
+      <VALUE val="5"  comment="Неисправность линии"/>
+    </VALUES>
+  </FIELD_VALUES>
+  <FIELD_RANGES>
+    <RANGE num="1" min="0"   max="20000"  comment="допустимые значения 0..20000"/>
+  </FIELD_RANGES>
+</CONF>

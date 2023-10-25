@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<CONF test="1" type="2071" name="M121R" comment="4-канальный релейный вывод"> <!--0x817-->
+  <PARAM name="Reaction Time" value="10" comment="Время реакции модуля (*10мкс)" hidden="dict"/>
+	<BLK num="0" attr="RREQ" name="Конфигурация блоков" hidden="dict" struct_name="configuration">
+		<VAR size="16" value="2071" comment="тип модуля"/>
+		<VAR size="16"              comment="версия ПО"/>
+		<VAR size="16"              comment="версия аппаратной части"/>
+		<VAR size="16" value="1"    comment="версия конфигурации"/>
+		<VAR size="16" value="9"    comment="кол-во блоков"/>
+		<VAR size="16" value="0"    comment="номер блока"/>
+		<VAR size="16" value="46"   comment="размер блока"/>
+		<VAR size="16" value="1"    comment="номер блока"/>
+		<VAR size="16" value="18"   comment="размер блока"/>
+		<VAR size="16" value="3"    comment="номер блока"/>
+		<VAR size="16" value="7"    comment="размер блока"/>
+		<VAR size="16" value="4"    comment="номер блока"/>
+		<VAR size="16" value="1"    comment="размер блока"/>
+		<VAR size="16" value="7"    comment="номер блока"/>
+		<VAR size="16" value="24"   comment="размер блока"/>
+		<VAR size="16" value="8"    comment="номер блока"/>
+		<VAR size="16" value="1"    comment="размер блока"/>
+		<VAR size="16" value="9"    comment="номер блока"/>
+		<VAR size="16" value="1"    comment="размер блока"/>
+		<VAR size="16" value="10"   comment="номер блока"/>
+		<VAR size="16" value="252"  comment="размер блока"/>
+		<VAR size="16" value="13"   comment="номер блока"/>
+		<VAR size="16" value="12"   comment="размер блока"/> 
+	</BLK>
+	<BLK num="1" attr="RREQ" type="STAT" name="Статистика" struct_name="statistic">
+		<VAR size="32" name="Work_Time"       comment="Время наработки, сек"/>
+		<VAR size="32" name="Stbus_cnt_Err"   comment="Счетчик ошибок STBUS"/>
+		<VAR size="08" name="Reset_code"      comment="Код сброса"/>
+		<VAR size="32" name="Mod_temp"        comment="Температура модуля"/>
+		<VAR size="01" name="Stbus_err"       comment="Ошибки связи с мастером"/>
+		<VAR size="01" name="Err_sequence"    comment="Нарушение последовательности STBUS"/>
+		<VAR size="01" name="Mod_power_low"   comment="Питание модуля ниже нормы"/>
+		<VAR size="05" name="Rez1"            comment="Резерв" hidden="all"/>
+		<VAR size="32" name="Rez2"            comment="Резерв" hidden="all"/>
+	</BLK>
+	<BLK num="3" attr="REQ" type="PARAM" name="Параметры" struct_name="param">
+		<SUBBLK name="Значение при обрыве связи" struct_name="default_out" cut_end="5">
+		<VAR size="01" name="Default_CH_01" comment="Значение при обрыве связи, канал  1"/>
+		<VAR size="01" name="Default_CH_02" comment="Значение при обрыве связи, канал  2"/>
+		<VAR size="01" name="Default_CH_03" comment="Значение при обрыве связи, канал  3"/>
+		<VAR size="01" name="Default_CH_04" comment="Значение при обрыве связи, канал  4"/>
+		<VAR size="04" name="Rez1"          comment="Резерв" hidden="all"/> 
+		</SUBBLK>
+		<SUBBLK name="Общие параметры" struct_name="common">
+		<VAR size="32" name="Rez2"            comment="Резерв" hidden="all"/>
+		<VAR size="16" name="Timeout"         comment="Таймаут связи с мастером, мсек"/>
+		</SUBBLK>
+	</BLK>
+	<BLK num="4" attr="R" name="Рабочие данные на чтение" struct_name="in">
+		<SUBBLK type="STATE" name="Состояние" struct_name="state">
+			<VAR size="01" name="No_param"       comment="Нет параметров"/>
+			<VAR size="01" name="Err_hard"       comment="Аппаратная ошибка" ftype="Err_hard"/>
+			<VAR size="01" name="Err_ext_con"    comment="Ошибка внешних подключений"/>
+			<VAR size="01" name="Err_stbus"      comment="Ошибки связи STBUS"/>
+			<VAR size="01" name="Err_mod_power"  comment="Ошибка питания модуля"/>
+			<VAR size="01" name="Err_CH_power"   comment="Ошибка питания каналов"/>
+			<VAR size="02" name="rez1"           comment="резерв" hidden="all"/>
+		</SUBBLK>
+	</BLK>
+	<BLK num="7" attr="REQ" type="CFG" name="Заводские идентификаторы" hidden="all" struct_name="factory_id">
+		<VAR size="32" name="datetime"               comment="дата изготовления"/>
+		<VAR size="64" name="serial"                 comment="серийный номер"/>
+		<VAR size="16" name="type"                   comment="подтип"/>
+		<VAR size="32" name="CRC_FW"                 comment="контрольная сумма прошивки"/>
+		<VAR size="16" name="CRC_PRJ"                comment="контрольная сумма проекта"/>
+		<VAR size="16" name="CRC_METRO__CALIB_TERMO" comment="контрольная сумма метрологии и калибровка термодатчика"/>
+		<VAR size="16" name="HW_VER"                 comment="аппаратная версия платы"/>
+	</BLK>
+	<BLK num="8" attr="W" name="Рабочие данные на запись" struct_name="out">
+		<SUBBLK type="CANAL" name="Каналы">
+		<VAR size="01" name="CH_01" comment="Значение канала  1" farg="1"/>
+		<VAR size="01" name="CH_02" comment="Значение канала  2" farg="2"/>
+		<VAR size="01" name="CH_03" comment="Значение канала  3" farg="3"/>
+		<VAR size="01" name="CH_04" comment="Значение канала  4" farg="4"/>
+		<VAR size="04" name="Rez3"  comment="Резерв" hidden="all"/>
+		</SUBBLK>
+	</BLK>
+	<BLK num="9" attr="REQ" type="FW_CTL" name="Управление загрузкой firmware" hidden="all" struct_name="fw_ctrl">
+		<VAR size="08" comment="команда управления"/>
+	</BLK>
+	<BLK num="10" attr="REQ" type="FW" name="Загрузка firmware" hidden="all" struct_name="fw">
+		<VAR size="32"   comment="адрес"/>
+		<VAR size="1984" comment="данные на запись"/> <!--248*8-->
+	</BLK>
+</CONF>

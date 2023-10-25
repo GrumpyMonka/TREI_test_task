@@ -1,0 +1,1274 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<CONF type="277" name="F1090P" comment="Модуль контроля пожарного шлейфа адресный"> <!--0x0115-->
+  <PARAM name="Reaction Time" value="10" comment="Время реакции модуля (*10мкс)" hidden="dict"/>
+	<BLK num="0" attr="RREQ" name="Конфигурация блоков" hidden="dict" struct_name="configuration">
+		<VAR size="16" value="277" comment="тип модуля"/>
+		<VAR size="16"             comment="версия ПО"/>
+		<VAR size="16"             comment="версия аппаратной части"/>
+		<VAR size="16" value="1"   comment="версия конфигурации"/>
+		<VAR size="16" value="13"   comment="кол-во блоков"/>
+		<VAR size="16" value="0"   comment="номер блока"/>
+		<VAR size="16" value="62"  comment="размер блока"/>
+		<VAR size="16" value="1"   comment="номер блока"/>
+		<VAR size="16" value="9"   comment="размер блока"/>
+		<VAR size="16" value="3"   comment="номер блока"/>
+		<VAR size="16" value="6"   comment="размер блока"/>
+		<VAR size="16" value="4"   comment="номер блока"/>
+		<VAR size="16" value="3"   comment="размер блока"/>
+		<VAR size="16" value="7"   comment="номер блока"/>
+		<VAR size="16" value="24"  comment="размер блока"/>
+		<VAR size="16" value="8"   comment="номер блока"/>
+		<VAR size="16" value="1"   comment="размер блока"/>
+		<VAR size="16" value="9"   comment="номер блока"/>
+		<VAR size="16" value="1"   comment="размер блока"/>
+		<VAR size="16" value="10"  comment="номер блока"/>
+		<VAR size="16" value="252" comment="размер блока"/>
+		<VAR size="16" value="13"  comment="номер блока"/>
+		<VAR size="16" value="12"  comment="размер блока"/>
+		<VAR size="16" value="14"  comment="номер блока"/>
+		<VAR size="16" value="318" comment="размер блока"/>
+		<VAR size="16" value="15"  comment="номер блока"/>
+		<VAR size="16" value="318" comment="размер блока"/>
+		<VAR size="16" value="16"  comment="номер блока"/>
+		<VAR size="16" value="318" comment="размер блока"/>
+		<VAR size="16" value="17"  comment="номер блока"/>
+		<VAR size="16" value="193" comment="размер блока"/>
+	</BLK>
+	<BLK num="1" attr="RREQ" type="STAT" name="Статистика" struct_name="statistic">
+		<VAR size="32" name="Work_Time"      comment="Время наработки, сек"/>
+		<VAR size="32" name="Stbus_Err_Cnt"  comment="Счетчик ошибок STBUS"/>
+		<VAR size="08" name="Reset_code"     comment="Код сброса"/>
+	</BLK>
+	<BLK num="3" attr="REQ" type="PARAM" name="Параметры" struct_name="param">
+		<SUBBLK name="Параметры адресного шлейфа" struct_name="line">
+			<VAR size="08" name="LED_work"         comment="Режим работы светодиодов датчиков в нормальном режиме"  value="4"/>
+			<VAR size="08" name="Alarm_cfg"        comment="Режим срабатывания тревоги (режим И - ИЛИ)"  value="0"/>
+			<VAR size="08" name="Radial_mode"      comment="Режим работы адресного шлейфа (0 - кольцевой, 1 - два радиальных)"  value="0"/>
+			<VAR size="08" name="Read_values"      comment="Режим постоянного чтения измеренных значений устройств адресного шлейфа"  value="0"/>
+		</SUBBLK>
+		<SUBBLK name="Общие параметры" struct_name="common">
+			<VAR size="16" name="Timeout"         comment="Таймаут связи с мастером, мсек"  value="0"/>
+		</SUBBLK>
+	</BLK>
+	<BLK num="4" attr="R" name="Рабочие данные на чтение" struct_name="in">
+		<SUBBLK type="STATE" name="Состояние" struct_name="state">
+			<VAR size="01"  name="No_param"                comment="Нет параметров"/>
+			<VAR size="01"  name="Power_low"               comment="Питание ниже нормы"/>
+			<VAR size="01"  name="Power_high"              comment="Питание выше нормы"/>
+			<VAR size="01"  name="Err_stbus"               comment="Ошибки связи с мастером"/>
+			<VAR size="01"  name="Err_sequence"            comment="Нарушение последовательности STBUS"/>
+			<VAR size="01"  name="Not_Ready"               comment="Значения модуля недостоверны" ftype="Not_Ready"/>
+			<VAR size="01"  name="Energy_save"             comment="Режим энергосбережения" ftype="Energy_save"/>
+			<VAR size="01"  name="Err_hard"                comment="Аппаратная ошибка модуля"/>
+			<VAR size="01"  name="Config_mode_on"          comment="Режим конфигурации"/>
+			<VAR size="01"  name="Line_Init"               comment="Инициализация адресного шлейфа"/>
+			<VAR size="01"  name="Line_Alarm"              comment="Пожар"/>
+			<VAR size="01"  name="Line_Trouble"            comment="Предупреждения устройств адресного шлейфа"/>
+			<VAR size="01"  name="Line_mismatch"           comment="Несоответствие подключенных датчиков и конфигурации"/>
+			<VAR size="01"  name="Line_device_err"         comment="Ошибки устройств адресного шлейфа"/>
+			<VAR size="01"  name="Line_break"              comment="Обрыв линии адресного шлейфа"/>
+			<VAR size="01"  name="Line_short_circ_out1"    comment="Короткое замыкание на линии 1 адресного шлейфа"/>
+			<VAR size="01"  name="Line_short_circ_out2"    comment="Короткое замыкание на линии 2 адресного шлейфа"/>
+			<VAR size="01"  name="Line_short_circ_devices" comment="Короткое замыкание на устройствах адресного шлейфа"/>
+			<VAR size="01"  name="Line_isol_break_GND"     comment="Пробой изоляции линии GND адресного шлейфа"/>
+			<VAR size="01"  name="Line_isol_break_24V"     comment="Пробой изоляции линии 24V адресного шлейфа"/>
+			<VAR size="01"  name="Spec_req"                comment="Готовность данных специального запроса"/>
+			<VAR size="03"  name="rez0"                    comment="резерв" hidden="all"/>
+		</SUBBLK>
+	</BLK>
+	<BLK num="7" attr="REQ" type="CFG" name="Заводские идентификаторы" hidden="all" struct_name="factory_id">
+		<VAR size="32" name="datetime"               comment="дата изготовления"/>
+		<VAR size="64" name="serial"                 comment="серийный номер"/>
+		<VAR size="16" name="type"                   comment="подтип"/>
+		<VAR size="32" name="CRC_FW"                 comment="контрольная сумма прошивки"/>
+		<VAR size="16" name="CRC_PRJ"                comment="контрольная сумма проекта"/>
+		<VAR size="16" name="CRC_METRO__CALIB_TERMO" comment="контрольная сумма метрологии и калибровка термодатчика"/>
+		<VAR size="16" name="HW_VER"                 comment="аппаратная версия платы"/>
+	</BLK>
+	<BLK num="8" attr="W" name="Рабочие данные на запись" struct_name="out">
+		<SUBBLK type="CANAL" name="Каналы вывода">
+			<VAR size="01" name="Save_ROM"      comment="Сохранение данных в ППЗУ модуля" value="0"/>
+			<VAR size="01" name="Config_mode"   comment="Режим конфигурации" value="0"/>
+			<VAR size="01" name="Alarm_off"     comment="Сброс состояния Пожар и состояния Внимание (сработал один датчик)" value="0"/>
+			<VAR size="01" name="Reinit"        comment="Переинициализация модуля" value="0"/>
+			<VAR size="01" name="Reset_Trouble" comment="Сброс предупреждений устройств адресного шлейфа" value="0"/>
+			<VAR size="01" name="Reset_dev_err" comment="Сброс ошибок устройств адресного шлейфа" value="0"/>
+			<VAR size="02" name="rez1"          comment="Резерв" hidden="all"/>
+		</SUBBLK>
+	</BLK>
+	<BLK num="9" attr="REQ" type="FW_CTL" name="Управление загрузкой firmware" hidden="all" struct_name="fw_ctrl">
+		<VAR size="08" comment="команда управления"/>
+	</BLK>
+	<BLK num="10" attr="REQ" type="FW" name="Загрузка firmware" hidden="all" struct_name="fw">
+		<VAR size="32"   comment="адрес"/>
+		<VAR size="1984" comment="данные на запись"/> <!--248*8-->
+	</BLK>
+	<BLK num="14" attr="RREQ" name="Состояние устройств адресного шлейфа" struct_name="dev_state">
+		<SUBBLK name="Состояния датчиков" struct_name="sensor" cut_end="3" add_begin="Addr_">
+			<VAR size="08" name="Sensor_state_001" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_002" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_003" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_004" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_005" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_006" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_007" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_008" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_009" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_010" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_011" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_012" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_013" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_014" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_015" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_016" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_017" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_018" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_019" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_020" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_021" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_022" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_023" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_024" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_025" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_026" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_027" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_028" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_029" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_030" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_031" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_032" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_033" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_034" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_035" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_036" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_037" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_038" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_039" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_040" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_041" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_042" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_043" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_044" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_045" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_046" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_047" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_048" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_049" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_050" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_051" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_052" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_053" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_054" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_055" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_056" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_057" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_058" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_059" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_060" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_061" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_062" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_063" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_064" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_065" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_066" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_067" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_068" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_069" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_070" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_071" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_072" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_073" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_074" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_075" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_076" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_077" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_078" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_079" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_080" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_081" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_082" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_083" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_084" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_085" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_086" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_087" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_088" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_089" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_090" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_091" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_092" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_093" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_094" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_095" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_096" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_097" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_098" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_099" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_100" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_101" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_102" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_103" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_104" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_105" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_106" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_107" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_108" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_109" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_110" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_111" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_112" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_113" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_114" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_115" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_116" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_117" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_118" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_119" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_120" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_121" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_122" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_123" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_124" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_125" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_126" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_127" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_128" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_129" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_130" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_131" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_132" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_133" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_134" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_135" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_136" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_137" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_138" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_139" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_140" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_141" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_142" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_143" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_144" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_145" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_146" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_147" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_148" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_149" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_150" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_151" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_152" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_153" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_154" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_155" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_156" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_157" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_158" comment="Слово состояния датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_state_159" comment="Слово состояния датчика адресного шлейфа"/>
+		</SUBBLK>
+		<SUBBLK name="Состояния модулей" struct_name="module" cut_end="3" add_begin="Addr_">
+			<VAR size="08" name="Module_state_001" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_002" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_003" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_004" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_005" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_006" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_007" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_008" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_009" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_010" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_011" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_012" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_013" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_014" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_015" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_016" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_017" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_018" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_019" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_020" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_021" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_022" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_023" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_024" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_025" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_026" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_027" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_028" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_029" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_030" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_031" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_032" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_033" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_034" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_035" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_036" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_037" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_038" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_039" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_040" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_041" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_042" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_043" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_044" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_045" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_046" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_047" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_048" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_049" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_050" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_051" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_052" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_053" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_054" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_055" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_056" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_057" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_058" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_059" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_060" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_061" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_062" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_063" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_064" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_065" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_066" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_067" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_068" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_069" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_070" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_071" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_072" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_073" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_074" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_075" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_076" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_077" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_078" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_079" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_080" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_081" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_082" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_083" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_084" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_085" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_086" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_087" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_088" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_089" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_090" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_091" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_092" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_093" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_094" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_095" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_096" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_097" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_098" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_099" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_100" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_101" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_102" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_103" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_104" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_105" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_106" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_107" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_108" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_109" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_110" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_111" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_112" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_113" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_114" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_115" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_116" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_117" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_118" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_119" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_120" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_121" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_122" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_123" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_124" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_125" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_126" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_127" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_128" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_129" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_130" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_131" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_132" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_133" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_134" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_135" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_136" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_137" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_138" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_139" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_140" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_141" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_142" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_143" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_144" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_145" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_146" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_147" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_148" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_149" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_150" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_151" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_152" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_153" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_154" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_155" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_156" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_157" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_158" comment="Слово состояния модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_state_159" comment="Слово состояния модуля адресного шлейфа"/>
+		</SUBBLK>
+	</BLK>
+	<BLK num="15" attr="RREQ" name="Таблица подключенных устройств System Sensor" struct_name="dev_type">
+		<SUBBLK name="Типы подключенных датчиков" struct_name="sensor" cut_end="3" add_begin="Addr_">
+			<VAR size="08" name="Sensor_type_001" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_002" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_003" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_004" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_005" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_006" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_007" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_008" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_009" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_010" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_011" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_012" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_013" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_014" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_015" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_016" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_017" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_018" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_019" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_020" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_021" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_022" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_023" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_024" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_025" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_026" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_027" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_028" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_029" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_030" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_031" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_032" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_033" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_034" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_035" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_036" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_037" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_038" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_039" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_040" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_041" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_042" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_043" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_044" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_045" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_046" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_047" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_048" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_049" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_050" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_051" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_052" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_053" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_054" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_055" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_056" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_057" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_058" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_059" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_060" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_061" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_062" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_063" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_064" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_065" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_066" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_067" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_068" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_069" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_070" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_071" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_072" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_073" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_074" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_075" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_076" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_077" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_078" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_079" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_080" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_081" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_082" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_083" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_084" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_085" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_086" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_087" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_088" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_089" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_090" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_091" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_092" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_093" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_094" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_095" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_096" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_097" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_098" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_099" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_100" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_101" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_102" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_103" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_104" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_105" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_106" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_107" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_108" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_109" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_110" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_111" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_112" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_113" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_114" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_115" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_116" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_117" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_118" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_119" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_120" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_121" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_122" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_123" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_124" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_125" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_126" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_127" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_128" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_129" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_130" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_131" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_132" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_133" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_134" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_135" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_136" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_137" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_138" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_139" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_140" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_141" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_142" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_143" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_144" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_145" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_146" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_147" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_148" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_149" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_150" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_151" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_152" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_153" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_154" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_155" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_156" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_157" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_158" comment="Тип датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_type_159" comment="Тип датчика адресного шлейфа"/>
+		</SUBBLK>
+		<SUBBLK name="Типы подключенных модулей" struct_name="module" cut_end="3" add_begin="Addr_">
+			<VAR size="08" name="Module_type_001" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_002" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_003" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_004" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_005" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_006" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_007" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_008" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_009" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_010" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_011" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_012" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_013" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_014" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_015" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_016" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_017" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_018" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_019" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_020" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_021" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_022" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_023" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_024" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_025" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_026" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_027" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_028" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_029" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_030" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_031" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_032" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_033" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_034" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_035" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_036" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_037" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_038" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_039" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_040" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_041" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_042" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_043" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_044" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_045" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_046" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_047" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_048" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_049" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_050" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_051" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_052" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_053" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_054" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_055" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_056" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_057" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_058" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_059" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_060" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_061" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_062" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_063" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_064" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_065" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_066" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_067" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_068" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_069" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_070" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_071" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_072" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_073" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_074" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_075" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_076" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_077" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_078" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_079" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_080" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_081" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_082" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_083" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_084" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_085" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_086" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_087" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_088" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_089" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_090" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_091" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_092" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_093" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_094" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_095" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_096" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_097" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_098" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_099" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_100" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_101" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_102" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_103" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_104" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_105" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_106" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_107" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_108" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_109" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_110" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_111" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_112" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_113" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_114" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_115" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_116" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_117" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_118" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_119" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_120" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_121" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_122" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_123" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_124" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_125" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_126" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_127" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_128" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_129" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_130" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_131" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_132" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_133" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_134" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_135" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_136" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_137" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_138" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_139" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_140" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_141" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_142" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_143" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_144" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_145" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_146" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_147" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_148" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_149" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_150" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_151" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_152" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_153" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_154" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_155" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_156" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_157" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_158" comment="Тип модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_type_159" comment="Тип модуля адресного шлейфа"/>
+		</SUBBLK>
+	</BLK>
+	<BLK num="16" attr="RREQ" name="Таблица привязанных устройств System Sensor" struct_name="dev_configured_type">
+		<SUBBLK name="Типы привязанных датчиков" struct_name="sensor" cut_end="3" add_begin="Addr_">
+			<VAR size="08" name="Sensor_configured_type_001" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_002" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_003" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_004" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_005" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_006" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_007" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_008" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_009" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_010" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_011" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_012" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_013" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_014" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_015" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_016" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_017" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_018" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_019" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_020" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_021" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_022" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_023" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_024" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_025" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_026" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_027" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_028" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_029" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_030" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_031" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_032" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_033" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_034" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_035" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_036" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_037" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_038" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_039" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_040" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_041" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_042" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_043" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_044" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_045" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_046" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_047" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_048" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_049" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_050" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_051" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_052" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_053" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_054" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_055" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_056" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_057" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_058" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_059" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_060" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_061" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_062" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_063" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_064" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_065" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_066" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_067" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_068" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_069" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_070" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_071" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_072" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_073" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_074" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_075" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_076" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_077" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_078" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_079" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_080" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_081" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_082" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_083" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_084" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_085" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_086" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_087" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_088" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_089" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_090" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_091" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_092" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_093" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_094" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_095" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_096" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_097" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_098" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_099" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_100" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_101" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_102" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_103" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_104" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_105" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_106" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_107" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_108" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_109" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_110" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_111" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_112" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_113" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_114" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_115" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_116" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_117" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_118" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_119" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_120" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_121" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_122" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_123" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_124" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_125" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_126" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_127" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_128" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_129" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_130" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_131" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_132" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_133" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_134" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_135" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_136" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_137" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_138" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_139" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_140" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_141" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_142" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_143" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_144" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_145" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_146" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_147" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_148" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_149" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_150" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_151" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_152" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_153" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_154" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_155" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_156" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_157" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_158" comment="Тип привязанного датчика адресного шлейфа"/>
+			<VAR size="08" name="Sensor_configured_type_159" comment="Тип привязанного датчика адресного шлейфа"/>
+		</SUBBLK>
+		<SUBBLK name="Типы привязанных модулей" struct_name="module" cut_end="3" add_begin="Addr_">
+			<VAR size="08" name="Module_configured_type_001" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_002" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_003" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_004" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_005" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_006" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_007" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_008" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_009" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_010" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_011" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_012" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_013" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_014" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_015" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_016" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_017" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_018" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_019" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_020" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_021" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_022" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_023" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_024" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_025" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_026" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_027" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_028" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_029" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_030" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_031" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_032" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_033" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_034" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_035" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_036" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_037" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_038" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_039" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_040" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_041" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_042" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_043" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_044" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_045" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_046" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_047" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_048" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_049" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_050" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_051" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_052" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_053" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_054" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_055" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_056" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_057" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_058" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_059" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_060" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_061" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_062" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_063" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_064" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_065" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_066" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_067" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_068" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_069" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_070" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_071" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_072" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_073" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_074" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_075" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_076" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_077" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_078" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_079" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_080" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_081" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_082" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_083" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_084" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_085" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_086" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_087" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_088" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_089" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_090" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_091" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_092" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_093" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_094" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_095" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_096" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_097" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_098" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_099" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_100" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_101" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_102" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_103" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_104" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_105" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_106" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_107" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_108" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_109" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_110" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_111" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_112" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_113" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_114" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_115" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_116" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_117" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_118" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_119" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_120" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_121" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_122" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_123" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_124" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_125" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_126" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_127" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_128" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_129" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_130" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_131" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_132" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_133" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_134" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_135" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_136" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_137" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_138" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_139" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_140" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_141" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_142" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_143" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_144" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_145" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_146" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_147" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_148" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_149" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_150" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_151" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_152" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_153" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_154" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_155" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_156" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_157" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_158" comment="Тип привязанного модуля адресного шлейфа"/>
+			<VAR size="08" name="Module_configured_type_159" comment="Тип привязанного модуля адресного шлейфа"/>
+		</SUBBLK>
+	</BLK>
+	<BLK num="17" attr="REQ" name="Специальный запрос"  struct_name="spec_req" cut_end="3" add_begin="byte_">
+			<VAR size="08" name="Special_request_001" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_002" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_003" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_004" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_005" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_006" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_007" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_008" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_009" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_010" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_011" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_012" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_013" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_014" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_015" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_016" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_017" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_018" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_019" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_020" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_021" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_022" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_023" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_024" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_025" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_026" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_027" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_028" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_029" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_030" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_031" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_032" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_033" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_034" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_035" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_036" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_037" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_038" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_039" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_040" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_041" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_042" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_043" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_044" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_045" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_046" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_047" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_048" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_049" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_050" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_051" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_052" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_053" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_054" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_055" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_056" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_057" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_058" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_059" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_060" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_061" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_062" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_063" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_064" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_065" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_066" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_067" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_068" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_069" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_070" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_071" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_072" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_073" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_074" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_075" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_076" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_077" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_078" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_079" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_080" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_081" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_082" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_083" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_084" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_085" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_086" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_087" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_088" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_089" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_090" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_091" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_092" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_093" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_094" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_095" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_096" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_097" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_098" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_099" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_100" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_101" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_102" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_103" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_104" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_105" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_106" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_107" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_108" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_109" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_110" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_111" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_112" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_113" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_114" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_115" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_116" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_117" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_118" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_119" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_120" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_121" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_122" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_123" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_124" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_125" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_126" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_127" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_128" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_129" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_130" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_131" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_132" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_133" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_134" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_135" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_136" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_137" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_138" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_139" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_140" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_141" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_142" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_143" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_144" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_145" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_146" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_147" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_148" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_149" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_150" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_151" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_152" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_153" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_154" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_155" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_156" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_157" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_158" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_159" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_160" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_161" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_162" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_163" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_164" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_165" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_166" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_167" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_168" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_169" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_170" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_171" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_172" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_173" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_174" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_175" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_176" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_177" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_178" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_179" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_180" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_181" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_182" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_183" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_184" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_185" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_186" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_187" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_188" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_189" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_190" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_191" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_192" comment="Специальный запрос"/>
+			<VAR size="08" name="Special_request_193" comment="Специальный запрос"/>
+	</BLK>
+</CONF>

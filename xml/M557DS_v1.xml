@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<CONF type="1556" name="M557DS" comment="32-канальный дискретный ввод с диагностикой"> <!--0x614-->
+  <PARAM name="Reaction Time" value="10" comment="Время реакции модуля (*10мкс)" hidden="dict"/>
+	<BLK num="0" attr="RREQ" name="Конфигурация блоков" hidden="dict">
+		<VAR size="16" value="1556" comment="тип модуля"/>
+		<VAR size="16"              comment="версия ПО"/>
+		<VAR size="16"              comment="версия аппаратной части"/>
+		<VAR size="16" value="1"    comment="версия конфигурации"/>
+		<VAR size="16" value="7"    comment="кол-во блоков"/>
+		<VAR size="16" value="0"    comment="номер блока"/>
+		<VAR size="16" value="38"   comment="размер блока"/>
+		<VAR size="16" value="1"    comment="номер блока"/>
+		<VAR size="16" value="13"   comment="размер блока"/>
+		<VAR size="16" value="3"    comment="номер блока"/>
+		<VAR size="16" value="70"   comment="размер блока"/>
+		<VAR size="16" value="4"    comment="номер блока"/>
+		<VAR size="16" value="13"   comment="размер блока"/>
+		<VAR size="16" value="7"    comment="номер блока"/>
+		<VAR size="16" value="24"   comment="размер блока"/>
+		<VAR size="16" value="9"    comment="номер блока"/>
+		<VAR size="16" value="1"    comment="размер блока"/>
+		<VAR size="16" value="10"   comment="номер блока"/>
+		<VAR size="16" value="252"  comment="размер блока"/>
+	</BLK>
+	<BLK num="1" attr="REQ" type="STAT" name="Статистика">
+		<VAR size="32" name="Work_Time"  comment="Время наработки, сек"/>
+		<VAR size="32" name="Line1_Err"  comment="Счетчик ошибок STBUS по линии1"/>
+		<VAR size="32" name="Line2_Err"  comment="Счетчик ошибок STBUS по линии2"/>
+		<VAR size="08" name="Reset_code" comment="Код сброса"/>
+	</BLK>
+	<BLK num="3" attr="REQ" type="PARAM" name="Параметры">
+		<VAR size="08" name="Filter01_01"                  comment="Время фильтрации 0 - 1, канал  1"/>
+		<VAR size="08" name="Filter01_02"                  comment="Время фильтрации 0 - 1, канал  2"/>
+		<VAR size="08" name="Filter01_03"                  comment="Время фильтрации 0 - 1, канал  3"/>
+		<VAR size="08" name="Filter01_04"                  comment="Время фильтрации 0 - 1, канал  4"/>
+		<VAR size="08" name="Filter01_05"                  comment="Время фильтрации 0 - 1, канал  5"/>
+		<VAR size="08" name="Filter01_06"                  comment="Время фильтрации 0 - 1, канал  6"/>
+		<VAR size="08" name="Filter01_07"                  comment="Время фильтрации 0 - 1, канал  7"/>
+		<VAR size="08" name="Filter01_08"                  comment="Время фильтрации 0 - 1, канал  8"/>
+		<VAR size="08" name="Filter01_09"                  comment="Время фильтрации 0 - 1, канал  9"/>
+		<VAR size="08" name="Filter01_10"                  comment="Время фильтрации 0 - 1, канал 10"/>
+		<VAR size="08" name="Filter01_11"                  comment="Время фильтрации 0 - 1, канал 11"/>
+		<VAR size="08" name="Filter01_12"                  comment="Время фильтрации 0 - 1, канал 12"/>
+		<VAR size="08" name="Filter01_13"                  comment="Время фильтрации 0 - 1, канал 13"/>
+		<VAR size="08" name="Filter01_14"                  comment="Время фильтрации 0 - 1, канал 14"/>
+		<VAR size="08" name="Filter01_15"                  comment="Время фильтрации 0 - 1, канал 15"/>
+		<VAR size="08" name="Filter01_16"                  comment="Время фильтрации 0 - 1, канал 16"/>
+		<VAR size="08" name="Filter01_17"                  comment="Время фильтрации 0 - 1, канал 17"/>
+		<VAR size="08" name="Filter01_18"                  comment="Время фильтрации 0 - 1, канал 18"/>
+		<VAR size="08" name="Filter01_19"                  comment="Время фильтрации 0 - 1, канал 19"/>
+		<VAR size="08" name="Filter01_20"                  comment="Время фильтрации 0 - 1, канал 20"/>
+		<VAR size="08" name="Filter01_21"                  comment="Время фильтрации 0 - 1, канал 21"/>
+		<VAR size="08" name="Filter01_22"                  comment="Время фильтрации 0 - 1, канал 22"/>
+		<VAR size="08" name="Filter01_23"                  comment="Время фильтрации 0 - 1, канал 23"/>
+		<VAR size="08" name="Filter01_24"                  comment="Время фильтрации 0 - 1, канал 24"/>
+		<VAR size="08" name="Filter01_25"                  comment="Время фильтрации 0 - 1, канал 25"/>
+		<VAR size="08" name="Filter01_26"                  comment="Время фильтрации 0 - 1, канал 26"/>
+		<VAR size="08" name="Filter01_27"                  comment="Время фильтрации 0 - 1, канал 27"/>
+		<VAR size="08" name="Filter01_28"                  comment="Время фильтрации 0 - 1, канал 28"/>
+		<VAR size="08" name="Filter01_29"                  comment="Время фильтрации 0 - 1, канал 29"/>
+		<VAR size="08" name="Filter01_30"                  comment="Время фильтрации 0 - 1, канал 30"/>
+		<VAR size="08" name="Filter01_31"                  comment="Время фильтрации 0 - 1, канал 31"/>
+		<VAR size="08" name="Filter01_32"                  comment="Время фильтрации 0 - 1, канал 32"/>
+		<VAR size="08" name="Filter10_01"                  comment="Время фильтрации 1 - 0, канал  1"/>
+		<VAR size="08" name="Filter10_02"                  comment="Время фильтрации 1 - 0, канал  2"/>
+		<VAR size="08" name="Filter10_03"                  comment="Время фильтрации 1 - 0, канал  3"/>
+		<VAR size="08" name="Filter10_04"                  comment="Время фильтрации 1 - 0, канал  4"/>
+		<VAR size="08" name="Filter10_05"                  comment="Время фильтрации 1 - 0, канал  5"/>
+		<VAR size="08" name="Filter10_06"                  comment="Время фильтрации 1 - 0, канал  6"/>
+		<VAR size="08" name="Filter10_07"                  comment="Время фильтрации 1 - 0, канал  7"/>
+		<VAR size="08" name="Filter10_08"                  comment="Время фильтрации 1 - 0, канал  8"/>
+		<VAR size="08" name="Filter10_09"                  comment="Время фильтрации 1 - 0, канал  9"/>
+		<VAR size="08" name="Filter10_10"                  comment="Время фильтрации 1 - 0, канал 10"/>
+		<VAR size="08" name="Filter10_11"                  comment="Время фильтрации 1 - 0, канал 11"/>
+		<VAR size="08" name="Filter10_12"                  comment="Время фильтрации 1 - 0, канал 12"/>
+		<VAR size="08" name="Filter10_13"                  comment="Время фильтрации 1 - 0, канал 13"/>
+		<VAR size="08" name="Filter10_14"                  comment="Время фильтрации 1 - 0, канал 14"/>
+		<VAR size="08" name="Filter10_15"                  comment="Время фильтрации 1 - 0, канал 15"/>
+		<VAR size="08" name="Filter10_16"                  comment="Время фильтрации 1 - 0, канал 16"/>
+		<VAR size="08" name="Filter10_17"                  comment="Время фильтрации 1 - 0, канал 17"/>
+		<VAR size="08" name="Filter10_18"                  comment="Время фильтрации 1 - 0, канал 18"/>
+		<VAR size="08" name="Filter10_19"                  comment="Время фильтрации 1 - 0, канал 19"/>
+		<VAR size="08" name="Filter10_20"                  comment="Время фильтрации 1 - 0, канал 20"/>
+		<VAR size="08" name="Filter10_21"                  comment="Время фильтрации 1 - 0, канал 21"/>
+		<VAR size="08" name="Filter10_22"                  comment="Время фильтрации 1 - 0, канал 22"/>
+		<VAR size="08" name="Filter10_23"                  comment="Время фильтрации 1 - 0, канал 23"/>
+		<VAR size="08" name="Filter10_24"                  comment="Время фильтрации 1 - 0, канал 24"/>
+		<VAR size="08" name="Filter10_25"                  comment="Время фильтрации 1 - 0, канал 25"/>
+		<VAR size="08" name="Filter10_26"                  comment="Время фильтрации 1 - 0, канал 26"/>
+		<VAR size="08" name="Filter10_27"                  comment="Время фильтрации 1 - 0, канал 27"/>
+		<VAR size="08" name="Filter10_28"                  comment="Время фильтрации 1 - 0, канал 28"/>
+		<VAR size="08" name="Filter10_29"                  comment="Время фильтрации 1 - 0, канал 29"/>
+		<VAR size="08" name="Filter10_30"                  comment="Время фильтрации 1 - 0, канал 30"/>
+		<VAR size="08" name="Filter10_31"                  comment="Время фильтрации 1 - 0, канал 31"/>
+		<VAR size="08" name="Filter10_32"                  comment="Время фильтрации 1 - 0, канал 32"/>
+		<VAR size="01" name="Parameter_Canal_01" value="1" comment="Параметры, канал  1" values="1"/>
+		<VAR size="01" name="Parameter_Canal_02" value="1" comment="Параметры, канал  2" values="1"/>
+		<VAR size="01" name="Parameter_Canal_03" value="1" comment="Параметры, канал  3" values="1"/>
+		<VAR size="01" name="Parameter_Canal_04" value="1" comment="Параметры, канал  4" values="1"/>
+		<VAR size="01" name="Parameter_Canal_05" value="1" comment="Параметры, канал  5" values="1"/>
+		<VAR size="01" name="Parameter_Canal_06" value="1" comment="Параметры, канал  6" values="1"/>
+		<VAR size="01" name="Parameter_Canal_07" value="1" comment="Параметры, канал  7" values="1"/>
+		<VAR size="01" name="Parameter_Canal_08" value="1" comment="Параметры, канал  8" values="1"/>
+		<VAR size="01" name="Parameter_Canal_09" value="1" comment="Параметры, канал  9" values="1"/>
+		<VAR size="01" name="Parameter_Canal_10" value="1" comment="Параметры, канал 10" values="1"/>
+		<VAR size="01" name="Parameter_Canal_11" value="1" comment="Параметры, канал 11" values="1"/>
+		<VAR size="01" name="Parameter_Canal_12" value="1" comment="Параметры, канал 12" values="1"/>
+		<VAR size="01" name="Parameter_Canal_13" value="1" comment="Параметры, канал 13" values="1"/>
+		<VAR size="01" name="Parameter_Canal_14" value="1" comment="Параметры, канал 14" values="1"/>
+		<VAR size="01" name="Parameter_Canal_15" value="1" comment="Параметры, канал 15" values="1"/>
+		<VAR size="01" name="Parameter_Canal_16" value="1" comment="Параметры, канал 16" values="1"/>
+		<VAR size="01" name="Parameter_Canal_17" value="1" comment="Параметры, канал 17" values="1"/>
+		<VAR size="01" name="Parameter_Canal_18" value="1" comment="Параметры, канал 18" values="1"/>
+		<VAR size="01" name="Parameter_Canal_19" value="1" comment="Параметры, канал 19" values="1"/>
+		<VAR size="01" name="Parameter_Canal_20" value="1" comment="Параметры, канал 20" values="1"/>
+		<VAR size="01" name="Parameter_Canal_21" value="1" comment="Параметры, канал 21" values="1"/>
+		<VAR size="01" name="Parameter_Canal_22" value="1" comment="Параметры, канал 22" values="1"/>
+		<VAR size="01" name="Parameter_Canal_23" value="1" comment="Параметры, канал 23" values="1"/>
+		<VAR size="01" name="Parameter_Canal_24" value="1" comment="Параметры, канал 24" values="1"/>
+		<VAR size="01" name="Parameter_Canal_25" value="1" comment="Параметры, канал 25" values="1"/>
+		<VAR size="01" name="Parameter_Canal_26" value="1" comment="Параметры, канал 26" values="1"/>
+		<VAR size="01" name="Parameter_Canal_27" value="1" comment="Параметры, канал 27" values="1"/>
+		<VAR size="01" name="Parameter_Canal_28" value="1" comment="Параметры, канал 28" values="1"/>
+		<VAR size="01" name="Parameter_Canal_29" value="1" comment="Параметры, канал 29" values="1"/>
+		<VAR size="01" name="Parameter_Canal_30" value="1" comment="Параметры, канал 30" values="1"/>
+		<VAR size="01" name="Parameter_Canal_31" value="1" comment="Параметры, канал 31" values="1"/>
+		<VAR size="01" name="Parameter_Canal_32" value="1" comment="Параметры, канал 32" values="1"/>
+		<VAR size="16" name="Timeout"                      comment="Таймаут связи с мастером, мсек"/>
+	</BLK>
+	<BLK num="4" attr="R" name="Рабочие данные на чтение">
+		<SUBBLK type="STATE" name="Состояние">
+		<VAR size="01" name="No_param"  comment="Нет параметров"/>
+		<VAR size="01" name="No_power1" comment="Нет питания 1"/>
+		<VAR size="01" name="No_power2" comment="Нет питания 2"/>
+		<VAR size="01" name="Err_line1" comment="Ошибки связи с мастером (линия 1)"/>
+		<VAR size="01" name="Err_line2" comment="Ошибки связи с мастером (линия 2)"/>
+		<VAR size="01" name="Reserv1"   comment="Резерв"/>
+		<VAR size="01" name="Reserv2"   comment="Резерв"/>
+		<VAR size="01" name="Reserv3"   comment="Резерв"/>
+		</SUBBLK>
+		<SUBBLK type="CANAL" name="Каналы">
+		<VAR size="01" name="Canal_01" comment="Значение канала  1" farg="1"/>
+		<VAR size="01" name="Canal_02" comment="Значение канала  2" farg="2"/>
+		<VAR size="01" name="Canal_03" comment="Значение канала  3" farg="3"/>
+		<VAR size="01" name="Canal_04" comment="Значение канала  4" farg="4"/>
+		<VAR size="01" name="Canal_05" comment="Значение канала  5" farg="5"/>
+		<VAR size="01" name="Canal_06" comment="Значение канала  6" farg="6"/>
+		<VAR size="01" name="Canal_07" comment="Значение канала  7" farg="7"/>
+		<VAR size="01" name="Canal_08" comment="Значение канала  8" farg="8"/>
+		<VAR size="01" name="Canal_09" comment="Значение канала  9" farg="9"/>
+		<VAR size="01" name="Canal_10" comment="Значение канала 10" farg="10"/>
+		<VAR size="01" name="Canal_11" comment="Значение канала 11" farg="11"/>
+		<VAR size="01" name="Canal_12" comment="Значение канала 12" farg="12"/>
+		<VAR size="01" name="Canal_13" comment="Значение канала 13" farg="13"/>
+		<VAR size="01" name="Canal_14" comment="Значение канала 14" farg="14"/>
+		<VAR size="01" name="Canal_15" comment="Значение канала 15" farg="15"/>
+		<VAR size="01" name="Canal_16" comment="Значение канала 16" farg="16"/>
+		<VAR size="01" name="Canal_17" comment="Значение канала 17" farg="17"/>
+		<VAR size="01" name="Canal_18" comment="Значение канала 18" farg="18"/>
+		<VAR size="01" name="Canal_19" comment="Значение канала 19" farg="19"/>
+		<VAR size="01" name="Canal_20" comment="Значение канала 20" farg="20"/>
+		<VAR size="01" name="Canal_21" comment="Значение канала 21" farg="21"/>
+		<VAR size="01" name="Canal_22" comment="Значение канала 22" farg="22"/>
+		<VAR size="01" name="Canal_23" comment="Значение канала 23" farg="23"/>
+		<VAR size="01" name="Canal_24" comment="Значение канала 24" farg="24"/>
+		<VAR size="01" name="Canal_25" comment="Значение канала 25" farg="25"/>
+		<VAR size="01" name="Canal_26" comment="Значение канала 26" farg="26"/>
+		<VAR size="01" name="Canal_27" comment="Значение канала 27" farg="27"/>
+		<VAR size="01" name="Canal_28" comment="Значение канала 28" farg="28"/>
+		<VAR size="01" name="Canal_29" comment="Значение канала 29" farg="29"/>
+		<VAR size="01" name="Canal_30" comment="Значение канала 30" farg="30"/>
+		<VAR size="01" name="Canal_31" comment="Значение канала 31" farg="31"/>
+		<VAR size="01" name="Canal_32" comment="Значение канала 32" farg="32"/>
+		</SUBBLK>
+		<SUBBLK type="CH_DIAG" name="Поканальная диагностика">
+		<VAR size="02"  name="Err_Canal_01"     comment="Ошибки, канал  1" farg="1"  values="2"/>
+		<VAR size="02"  name="Err_Canal_02"     comment="Ошибки, канал  2" farg="2"  values="2"/>
+		<VAR size="02"  name="Err_Canal_03"     comment="Ошибки, канал  3" farg="3"  values="2"/>
+		<VAR size="02"  name="Err_Canal_04"     comment="Ошибки, канал  4" farg="4"  values="2"/>
+		<VAR size="02"  name="Err_Canal_05"     comment="Ошибки, канал  5" farg="5"  values="2"/>
+		<VAR size="02"  name="Err_Canal_06"     comment="Ошибки, канал  6" farg="6"  values="2"/>
+		<VAR size="02"  name="Err_Canal_07"     comment="Ошибки, канал  7" farg="7"  values="2"/>
+		<VAR size="02"  name="Err_Canal_08"     comment="Ошибки, канал  8" farg="8"  values="2"/>
+		<VAR size="02"  name="Err_Canal_09"     comment="Ошибки, канал  9" farg="9"  values="2"/>
+		<VAR size="02"  name="Err_Canal_10"     comment="Ошибки, канал 10" farg="10" values="2"/>
+		<VAR size="02"  name="Err_Canal_11"     comment="Ошибки, канал 11" farg="11" values="2"/>
+		<VAR size="02"  name="Err_Canal_12"     comment="Ошибки, канал 12" farg="12" values="2"/>
+		<VAR size="02"  name="Err_Canal_13"     comment="Ошибки, канал 13" farg="13" values="2"/>
+		<VAR size="02"  name="Err_Canal_14"     comment="Ошибки, канал 14" farg="14" values="2"/>
+		<VAR size="02"  name="Err_Canal_15"     comment="Ошибки, канал 15" farg="15" values="2"/>
+		<VAR size="02"  name="Err_Canal_16"     comment="Ошибки, канал 16" farg="16" values="2"/>
+		<VAR size="02"  name="Err_Canal_17"     comment="Ошибки, канал 17" farg="17" values="2"/>
+		<VAR size="02"  name="Err_Canal_18"     comment="Ошибки, канал 18" farg="18" values="2"/>
+		<VAR size="02"  name="Err_Canal_19"     comment="Ошибки, канал 19" farg="19" values="2"/>
+		<VAR size="02"  name="Err_Canal_20"     comment="Ошибки, канал 20" farg="20" values="2"/>
+		<VAR size="02"  name="Err_Canal_21"     comment="Ошибки, канал 21" farg="21" values="2"/>
+		<VAR size="02"  name="Err_Canal_22"     comment="Ошибки, канал 22" farg="22" values="2"/>
+		<VAR size="02"  name="Err_Canal_23"     comment="Ошибки, канал 23" farg="23" values="2"/>
+		<VAR size="02"  name="Err_Canal_24"     comment="Ошибки, канал 24" farg="24" values="2"/>
+		<VAR size="02"  name="Err_Canal_25"     comment="Ошибки, канал 25" farg="25" values="2"/>
+		<VAR size="02"  name="Err_Canal_26"     comment="Ошибки, канал 26" farg="26" values="2"/>
+		<VAR size="02"  name="Err_Canal_27"     comment="Ошибки, канал 27" farg="27" values="2"/>
+		<VAR size="02"  name="Err_Canal_28"     comment="Ошибки, канал 28" farg="28" values="2"/>
+		<VAR size="02"  name="Err_Canal_29"     comment="Ошибки, канал 29" farg="29" values="2"/>
+		<VAR size="02"  name="Err_Canal_30"     comment="Ошибки, канал 30" farg="30" values="2"/>
+		<VAR size="02"  name="Err_Canal_31"     comment="Ошибки, канал 31" farg="31" values="2"/>
+		<VAR size="02"  name="Err_Canal_32"     comment="Ошибки, канал 32" farg="32" values="2"/>
+		</SUBBLK>
+	</BLK>
+	<BLK num="7" attr="REQ" type="CFG" name="Заводские идентификаторы" hidden="all">
+		<VAR size="32" name="datetime"               comment="дата изготовления"/>
+		<VAR size="64" name="serial"                 comment="серийный номер"/>
+		<VAR size="16" name="type"                   comment="подтип"/>
+		<VAR size="32" name="CRC_FW"                 comment="контрольная сумма прошивки"/>
+		<VAR size="16" name="CRC_PRJ"                comment="контрольная сумма проекта"/>
+		<VAR size="16" name="CRC_METRO__CALIB_TERMO" comment="контрольная сумма метрологии и калибровка термодатчика"/>
+		<VAR size="16" name="HW_VER"                 comment="аппаратная версия платы"/>
+	</BLK>
+	<BLK num="9" attr="REQ" type="FW_CTL" name="Управление загрузкой firmware" hidden="all">
+		<VAR size="08" comment="команда управления"/>
+	</BLK>
+	<BLK num="10" attr="REQ" type="FW" name="Загрузка firmware" hidden="all">
+		<VAR size="32"   comment="адрес"/>
+		<VAR size="1984" comment="данные на запись"/> <!--248*8-->
+	</BLK>
+  <FIELD_VALUES>
+    <VALUES num="1">
+      <VALUE val="0" comment="Диагностика отключена"/>
+      <VALUE val="1" comment="Диагностика включена"/>
+    </VALUES>
+    <VALUES num="2">
+      <VALUE val="0" comment="Нет ошибок"/>
+      <VALUE val="1" comment="Обрыв"/>
+      <VALUE val="2" comment="Короткое замыкание"/>
+    </VALUES>
+  </FIELD_VALUES>
+</CONF>

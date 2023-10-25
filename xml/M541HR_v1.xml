@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<CONF type="1300" name="M541HR" comment="16-канальный HART мультиплексор"> <!--0x514-->
+  <PARAM name="Reaction Time" value="10" comment="Время реакции модуля (*10мкс)" hidden="dict"/>
+	<BLK num="0" attr="RREQ" name="Конфигурация блоков" hidden="dict" struct_name="configuration">
+		<VAR size="16" value="1300" comment="тип модуля"/>
+		<VAR size="16"              comment="версия ПО"/>
+		<VAR size="16"              comment="версия аппаратной части"/>
+		<VAR size="16" value="1"    comment="версия конфигурации"/>
+		<VAR size="16" value="9"    comment="кол-во блоков"/>
+		<VAR size="16" value="0"    comment="номер блока"/>
+		<VAR size="16" value="46"   comment="размер блока"/>
+		<VAR size="16" value="1"    comment="номер блока"/>
+		<VAR size="16" value="13"   comment="размер блока"/>
+		<VAR size="16" value="3"    comment="номер блока"/>
+		<VAR size="16" value="11"   comment="размер блока"/>
+		<VAR size="16" value="4"    comment="номер блока"/>
+		<VAR size="16" value="2"    comment="размер блока"/>
+		<VAR size="16" value="7"    comment="номер блока"/>
+		<VAR size="16" value="24"   comment="размер блока"/>
+		<VAR size="16" value="8"    comment="номер блока"/>
+		<VAR size="16" value="1"    comment="размер блока"/>
+		<VAR size="16" value="9"    comment="номер блока"/>
+		<VAR size="16" value="1"    comment="размер блока"/>
+		<VAR size="16" value="10"   comment="номер блока"/>
+		<VAR size="16" value="252"  comment="размер блока"/>
+		<VAR size="16" value="11"   comment="номер блока"/>
+		<VAR size="16" value="284"  comment="размер блока"/>
+	</BLK>
+	<BLK num="1" attr="REQ" type="STAT" name="Статистика" struct_name="statistic">
+		<VAR size="32" name="Work_Time"  comment="Время наработки, сек"/>
+		<VAR size="32" name="Line1_Err"  comment="Счетчик ошибок STBUS по линии1"/>
+		<VAR size="32" name="Line2_Err"  comment="Счетчик ошибок STBUS по линии2"/>
+		<VAR size="08" name="Reset_code" comment="Код сброса"/>
+	</BLK>
+	<BLK num="3" attr="REQ" type="PARAM" name="Параметры" struct_name="param">
+		<VAR size="08" name="Type_Main"   comment="Тип главного"/>
+		<VAR size="08" name="Type_Poisk"  comment="Тип поиска контура"/>
+		<VAR size="08" name="Scan_cmd"    comment="Резерв"/>
+		<VAR size="08" name="Scan_func"   comment="Резерв"/>
+		<VAR size="08" name="Repeat_Busy" comment="Повторы при 'занято' (0..11)"/>
+		<VAR size="08" name="Repeat_Err"  comment="Повторы при ошибке (0..11)"/>
+		<VAR size="01" name="Canal_Main"  comment="Каналы на основном HART-мультиплексоре"/>
+		<VAR size="01" name="Canal_01"    comment="Модуль расширения  1"/>
+		<VAR size="01" name="Canal_02"    comment="Модуль расширения  2"/>
+		<VAR size="01" name="Canal_03"    comment="Модуль расширения  3"/>
+		<VAR size="01" name="Canal_04"    comment="Модуль расширения  4"/>
+		<VAR size="01" name="Canal_05"    comment="Модуль расширения  5"/>
+		<VAR size="01" name="Canal_06"    comment="Модуль расширения  6"/>
+		<VAR size="01" name="Canal_07"    comment="Модуль расширения  7"/>
+		<VAR size="01" name="Canal_08"    comment="Модуль расширения  8"/>
+		<VAR size="01" name="Canal_09"    comment="Модуль расширения  9"/>
+		<VAR size="01" name="Canal_10"    comment="Модуль расширения 10"/>
+		<VAR size="01" name="Canal_11"    comment="Модуль расширения 11"/>
+		<VAR size="01" name="Canal_12"    comment="Модуль расширения 12"/>
+		<VAR size="01" name="Canal_13"    comment="Модуль расширения 13"/>
+		<VAR size="01" name="Canal_14"    comment="Модуль расширения 14"/>
+		<VAR size="01" name="Canal_15"    comment="Модуль расширения 15"/>
+		<VAR size="08" name="Count_preambul" comment="Количество преамбул (2..20)"/>
+		<VAR size="16" name="Timeout"     comment="Таймаут связи с мастером, мсек"/>
+	</BLK>
+	<BLK num="4" attr="R" name="Рабочие данные на чтение" struct_name="in">
+		<SUBBLK type="STATE" name="Состояние" struct_name="state">
+		<VAR size="01" name="No_param"    comment="Нет параметров"/>
+		<VAR size="01" name="No_power1"   comment="Нет питания 1"/>
+		<VAR size="01" name="No_power2"   comment="Нет питания 2"/>
+		<VAR size="01" name="Err_line1"   comment="Ошибки связи с мастером (линия 1)"/>
+		<VAR size="01" name="Err_line2"   comment="Ошибки связи с мастером (линия 2)"/>
+		<VAR size="01" name="Init"        comment="Происходит инициализация модуля" ftype="init"/>
+		<VAR size="01" name="Reserv1"     comment="Резерв"/>
+		<VAR size="01" name="Reserv2"     comment="Резерв"/>
+		<VAR size="01" name="Sending"     comment="Идет передача по HART"/>
+		<VAR size="01" name="Ready"       comment="Доступен принятый пакет HART"/>
+		<VAR size="01" name="Err_timeout" comment="Время ожидания ответа истекло"/>
+		<VAR size="01" name="Err_send"    comment="Ошибка формата пакета на отправку"/>
+		<VAR size="01" name="Err_recv"    comment="Ошибка формата принятого пакета"/>
+		<VAR size="01" name="Err_crc"     comment="Ошибка контрольной суммы принятого пакета"/>
+		<VAR size="01" name="Err_uart"    comment="Ошибка интерфейса UART"/>
+		<VAR size="01" name="Reserv3"     comment="Резерв"/>
+		</SUBBLK>
+	</BLK>
+	<BLK num="7" attr="REQ" type="CFG" name="Заводские идентификаторы" hidden="all" struct_name="factory_id">
+		<VAR size="32" name="datetime"               comment="дата изготовления"/>
+		<VAR size="64" name="serial"                 comment="серийный номер"/>
+		<VAR size="16" name="type"                   comment="подтип"/>
+		<VAR size="32" name="CRC_FW"                 comment="контрольная сумма прошивки"/>
+		<VAR size="16" name="CRC_PRJ"                comment="контрольная сумма проекта"/>
+		<VAR size="16" name="CRC_METRO__CALIB_TERMO" comment="контрольная сумма метрологии и калибровка термодатчика"/>
+		<VAR size="16" name="HW_VER"                 comment="аппаратная версия платы"/>
+	</BLK>
+	<BLK num="8" attr="W" name="Рабочие данные на запись" struct_name="out">
+		<VAR size="08" name="Command" comment="Команда мультиплексору"/>
+	</BLK>
+	<BLK num="9" attr="REQ" type="FW_CTL" name="Управление загрузкой firmware" hidden="all" struct_name="fw_ctrl">
+		<VAR size="08" comment="Команда управления"/>
+	</BLK>
+	<BLK num="10" attr="REQ" type="FW" name="Загрузка firmware" hidden="all" struct_name="fw">
+		<VAR size="32"   comment="Адрес"/>
+		<VAR size="1984" comment="Данные на запись"/> <!--248*8-->
+	</BLK>
+	<BLK num="11" attr="REQ" name="Транзитные данные HART" hidden="no_bind" struct_name="transit_data">
+		<VAR size="2272" comment="Транзитный пакет"/> <!--284*8-->
+	</BLK>
+</CONF>

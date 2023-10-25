@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<CONF type="7188" name="M543G" comment="16-канальный импульсный вывод с изолированными каналами"> <!--0x1С14-->
+  <PARAM name="Reaction Time" value="10" comment="Время реакции модуля (*10мкс)" hidden="dict"/>
+	<BLK num="0" attr="RREQ" name="Конфигурация блоков" hidden="dict" struct_name="configuration">
+		<VAR size="16" value="7188" comment="тип модуля"/>
+		<VAR size="16"              comment="версия ПО"/>
+		<VAR size="16"              comment="версия аппаратной части"/>
+		<VAR size="16" value="6"    comment="версия конфигурации"/>
+		<VAR size="16" value="9"    comment="кол-во блоков"/>
+		<VAR size="16" value="0"    comment="номер блока"/>
+		<VAR size="16" value="46"   comment="размер блока"/>
+		<VAR size="16" value="1"    comment="номер блока"/>
+		<VAR size="16" value="18"   comment="размер блока"/>
+		<VAR size="16" value="3"    comment="номер блока"/>
+		<VAR size="16" value="9"    comment="размер блока"/>
+		<VAR size="16" value="4"    comment="номер блока"/>
+		<VAR size="16" value="23"   comment="размер блока"/>
+		<VAR size="16" value="7"    comment="номер блока"/>
+		<VAR size="16" value="24"   comment="размер блока"/>
+		<VAR size="16" value="8"    comment="номер блока"/>
+		<VAR size="16" value="84"   comment="размер блока"/>
+		<VAR size="16" value="9"    comment="номер блока"/>
+		<VAR size="16" value="1"    comment="размер блока"/>
+		<VAR size="16" value="10"   comment="номер блока"/>
+		<VAR size="16" value="252"  comment="размер блока"/>
+		<VAR size="16" value="13"   comment="номер блока"/>
+		<VAR size="16" value="12"   comment="размер блока"/>
+	</BLK>
+	<BLK num="1" attr="RREQ" type="STAT" name="Статистика" struct_name="statistic">
+		<VAR size="32" name="Work_Time"  comment="Время наработки, сек"/>
+		<VAR size="32" name="Line1_Err"  comment="Счетчик ошибок STBUS по линии1"/>
+		<VAR size="32" name="Line2_Err"  comment="Счетчик ошибок STBUS по линии2"/>
+		<VAR size="08" name="Reset_code" comment="Код сброса"/>
+		<VAR size="32" name="Mod_temp"          comment="Температура модуля"/>
+		<VAR size="01" name="Stbus_line1_err"   comment="Ошибки связи с мастером (линия 1)"/>
+		<VAR size="01" name="Stbus_line2_err"   comment="Ошибки связи с мастером (линия 2)"/>
+		<VAR size="01" name="Err_sequence"      comment="Нарушение последовательности STBUS"/>
+		<VAR size="01" name="Mod_power_low"     comment="Питание модуля ниже нормы"/>
+		<VAR size="01" name="Mod_power_high"    comment="Питание модуля выше нормы"/>
+		<VAR size="03" name="Reserv"            comment="Резерв" hidden="all"/>
+	</BLK>
+	<BLK num="3" attr="REQ" type="PARAM" name="Параметры" struct_name="param">
+ 		<SUBBLK name="Значение при обрыве связи" struct_name="default_out" cut_end="5">  
+		<VAR size="01" name="Default_CH_01" comment="Значение при обрыве связи, канал  1"/>
+		<VAR size="01" name="Default_CH_02" comment="Значение при обрыве связи, канал  2"/>
+		<VAR size="01" name="Default_CH_03" comment="Значение при обрыве связи, канал  3"/>
+		<VAR size="01" name="Default_CH_04" comment="Значение при обрыве связи, канал  4"/>
+		<VAR size="01" name="Default_CH_05" comment="Значение при обрыве связи, канал  5"/>
+		<VAR size="01" name="Default_CH_06" comment="Значение при обрыве связи, канал  6"/>
+		<VAR size="01" name="Default_CH_07" comment="Значение при обрыве связи, канал  7"/>
+		<VAR size="01" name="Default_CH_08" comment="Значение при обрыве связи, канал  8"/>
+		<VAR size="01" name="Default_CH_09" comment="Значение при обрыве связи, канал  9"/>
+		<VAR size="01" name="Default_CH_10" comment="Значение при обрыве связи, канал 10"/>
+		<VAR size="01" name="Default_CH_11" comment="Значение при обрыве связи, канал 11"/>
+		<VAR size="01" name="Default_CH_12" comment="Значение при обрыве связи, канал 12"/>
+		<VAR size="01" name="Default_CH_13" comment="Значение при обрыве связи, канал 13"/>
+		<VAR size="01" name="Default_CH_14" comment="Значение при обрыве связи, канал 14"/>
+		<VAR size="01" name="Default_CH_15" comment="Значение при обрыве связи, канал 15"/>
+		<VAR size="01" name="Default_CH_16" comment="Значение при обрыве связи, канал 16"/>
+		</SUBBLK>
+		<SUBBLK name="Общие параметры" struct_name="common">
+		<VAR size="16" name="Timeout"          comment="Таймаут связи с мастером, мсек"/>
+	        </SUBBLK>
+		<SUBBLK name="Диагностика каналов" struct_name="diag" cut_end="5">
+		<VAR size="01" name="Diag_CH_01" value="1" comment="Диагностика, канал  1" values="1"/>
+		<VAR size="01" name="Diag_CH_02" value="1" comment="Диагностика, канал  2" values="1"/>
+		<VAR size="01" name="Diag_CH_03" value="1" comment="Диагностика, канал  3" values="1"/>
+		<VAR size="01" name="Diag_CH_04" value="1" comment="Диагностика, канал  4" values="1"/>
+		<VAR size="01" name="Diag_CH_05" value="1" comment="Диагностика, канал  5" values="1"/>
+		<VAR size="01" name="Diag_CH_06" value="1" comment="Диагностика, канал  6" values="1"/>
+		<VAR size="01" name="Diag_CH_07" value="1" comment="Диагностика, канал  7" values="1"/>
+		<VAR size="01" name="Diag_CH_08" value="1" comment="Диагностика, канал  8" values="1"/>
+		<VAR size="01" name="Diag_CH_09" value="1" comment="Диагностика, канал  9" values="1"/>
+		<VAR size="01" name="Diag_CH_10" value="1" comment="Диагностика, канал 10" values="1"/>
+		<VAR size="01" name="Diag_CH_11" value="1" comment="Диагностика, канал 11" values="1"/>
+		<VAR size="01" name="Diag_CH_12" value="1" comment="Диагностика, канал 12" values="1"/>
+		<VAR size="01" name="Diag_CH_13" value="1" comment="Диагностика, канал 13" values="1"/>
+		<VAR size="01" name="Diag_CH_14" value="1" comment="Диагностика, канал 14" values="1"/>
+		<VAR size="01" name="Diag_CH_15" value="1" comment="Диагностика, канал 15" values="1"/>
+		<VAR size="01" name="Diag_CH_16" value="1" comment="Диагностика, канал 16" values="1"/> 
+		</SUBBLK>
+ 		<SUBBLK name="Режим «Два канала в противофазе»" struct_name="antiphase" cut_end="8">  
+		<VAR size="01" name="Antiphase_CH_01_02"  comment="Режим «Два канала в противофазе», канал 1 и 2 "/>
+		<VAR size="01" name="Antiphase_CH_03_04"  comment="Режим «Два канала в противофазе», канал 3 и 4 "/>
+		<VAR size="01" name="Antiphase_CH_05_06"  comment="Режим «Два канала в противофазе», канал 5 и 6 "/>
+		<VAR size="01" name="Antiphase_CH_07_08"  comment="Режим «Два канала в противофазе», канал 7 и 8 "/>
+		<VAR size="01" name="Antiphase_CH_09_10"  comment="Режим «Два канала в противофазе», канал 9 и 10 "/>
+		<VAR size="01" name="Antiphase_CH_11_12"  comment="Режим «Два канала в противофазе», канал 11 и 12 "/>
+		<VAR size="01" name="Antiphase_CH_13_14"  comment="Режим «Два канала в противофазе», канал 13 и 14 "/>
+		<VAR size="01" name="Antiphase_CH_15_16"  comment="Режим «Два канала в противофазе», канал 15 и 16 "/>
+		</SUBBLK>
+ 		<SUBBLK name="Режим «Дискретный выход»" struct_name="dout" cut_end="5">  
+		<VAR size="01" name="DO_CH_01" comment="Режим «Дискретный выход», канал 1"/>
+		<VAR size="01" name="DO_CH_02" comment="Режим «Дискретный выход», канал 2"/>
+		<VAR size="01" name="DO_CH_03" comment="Режим «Дискретный выход», канал 3"/>
+		<VAR size="01" name="DO_CH_04" comment="Режим «Дискретный выход», канал 4"/>
+		<VAR size="01" name="DO_CH_05" comment="Режим «Дискретный выход», канал 5"/>
+		<VAR size="01" name="DO_CH_06" comment="Режим «Дискретный выход», канал 6"/>
+		<VAR size="01" name="DO_CH_07" comment="Режим «Дискретный выход», канал 7"/>
+		<VAR size="01" name="DO_CH_08" comment="Режим «Дискретный выход», канал 8"/>
+		<VAR size="01" name="DO_CH_09" comment="Режим «Дискретный выход», канал 9"/>
+		<VAR size="01" name="DO_CH_10" comment="Режим «Дискретный выход», канал 10"/>
+		<VAR size="01" name="DO_CH_11" comment="Режим «Дискретный выход», канал 11"/>
+		<VAR size="01" name="DO_CH_12" comment="Режим «Дискретный выход», канал 12"/>
+		<VAR size="01" name="DO_CH_13" comment="Режим «Дискретный выход», канал 13"/>
+		<VAR size="01" name="DO_CH_14" comment="Режим «Дискретный выход», канал 14"/>
+		<VAR size="01" name="DO_CH_15" comment="Режим «Дискретный выход», канал 15"/>
+		<VAR size="01" name="DO_CH_16" comment="Режим «Дискретный выход», канал 16"/>
+		</SUBBLK>
+	</BLK>
+	<BLK num="4" attr="R" name="Рабочие данные на чтение" struct_name="in">
+		<SUBBLK type="STATE" name="Состояние" struct_name="state">
+			<VAR size="01" name="No_param"       comment="Нет параметров"/>
+			<VAR size="01" name="Err_hard"       comment="Аппаратная ошибка" ftype="Err_hard"/>
+			<VAR size="01" name="Err_ext_con"    comment="Ошибка внешних подключений"/>
+			<VAR size="01" name="Err_stbus"      comment="Ошибки связи STBUS"/>
+			<VAR size="01" name="Err_mod_power"  comment="Ошибка питания модуля"/>
+			<VAR size="01" name="Err_CH_power"   comment="Ошибка питания каналов"/>
+			<VAR size="02" name="rez1"           comment="резерв" hidden="all"/>
+		</SUBBLK>
+		<SUBBLK type="CH_DIAG" name="Поканальная диагностика" struct_name="error" cut_end="5">
+		<VAR size="02" name="Err_CH_01" comment="Ошибки, канал  1" farg="1" values="2"/>
+		<VAR size="02" name="Err_CH_02" comment="Ошибки, канал  2" farg="2" values="2"/>
+		<VAR size="02" name="Err_CH_03" comment="Ошибки, канал  3" farg="3" values="2"/>
+		<VAR size="02" name="Err_CH_04" comment="Ошибки, канал  4" farg="4" values="2"/>
+		<VAR size="02" name="Err_CH_05" comment="Ошибки, канал  5" farg="5" values="2"/>
+		<VAR size="02" name="Err_CH_06" comment="Ошибки, канал  6" farg="6" values="2"/>
+		<VAR size="02" name="Err_CH_07" comment="Ошибки, канал  7" farg="7" values="2"/>
+		<VAR size="02" name="Err_CH_08" comment="Ошибки, канал  8" farg="8" values="2"/>
+		<VAR size="02" name="Err_CH_09" comment="Ошибки, канал  9" farg="9" values="2"/>
+		<VAR size="02" name="Err_CH_10" comment="Ошибки, канал 10" farg="10" values="2"/>
+		<VAR size="02" name="Err_CH_11" comment="Ошибки, канал 11" farg="11" values="2"/>
+		<VAR size="02" name="Err_CH_12" comment="Ошибки, канал 12" farg="12" values="2"/>
+		<VAR size="02" name="Err_CH_13" comment="Ошибки, канал 13" farg="13" values="2"/>
+		<VAR size="02" name="Err_CH_14" comment="Ошибки, канал 14" farg="14" values="2"/>
+		<VAR size="02" name="Err_CH_15" comment="Ошибки, канал 15" farg="15" values="2"/>
+		<VAR size="02" name="Err_CH_16" comment="Ошибки, канал 16" farg="16" values="2"/>
+            </SUBBLK>
+            <SUBBLK name="Флаги отработки одиночных или пачки импульсов" struct_name="flag_pulse" cut_end="5">  
+            <VAR size="01" name="Flag_Pulse_CH_01" comment="Флаг отработки одиночных импульсов канала  1"/>
+		<VAR size="01" name="Flag_Pulse_CH_02" comment="Флаг отработки одиночных импульсов канала  2"/>
+		<VAR size="01" name="Flag_Pulse_CH_03" comment="Флаг отработки одиночных импульсов канала  3"/>
+		<VAR size="01" name="Flag_Pulse_CH_04" comment="Флаг отработки одиночных импульсов канала  4"/>
+		<VAR size="01" name="Flag_Pulse_CH_05" comment="Флаг отработки одиночных импульсов канала  5"/>
+		<VAR size="01" name="Flag_Pulse_CH_06" comment="Флаг отработки одиночных импульсов канала  6"/>
+		<VAR size="01" name="Flag_Pulse_CH_07" comment="Флаг отработки одиночных импульсов канала  7"/>
+		<VAR size="01" name="Flag_Pulse_CH_08" comment="Флаг отработки одиночных импульсов канала  8"/>
+		<VAR size="01" name="Flag_Pulse_CH_09" comment="Флаг отработки одиночных импульсов канала  9"/>
+		<VAR size="01" name="Flag_Pulse_CH_10" comment="Флаг отработки одиночных импульсов канала 10"/>
+		<VAR size="01" name="Flag_Pulse_CH_11" comment="Флаг отработки одиночных импульсов канала 11"/>
+		<VAR size="01" name="Flag_Pulse_CH_12" comment="Флаг отработки одиночных импульсов канала 12"/>
+		<VAR size="01" name="Flag_Pulse_CH_13" comment="Флаг отработки одиночных импульсов канала 13"/>
+		<VAR size="01" name="Flag_Pulse_CH_14" comment="Флаг отработки одиночных импульсов канала 14"/>
+		<VAR size="01" name="Flag_Pulse_CH_15" comment="Флаг отработки одиночных импульсов канала 15"/>
+		<VAR size="01" name="Flag_Pulse_CH_16" comment="Флаг отработки одиночных импульсов канала 16"/>        
+	        </SUBBLK>
+               <SUBBLK name="Счётчики импульсов(режим генерации импульсов)" struct_name="cnt_pulse" cut_end="5"> 
+		<VAR size="08"  name="Cnt_Pulse_CH_01" comment="Количество импульсов ШИМ в канале 1"/>
+		<VAR size="08"  name="Cnt_Pulse_CH_02" comment="Количество импульсов ШИМ в канале 2"/>
+		<VAR size="08"  name="Cnt_Pulse_CH_03" comment="Количество импульсов ШИМ в канале 3"/>
+		<VAR size="08"  name="Cnt_Pulse_CH_04" comment="Количество импульсов ШИМ в канале 4"/>
+		<VAR size="08"  name="Cnt_Pulse_CH_05" comment="Количество импульсов ШИМ в канале 5"/>
+		<VAR size="08"  name="Cnt_Pulse_CH_06" comment="Количество импульсов ШИМ в канале 6"/>
+		<VAR size="08"  name="Cnt_Pulse_CH_07" comment="Количество импульсов ШИМ в канале 7"/>
+		<VAR size="08"  name="Cnt_Pulse_CH_08" comment="Количество импульсов ШИМ в канале 8"/>  
+		<VAR size="08"  name="Cnt_Pulse_CH_09" comment="Количество импульсов ШИМ в канале 9"/>
+		<VAR size="08"  name="Cnt_Pulse_CH_10" comment="Количество импульсов ШИМ в канале 10"/>
+		<VAR size="08"  name="Cnt_Pulse_CH_11" comment="Количество импульсов ШИМ в канале 11"/>
+		<VAR size="08"  name="Cnt_Pulse_CH_12" comment="Количество импульсов ШИМ в канале 12"/>
+		<VAR size="08"  name="Cnt_Pulse_CH_13" comment="Количество импульсов ШИМ в канале 13"/>
+		<VAR size="08"  name="Cnt_Pulse_CH_14" comment="Количество импульсов ШИМ в канале 14"/>
+		<VAR size="08"  name="Cnt_Pulse_CH_15" comment="Количество импульсов ШИМ в канале 15"/>
+        	<VAR size="08"  name="Cnt_Pulse_CH_16" comment="Количество импульсов ШИМ в канале 16"/> 
+                </SUBBLK>
+	</BLK>
+	<BLK num="7" attr="REQ" type="CFG" name="Заводские идентификаторы" hidden="all" struct_name="factory_id">
+		<VAR size="32" name="datetime"               comment="дата изготовления"/>
+		<VAR size="64" name="serial"                 comment="серийный номер"/>
+		<VAR size="16" name="type"                   comment="подтип"/>
+		<VAR size="32" name="CRC_FW"                 comment="контрольная сумма прошивки"/>
+		<VAR size="16" name="CRC_PRJ"                comment="контрольная сумма проекта"/>
+		<VAR size="16" name="CRC_METRO__CALIB_TERMO" comment="контрольная сумма метрологии и калибровка термодатчика"/>
+		<VAR size="16" name="HW_VER"                 comment="аппаратная версия платы"/>
+	</BLK>
+	<BLK num="8" attr="W" name="Рабочие данные на запись" struct_name="out">
+		<SUBBLK type="CANAL" name="Каналы" struct_name="value">
+		<VAR size="01" name="CH_01" comment="Значение канала  1" farg="1"/>
+		<VAR size="01" name="CH_02" comment="Значение канала  2" farg="2"/>
+		<VAR size="01" name="CH_03" comment="Значение канала  3" farg="3"/>
+		<VAR size="01" name="CH_04" comment="Значение канала  4" farg="4"/>
+		<VAR size="01" name="CH_05" comment="Значение канала  5" farg="5"/>
+		<VAR size="01" name="CH_06" comment="Значение канала  6" farg="6"/>
+		<VAR size="01" name="CH_07" comment="Значение канала  7" farg="7"/>
+		<VAR size="01" name="CH_08" comment="Значение канала  8" farg="8"/>
+		<VAR size="01" name="CH_09" comment="Значение канала  9" farg="9"/>
+		<VAR size="01" name="CH_10" comment="Значение канала 10" farg="10"/>
+		<VAR size="01" name="CH_11" comment="Значение канала 11" farg="11"/>
+		<VAR size="01" name="CH_12" comment="Значение канала 12" farg="12"/>
+		<VAR size="01" name="CH_13" comment="Значение канала 13" farg="13"/>
+		<VAR size="01" name="CH_14" comment="Значение канала 14" farg="14"/>
+		<VAR size="01" name="CH_15" comment="Значение канала 15" farg="15"/>
+		<VAR size="01" name="CH_16" comment="Значение канала 16" farg="16"/>
+		</SUBBLK>
+ 		<SUBBLK name="Параметры каналов ШИМ" struct_name="pwm"> 
+ 		<VAR size="16" name="Period_CH_01" comment="Период импульсов ШИМ в канале 1, мсек*0,2"/>
+		<VAR size="16" name="Duration_CH_01" comment="Длительность импульсов ШИМ в канале 1, мсек*0,2"/> 
+		<VAR size="16" name="Period_CH_02" comment="Период импульсов ШИМ в канале 2, мсек*0,2"/>
+		<VAR size="16" name="Duration_CH_02" comment="Длительность импульсов ШИМ в канале 2, мсек*0,2"/> 
+		<VAR size="16" name="Period_CH_03" comment="Период импульсов ШИМ в канале 3, мсек*0,2"/>
+		<VAR size="16" name="Duration_CH_03" comment="Длительность импульсов ШИМ в канале 3, мсек*0,2"/> 
+		<VAR size="16" name="Period_CH_04" comment="Период импульсов ШИМ в канале 4, мсек*0,2"/>
+		<VAR size="16" name="Duration_CH_04" comment="Длительность импульсов ШИМ в канале 4, мсек*0,2"/> 
+		<VAR size="16" name="Period_CH_05" comment="Период импульсов ШИМ в канале 5, мсек*0,2"/>
+		<VAR size="16" name="Duration_CH_05" comment="Длительность импульсов ШИМ в канале 5, мсек*0,2"/> 
+		<VAR size="16" name="Period_CH_06" comment="Период импульсов ШИМ в канале 6, мсек*0,2"/>
+		<VAR size="16" name="Duration_CH_06" comment="Длительность импульсов ШИМ в канале 6, мсек*0,2"/> 
+		<VAR size="16" name="Period_CH_07" comment="Период импульсов ШИМ в канале 7, мсек*0,2"/>
+		<VAR size="16" name="Duration_CH_07" comment="Длительность импульсов ШИМ в канале 7, мсек*0,2"/> 
+		<VAR size="16" name="Period_CH_08" comment="Период импульсов ШИМ в канале 8, мсек*0,2"/>
+		<VAR size="16" name="Duration_CH_08" comment="Длительность импульсов ШИМ в канале 8, мсек*0,2"/> 
+		<VAR size="16" name="Period_CH_09" comment="Период импульсов ШИМ в канале 9, мсек*0,2"/>
+		<VAR size="16" name="Duration_CH_09" comment="Длительность импульсов ШИМ в канале 9, мсек*0,2"/> 
+		<VAR size="16" name="Period_CH_10" comment="Период импульсов ШИМ в канале 10, мсек*0,2"/>
+		<VAR size="16" name="Duration_CH_10" comment="Длительность импульсов ШИМ в канале 10, мсек*0,2"/>
+		<VAR size="16" name="Period_CH_11" comment="Период импульсов ШИМ в канале 11, мсек*0,2"/>
+		<VAR size="16" name="Duration_CH_11" comment="Длительность импульсов ШИМ в канале 11, мсек*0,2"/>
+		<VAR size="16" name="Period_CH_12" comment="Период импульсов ШИМ в канале 12, мсек*0,2"/>
+		<VAR size="16" name="Duration_CH_12" comment="Длительность импульсов ШИМ в канале 12, мсек*0,2"/>
+		<VAR size="16" name="Period_CH_13" comment="Период импульсов ШИМ в канале 13, мсек*0,2"/>
+		<VAR size="16" name="Duration_CH_13" comment="Длительность импульсов ШИМ в канале 13, мсек"/>    
+		<VAR size="16" name="Period_CH_14" comment="Период импульсов ШИМ в канале 14, мсек*0,2"/>
+		<VAR size="16" name="Duration_CH_14" comment="Длительность импульсов ШИМ в канале 14, мсек*0,2"/>
+		<VAR size="16" name="Period_CH_15" comment="Период импульсов ШИМ в канале 15, мсек*0,2"/>
+		<VAR size="16" name="Duration_CH_15" comment="Длительность импульсов ШИМ в канале 15, мсек*0,2"/>
+		<VAR size="16" name="Period_CH_16" comment="Период импульсов ШИМ в канале 16, мсек*0,2"/>
+		<VAR size="16" name="Duration_CH_16" comment="Длительность импульсов ШИМ в канале 16, мсек*0,2"/> 
+ 		<VAR size="01" name="Pulse_CH_01" comment="Установить импульс в режиме ШИМ, канал 1"/>
+		<VAR size="01" name="Pulse_CH_02" comment="Установить импульс в режиме ШИМ», канал 2"/>
+		<VAR size="01" name="Pulse_CH_03" comment="Установить импульс в режиме ШИМ», канал 3"/>
+		<VAR size="01" name="Pulse_CH_04" comment="Установить импульс в режиме ШИМ», канал 4"/>
+		<VAR size="01" name="Pulse_CH_05" comment="Установить импульс в режиме ШИМ», канал 5"/>
+		<VAR size="01" name="Pulse_CH_06" comment="Установить импульс в режиме ШИМ», канал 6"/>
+		<VAR size="01" name="Pulse_CH_07" comment="Установить импульс в режиме ШИМ», канал 7"/>
+		<VAR size="01" name="Pulse_CH_08" comment="Установить импульс в режиме ШИМ», канал 8"/>
+		<VAR size="01" name="Pulse_CH_09" comment="Установить импульс в режиме ШИМ», канал 9"/>
+		<VAR size="01" name="Pulse_CH_10" comment="Установить импульс в режиме ШИМ», канал 10"/>
+		<VAR size="01" name="Pulse_CH_11" comment="Установить импульс в режиме ШИМ», канал 11"/>
+		<VAR size="01" name="Pulse_CH_12" comment="Установить импульс в режиме ШИМ», канал 12"/>
+		<VAR size="01" name="Pulse_CH_13" comment="Установить импульс в режиме ШИМ», канал 13"/>
+		<VAR size="01" name="Pulse_CH_14" comment="Установить импульс в режиме ШИМ», канал 14"/>
+		<VAR size="01" name="Pulse_CH_15" comment="Установить импульс в режиме ШИМ», канал 15"/>
+		<VAR size="01" name="Pulse_CH_16" comment="Установить импульс в режиме ШИМ», канал 16"/> 
+		</SUBBLK> 
+                <SUBBLK name="Количество импульсов(режим генерации импульсов)" struct_name="number_pulse" cut_end="5"> 
+		<VAR size="08"  name="Number_Pulse_CH_01" comment="Количество импульсов ШИМ в канале 1"/>
+		<VAR size="08"  name="Number_Pulse_CH_02" comment="Количество импульсов ШИМ в канале 2"/>
+		<VAR size="08"  name="Number_Pulse_CH_03" comment="Количество импульсов ШИМ в канале 3"/>
+		<VAR size="08"  name="Number_Pulse_CH_04" comment="Количество импульсов ШИМ в канале 4"/>
+		<VAR size="08"  name="Number_Pulse_CH_05" comment="Количество импульсов ШИМ в канале 5"/>
+		<VAR size="08"  name="Number_Pulse_CH_06" comment="Количество импульсов ШИМ в канале 6"/>
+		<VAR size="08"  name="Number_Pulse_CH_07" comment="Количество импульсов ШИМ в канале 7"/>
+		<VAR size="08"  name="Number_Pulse_CH_08" comment="Количество импульсов ШИМ в канале 8"/>  
+		<VAR size="08"  name="Number_Pulse_CH_09" comment="Количество импульсов ШИМ в канале 9"/>
+		<VAR size="08"  name="Number_Pulse_CH_10" comment="Количество импульсов ШИМ в канале 10"/>
+		<VAR size="08"  name="Number_Pulse_CH_11" comment="Количество импульсов ШИМ в канале 11"/>
+		<VAR size="08"  name="Number_Pulse_CH_12" comment="Количество импульсов ШИМ в канале 12"/>
+		<VAR size="08"  name="Number_Pulse_CH_13" comment="Количество импульсов ШИМ в канале 13"/>
+		<VAR size="08"  name="Number_Pulse_CH_14" comment="Количество импульсов ШИМ в канале 14"/>
+		<VAR size="08"  name="Number_Pulse_CH_15" comment="Количество импульсов ШИМ в канале 15"/>
+        	<VAR size="08"  name="Number_Pulse_CH_16" comment="Количество импульсов ШИМ в канале 16"/> 
+                </SUBBLK>
+	</BLK>
+	<BLK num="9" attr="REQ" type="FW_CTL" name="Управление загрузкой firmware" hidden="all" struct_name="fw_ctrl">
+		<VAR size="08" comment="команда управления"/>
+	</BLK>
+	<BLK num="10" attr="REQ" type="FW" name="Загрузка firmware" hidden="all" struct_name="fw">
+		<VAR size="32"   comment="адрес"/>
+		<VAR size="1984" comment="данные на запись"/> <!--248*8-->
+	</BLK>
+  <FIELD_VALUES>
+    <VALUES num="1">
+      <VALUE val="0" comment="Диагностика отключена"/>
+      <VALUE val="1" comment="Диагностика включена"/>
+    </VALUES> 
+    <VALUES num="2">
+      <VALUE val="0" comment="Нет ошибок"/>
+      <VALUE val="1" comment="Неисправность канала(перегрузка, КЗ)"/>
+      <VALUE val="2" comment="Обрыв"/>
+      <VALUE val="3" comment="Значения канала недостоверны"/>
+    </VALUES>
+  </FIELD_VALUES>
+</CONF>

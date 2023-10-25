@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<CONF type="14100" name="M531TR" comment="8-канальный ввод термоcопротивления"> <!--0x3714-->
+  <PARAM name="Reaction Time" value="10" comment="Время реакции модуля (*10мкс)" hidden="dict"/>
+	<BLK num="0" attr="RREQ" name="Конфигурация блоков" hidden="dict">
+		<VAR size="16" value="14100" comment="тип модуля"/>
+		<VAR size="16"              comment="версия ПО"/>
+		<VAR size="16"              comment="версия аппаратной части"/>
+		<VAR size="16" value="1"    comment="версия конфигурации"/>
+		<VAR size="16" value="9"    comment="кол-во блоков"/>
+		<VAR size="16" value="0"    comment="номер блока"/>
+		<VAR size="16" value="46"   comment="размер блока"/>
+		<VAR size="16" value="1"    comment="номер блока"/>
+		<VAR size="16" value="15"   comment="размер блока"/>
+		<VAR size="16" value="2"    comment="номер блока"/>
+		<VAR size="16" value="95"   comment="размер блока"/>
+		<VAR size="16" value="3"    comment="номер блока"/>
+		<VAR size="16" value="26"    comment="размер блока"/>
+		<VAR size="16" value="4"    comment="номер блока"/>
+		<VAR size="16" value="42"   comment="размер блока"/>
+		<VAR size="16" value="6"    comment="номер блока"/>
+		<VAR size="16" value="1"   comment="размер блока"/>			
+		<VAR size="16" value="7"    comment="номер блока"/>
+		<VAR size="16" value="24"   comment="размер блока"/>
+		<VAR size="16" value="9"    comment="номер блока"/>
+		<VAR size="16" value="1"    comment="размер блока"/>
+		<VAR size="16" value="10"   comment="номер блока"/>
+		<VAR size="16" value="252"  comment="размер блока"/>
+	</BLK>
+	<BLK num="1" attr="REQ" type="STAT" name="Статистика">
+		<VAR size="32" name="Work_Time"      comment="Время наработки, сек"/>
+		<VAR size="32" name="Line1_Err"      comment="Счетчик ошибок STBUS по линии1"/>
+		<VAR size="32" name="Line2_Err"      comment="Счетчик ошибок STBUS по линии2"/>
+		<VAR size="08" name="Reset_code"     comment="Код сброса"/>
+		<VAR size="02" name="Metro_CH_01" comment="Флаги метрологии, канал  1"/>
+		<VAR size="02" name="Metro_CH_02" comment="Флаги метрологии, канал  2"/>
+		<VAR size="02" name="Metro_CH_03" comment="Флаги метрологии, канал  3"/>
+		<VAR size="02" name="Metro_CH_04" comment="Флаги метрологии, канал  4"/>
+		<VAR size="02" name="Metro_CH_05" comment="Флаги метрологии, канал  5"/>
+		<VAR size="02" name="Metro_CH_06" comment="Флаги метрологии, канал  6"/>
+		<VAR size="02" name="Metro_CH_07" comment="Флаги метрологии, канал  7"/>
+		<VAR size="02" name="Metro_CH_08" comment="Флаги метрологии, канал  8"/>
+	</BLK>
+	<BLK num="2" attr="REQ" type="METRO" name="Метрология" hidden="all">
+		<VAR size="08"  comment="признак"/>
+		<VAR size="16"  comment="код юнита (резерв)"/>
+		<VAR size="08"  comment="код юнита (резерв)"/>	
+		<VAR size="08"  comment="номер канала"/>
+		<VAR size="08"  comment="тип канала (резерв)"/>		
+		<VAR size="08"  comment="блокировка"/>
+		<VAR size="32"  comment="код АЦП на канале"/>
+		<VAR type="rea" comment="физическое значение на канале"/>		
+		<VAR size="32"  comment="максимум_1"/>	
+		<VAR size="32"  comment="минимум_1"/>	
+		<VAR size="32"  comment="максимум_2"/>		
+		<VAR size="32"  comment="минимум_2"/>	
+		<VAR size="32"  comment="максимум_3"/>	
+		<VAR size="32"  comment="минимум_3"/>	
+		<VAR size="32"  comment="максимум_4"/>	
+		<VAR size="32"  comment="минимум_4"/>	
+		<VAR size="32"  comment="максимум_5"/>	
+		<VAR size="32"  comment="минимум_5"/>	
+		<VAR size="32"  comment="максимум_6"/>	
+		<VAR size="32"  comment="минимум_6"/>	
+		<VAR size="32"  comment="максимум_7"/>		
+		<VAR size="32"  comment="минимум_7"/>	
+		<VAR size="32"  comment="максимум_8"/>	
+		<VAR size="32"  comment="минимум_8"/>	
+		<VAR size="32"  comment="максимум_9"/>	
+		<VAR size="32"  comment="минимум_9"/>	
+		<VAR size="32"  comment="максимум_10"/>	
+		<VAR size="32"  comment="минимум_10"/>	
+		
+	</BLK>
+	<BLK num="3" attr="REQ" type="PARAM" name="Параметры">
+		<SUBBLK  name="Параметры канала 1">
+			<VAR size="8" name="Type_CH_01" comment="Тип канала 1" farg="1" values="1"/>
+			<VAR size="8" name="Connect_CH_01" comment="Тип подключения канала 1" farg="1" values="2"/>
+			<VAR size="8" name="Filter_CH_01" comment="Фильтрация канала 1" values="3"/>
+		</SUBBLK>
+		<SUBBLK  name="Параметры канала 2">
+			<VAR size="8" name="Type_CH_02" comment="Тип канала 2" farg="2" values="1"/>
+			<VAR size="8" name="Connect_CH_02" comment="Тип подключения канала 2" farg="2" values="2"/>
+			<VAR size="8" name="Filter_CH_02" comment="Фильтрация канала 2"  values="3"/>
+		</SUBBLK>		
+		<SUBBLK  name="Параметры канала 3">
+			<VAR size="8" name="Type_CH_03" comment="Тип канала 3" farg="3" values="1"/>
+			<VAR size="8" name="Connect_CH_03" comment="Тип подключения канала 3" farg="3" values="2"/>
+			<VAR size="8" name="Filter_CH_03" comment="Фильтрация канала 3"  values="3"/>
+		</SUBBLK>
+		<SUBBLK  name="Параметры канала 4">
+			<VAR size="8" name="Type_CH_04" comment="Тип канала 4" farg="4" values="1"/>
+			<VAR size="8" name="Connect_CH_04" comment="Тип подключения канала 4" farg="4" values="2"/>
+			<VAR size="8" name="Filter_CH_04" comment="Фильтрация канала 4"  values="3"/>
+		</SUBBLK>	
+		<SUBBLK  name="Параметры канала 5">
+			<VAR size="8" name="Type_CH_05" comment="Тип канала 5" farg="5" values="1"/>
+			<VAR size="8" name="Connect_CH_05" comment="Тип подключения канала 5" farg="5" values="2"/>
+			<VAR size="8" name="Filter_CH_05" comment="Фильтрация канала 5"  values="3"/>
+		</SUBBLK>
+		<SUBBLK  name="Параметры канала 6">
+			<VAR size="8" name="Type_CH_06" comment="Тип канала 6" farg="6" values="1"/>
+			<VAR size="8" name="Connect_CH_06" comment="Тип подключения канала 6" farg="6" values="2"/>
+			<VAR size="8" name="Filter_CH_06" comment="Фильтрация канала 6"  values="3"/>
+		</SUBBLK>		
+		<SUBBLK  name="Параметры канала 7">
+			<VAR size="8" name="Type_CH_07" comment="Тип канала 7" farg="7" values="1"/>
+			<VAR size="8" name="Connect_CH_07" comment="Тип подключения канала 7" farg="7" values="2"/>
+			<VAR size="8" name="Filter_CH_07" comment="Фильтрация канала 7"  values="3"/>
+		</SUBBLK>
+		<SUBBLK  name="Параметры канала 8">
+			<VAR size="8" name="Type_CH_08" comment="Тип канала 8" farg="8" values="1"/>
+			<VAR size="8" name="Connect_CH_08" comment="Тип подключения канала 8" farg="8" values="2"/>
+			<VAR size="8" name="Filter_CH_08" comment="Фильтрация канала 8"  values="3"/>
+		</SUBBLK>	
+		<SUBBLK  name="Общие параметры">
+			<VAR size="16" name="Timeout" comment="Таймаут связи с мастером, мсек"/>
+		</SUBBLK>		
+	</BLK>
+	<BLK num="4" attr="R" name="Рабочие данные на чтение">
+		<SUBBLK type="STATE" name="Состояние">
+		<VAR size="01"  name="No_param"         comment="Нет параметров"/>
+		<VAR size="01" name="Power_low1"     comment="Питание ниже нормы (линия 1)"/>
+		<VAR size="01" name="Power_high1"    comment="Питание выше нормы (линия 1)"/>
+		<VAR size="01" name="Power_low2"   	 comment="Питание ниже нормы (линия 2)"/>
+		<VAR size="01" name="Power_high2"    comment="Питание выше нормы (линия 2)"/>		
+		<VAR size="01"  name="Err_line1"        comment="Ошибки связи с мастером (линия 1)"/>
+		<VAR size="01"  name="Err_line2"        comment="Ошибки связи с мастером (линия 2)"/>
+		<VAR size="01" name="Not_ready" ftype="Not_ready" comment="Значения модуля недостоверны"/>
+        <VAR size="01" name="Energy_save" ftype="Energy_save" comment="Режим энергосбережения"/>	 
+		<VAR size="07"  name="Reserv"           comment="Резерв" hidden="all"/>				
+		<VAR size="01"  name="Err_line_ACP1"    comment="Ошибка связи с АЦП, канал 1"/>
+		<VAR size="01"  name="Err_line_ACP2"    comment="Ошибка связи с АЦП, канал 2"/>
+		<VAR size="01"  name="Err_line_ACP3"    comment="Ошибка связи с АЦП, канал 3"/>		
+		<VAR size="01"  name="Err_line_ACP4"    comment="Ошибка связи с АЦП, канал 4"/>
+		<VAR size="01"  name="Err_line_ACP5"    comment="Ошибка связи с АЦП, канал 5"/>
+		<VAR size="01"  name="Err_line_ACP6"    comment="Ошибка связи с АЦП, канал 6"/>
+		<VAR size="01"  name="Err_line_ACP7"    comment="Ошибка связи с АЦП, канал 7"/>		
+		<VAR size="01"  name="Err_line_ACP8"    comment="Ошибка связи с АЦП, канал 8"/>	
+		<VAR size="01"  name="Err_EEPROM1"    comment="Ошибка EEPROM, канал 1"/>
+		<VAR size="01"  name="Err_EEPROM2"    comment="Ошибка EEPROM, канал 2"/>
+		<VAR size="01"  name="Err_EEPROM3"    comment="Ошибка EEPROM, канал 3"/>
+		<VAR size="01"  name="Err_EEPROM4"    comment="Ошибка EEPROM, канал 4"/>
+		<VAR size="01"  name="Err_EEPROM5"    comment="Ошибка EEPROM, канал 5"/>
+		<VAR size="01"  name="Err_EEPROM6"    comment="Ошибка EEPROM, канал 6"/>
+		<VAR size="01"  name="Err_EEPROM7"    comment="Ошибка EEPROM, канал 7"/>
+		<VAR size="01"  name="Err_EEPROM8"    comment="Ошибка EEPROM, канал 8"/>
+		<VAR size="01"  name="Err_kalib"   comment="На модуле откалиброваны не все каналы"/>
+		<VAR size="01"  name="Err_izm"     		comment="Ошибка измерений на включенных каналах"/>		
+		<VAR size="06"  name="Reserv"           comment="Резерв" hidden="all"/>
+		<VAR size="08"  name="Reserv"           comment="Резерв" hidden="all"/>		
+		</SUBBLK>
+		<SUBBLK type="CANAL" name="Каналы" alg="TR">
+		<VAR size="32" type="rea" name="CH_01" comment="Значение канала  1" farg="1"/>
+		<VAR size="32" type="rea" name="CH_02" comment="Значение канала  2" farg="2"/>
+		<VAR size="32" type="rea" name="CH_03" comment="Значение канала  3" farg="3"/>
+		<VAR size="32" type="rea" name="CH_04" comment="Значение канала  4" farg="4"/>
+		<VAR size="32" type="rea" name="CH_05" comment="Значение канала  5" farg="5"/>
+		<VAR size="32" type="rea" name="CH_06" comment="Значение канала  6" farg="6"/>
+		<VAR size="32" type="rea" name="CH_07" comment="Значение канала  7" farg="7"/>
+		<VAR size="32" type="rea" name="CH_08" comment="Значение канала  8" farg="8"/>		
+		</SUBBLK>
+		<SUBBLK type="CH_DIAG" name="Поканальная диагностика">
+		<VAR size="04"  name="Err_CH_01"     comment="Ошибки, канал  1" farg="1"  values="4"/>
+		<VAR size="04"  name="Err_CH_02"     comment="Ошибки, канал  2" farg="2"  values="4"/>
+		<VAR size="04"  name="Err_CH_03"     comment="Ошибки, канал  3" farg="3"  values="4"/>
+		<VAR size="04"  name="Err_CH_04"     comment="Ошибки, канал  4" farg="4"  values="4"/>
+		<VAR size="04"  name="Err_CH_05"     comment="Ошибки, канал  5" farg="5"  values="4"/>
+		<VAR size="04"  name="Err_CH_06"     comment="Ошибки, канал  6" farg="6"  values="4"/>
+		<VAR size="04"  name="Err_CH_07"     comment="Ошибки, канал  7" farg="7"  values="4"/>
+		<VAR size="04"  name="Err_CH_08"     comment="Ошибки, канал  8" farg="8"  values="4"/>
+		</SUBBLK>
+	</BLK>
+	<BLK num="6" attr="REQ" name="Режим энергосбережения" hidden="all">
+		<VAR size="8" comment="признак активации режима энергосбережения"/>
+	</BLK>	
+	<BLK num="7" attr="REQ" type="CFG" name="Заводские идентификаторы" hidden="all">
+		<VAR size="32" name="datetime"               comment="дата изготовления"/>
+		<VAR size="64" name="serial"                 comment="серийный номер"/>
+		<VAR size="16" name="type"                   comment="подтип"/>
+		<VAR size="32" name="CRC_FW"                 comment="контрольная сумма прошивки"/>
+		<VAR size="16" name="CRC_PRJ"                comment="контрольная сумма проекта"/>
+		<VAR size="16" name="CRC_METRO__CALIB_TERMO" comment="контрольная сумма метрологии и калибровка термодатчика"/>
+		<VAR size="16" name="HW_VER"                 comment="аппаратная версия платы"/>
+	</BLK>
+	<BLK num="9" attr="REQ" type="FW_CTL" name="Управление загрузкой firmware" hidden="all">
+		<VAR size="08" comment="команда управления"/>
+	</BLK>
+	<BLK num="10" attr="REQ" type="FW" name="Загрузка firmware" hidden="all">
+		<VAR size="32"   comment="адрес"/>
+		<VAR size="1984" comment="данные на запись"/> <!--248*8-->
+	</BLK>
+	
+  <FIELD_VALUES>
+    <VALUES num="1">
+      <VALUE val="0" comment="Отключен"/>
+	  <VALUE val="1" comment="50P"/>
+      <VALUE val="2" comment="50PC"/>		  
+      <VALUE val="3" comment="50PA"/>
+      <VALUE val="4" comment="100P"/>	  
+      <VALUE val="5" comment="100PC"/>	  
+      <VALUE val="6" comment="100PA"/> 
+	  <VALUE val="7" comment="50PT"/>	  
+      <VALUE val="8" comment="50PTC"/>		  
+      <VALUE val="9" comment="50PTA"/>	
+      <VALUE val="10" comment="100PT"/>	  
+      <VALUE val="11" comment="100PTC"/>		  
+      <VALUE val="12" comment="100PTA"/>
+      <VALUE val="13" comment="50PB"/>
+	  <VALUE val="14" comment="50PBC"/>
+      <VALUE val="15" comment="50PBA"/>
+      <VALUE val="16" comment="100PB"/>
+      <VALUE val="17" comment="100PBC"/>	  
+      <VALUE val="18" comment="100PBA"/>
+      <VALUE val="19" comment="50M"/>
+      <VALUE val="20" comment="50MC"/>	  
+      <VALUE val="21" comment="50MA"/>
+      <VALUE val="22" comment="100M"/>
+      <VALUE val="23" comment="100MC"/>	 	  
+      <VALUE val="24" comment="100MA"/>
+      <VALUE val="25" comment="100N"/> 
+      <VALUE val="26" comment="21"/>
+      <VALUE val="27" comment="23"/>
+      <VALUE val="28" comment="1000N"/>			  
+      <VALUE val="29" comment="100"/>	 
+      <VALUE val="30" comment="250"/>
+      <VALUE val="31" comment="500"/>
+      <VALUE val="32" comment="1000"/>	  
+      <VALUE val="33" comment="2000"/>		  
+	
+    </VALUES>
+    <VALUES num="2">
+	   <VALUE val="0" comment="4 провода"/>
+	   <VALUE val="1" comment="3 провода"/>		   
+    </VALUES>		
+    <VALUES num="3">
+	  <VALUE val="0" comment="120 мсек"/>
+	  <VALUE val="1" comment="16 мсек"/>
+	  <VALUE val="2" comment="101 мсек"/>
+	  <VALUE val="3" comment="480 мсек"/>		   
+    </VALUES>			
+    <VALUES num="4">
+        <VALUE val="0" comment="нет ошибок"/>
+        <VALUE val="1" comment="канал неоткалиброван"/>
+        <VALUE val="2" comment="значение недостоверно"/>
+        <VALUE val="3" comment="аппаратная ошибка"/>
+        <VALUE val="4" comment="обрыв"/>
+        <VALUE val="5" comment="выход за диапазон"/>
+        <VALUE val="13" comment="канал отключен"/>
+        <VALUE val="15" comment="канал заблокирован"/>
+    </VALUES>
+  </FIELD_VALUES>
+</CONF>

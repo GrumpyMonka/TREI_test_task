@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<CONF test="1" type="17940" name="M581IP" comment="Модуль импульсного ввода сигналов энкодера 2-канальный"> <!--0x4614-->
+  <PARAM name="Reaction Time" value="10" comment="Время реакции модуля (*10мкс)"/>
+	<BLK num="0" attr="RREQ" name="Конфигурация блоков" hidden="dict" struct_name="configuration">
+		<VAR size="16" value="17940" comment="тип модуля"/>
+		<VAR size="16"             comment="версия ПО"/>
+		<VAR size="16"             comment="версия аппаратной части"/>
+		<VAR size="16" value="1"   comment="версия конфигурации"/>
+		<VAR size="16" value="10"  comment="кол-во блоков"/>
+		<VAR size="16" value="0"   comment="номер блока"/>
+		<VAR size="16" value="50"  comment="размер блока"/>
+		<VAR size="16" value="1"   comment="номер блока"/>
+		<VAR size="16" value="14"  comment="размер блока"/>
+		<VAR size="16" value="3"   comment="номер блока"/>
+		<VAR size="16" value="62"  comment="размер блока"/>
+		<VAR size="16" value="4"   comment="номер блока"/>
+		<VAR size="16" value="38"  comment="размер блока"/>
+		<VAR size="16" value="7"   comment="номер блока"/>
+		<VAR size="16" value="24"  comment="размер блока"/>
+		<VAR size="16" value="9"   comment="номер блока"/>
+		<VAR size="16" value="1"   comment="размер блока"/>
+		<VAR size="16" value="10"  comment="номер блока"/>
+		<VAR size="16" value="252" comment="размер блока"/>
+		<VAR size="16" value="11"  comment="номер блока"/>
+		<VAR size="16" value="16"  comment="размер блока"/>
+		<VAR size="16" value="12"  comment="номер блока"/>
+		<VAR size="16" value="30"  comment="размер блока"/>
+		<VAR size="16" value="13"  comment="номер блока"/>
+		<VAR size="16" value="12"  comment="размер блока"/>
+	</BLK>
+	<BLK num="1" attr="RREQ" type="STAT" name="Статистика" struct_name="statistic">
+		<VAR size="32" name="Work_Time"         comment="Время наработки, сек"/>
+		<VAR size="32" name="Line1_Err"         comment="Счетчик ошибок STBUS по линии1"/>
+		<VAR size="32" name="Line2_Err"         comment="Счетчик ошибок STBUS по линии2"/>
+		<VAR size="08" name="Reset_code"        comment="Код сброса"/>
+		<VAR size="01" name="Stbus_line1_err"   comment="Ошибки связи с мастером (линия 1)"/>
+		<VAR size="01" name="Stbus_line2_err"   comment="Ошибки связи с мастером (линия 2)"/>
+		<VAR size="01" name="Err_sequence"      comment="Нарушение последовательности STBUS"/>
+		<VAR size="01" name="Mod_power_low"     comment="Питание ниже нормы"/>
+		<VAR size="01" name="Mod_power_high"    comment="Питание выше нормы"/>
+		<VAR size="03" name="Reserv"            comment="Резерв" hidden="all" />
+	</BLK>
+	<BLK num="3" attr="REQ" type="PARAM" name="Параметры" struct_name="params">
+		<SUBBLK name="Параметры энкодера 1" struct_name="encoder1">
+			<SUBBLK name="Значения счетчика энкодера 1" struct_name="cnt">
+				<VAR size="32" name="encoder1_CNT_start"    cut_end="5"  comment="Начальное значение счетчика энкодера 1"    value="0"/>
+				<VAR size="32" name="encoder1_CNT_end"      cut_end="3"  comment="Максимальное значение счетчика энкодера 1" value="65535"/>
+				<VAR size="32" name="encoder1_CNT_DO1"      cut_end="3"  comment="Привязка значения счетчика к выходу DO1 энкодера 1" value="0"/>
+				<VAR size="32" name="encoder1_CNT_DO2"      cut_end="3"  comment="Привязка значения счетчика к выходу DO2 энкодера 1" value="0"/>
+			</SUBBLK>
+			<SUBBLK name="Настройка входов энкодера 1" struct_name="din">
+				<VAR size="08" name="encoder1_Mode_ABN"     cut_end="8"  comment="Режим работы энкодера 1" value="0" values="2"/>
+				<VAR size="08" name="encoder1_Mode_DI1"     cut_end="8"  comment="Режим работы дискретного входа 1 энкодера 1" value="0" values="3"/>
+				<VAR size="08" name="encoder1_Mode_DI2"     cut_end="8"  comment="Режим работы дискретного входа 2 энкодера 1" value="0" values="3"/>
+				<VAR size="08" name="encoder1_filter_ABN"   cut_end="10" comment="Фильтр входов A,B,N энкодера 1" value="0" values="5"/>
+				<VAR size="08" name="encoder1_filter_DI1"   cut_end="10" comment="Фильтр дискретного входа 1 энкодера 1" value="3"/>
+				<VAR size="08" name="encoder1_filter_DI2"   cut_end="10" comment="Фильтр дискретного входа 2 энкодера 1" value="3"/>
+			</SUBBLK>
+			<SUBBLK name="Настройка выходов энкодера 1" struct_name="dout">
+				<VAR size="08" name="encoder1_Mode_DO1"     cut_end="8"  comment="Режим работы дискретного выхода 1 энкодера 1" value="0" values="4"/>
+				<VAR size="08" name="encoder1_Mode_DO2"     cut_end="8"  comment="Режим работы дискретного выхода 2 энкодера 1" value="0" values="4"/>
+				<VAR size="08" name="encoder1_impulse_DO1"  cut_end="11" comment="Длительность импульса дискретного выхода 1 энкодера 1" value="3"/>
+				<VAR size="08" name="encoder1_impulse_DO2"  cut_end="11" comment="Длительность импульса дискретного выхода 2 энкодера 1" value="3"/>
+				<VAR size="16" name="encoder1_hyst_DO1"     cut_end="8"  comment="Гистерезис дискретного выхода 1 энкодера 1" value="0"/>
+				<VAR size="16" name="encoder1_hyst_DO2"     cut_end="8"  comment="Гистерезис дискретного выхода 2 энкодера 1" value="0"/>
+			</SUBBLK>
+		</SUBBLK>
+		<SUBBLK name="Параметры энкодера 2" struct_name="encoder2">
+			<SUBBLK name="Значения счетчика энкодера 2" struct_name="cnt">
+				<VAR size="32" name="encoder2_CNT_start"    cut_end="5"  comment="Начальное значение счетчика энкодера 2"    value="0"/>
+				<VAR size="32" name="encoder2_CNT_end"      cut_end="3"  comment="Максимальное значение счетчика энкодера 2" value="65535"/>
+				<VAR size="32" name="encoder2_CNT_DO1"      cut_end="3"  comment="Привязка значения счетчика к выходу DO1 энкодера 2" value="0"/>
+				<VAR size="32" name="encoder2_CNT_DO2"      cut_end="3"  comment="Привязка значения счетчика к выходу DO2 энкодера 2" value="0"/>
+			</SUBBLK>
+			<SUBBLK name="Настройка входов энкодера 2" struct_name="din">
+				<VAR size="08" name="encoder2_Mode_ABN"     cut_end="8"  comment="Режим работы энкодера 2" value="0" values="2"/>
+				<VAR size="08" name="encoder2_Mode_DI1"     cut_end="8"  comment="Режим работы дискретного входа 1 энкодера 2" value="0" values="3"/>
+				<VAR size="08" name="encoder2_Mode_DI2"     cut_end="8"  comment="Режим работы дискретного входа 2 энкодера 2" value="0" values="3"/>
+				<VAR size="08" name="encoder2_filter_ABN"   cut_end="10" comment="Фильтр входов A,B,N энкодера 2" value="0" values="5"/>
+				<VAR size="08" name="encoder2_filter_DI1"   cut_end="10" comment="Фильтр дискретного входа 1 энкодера 2" value="3"/>
+				<VAR size="08" name="encoder2_filter_DI2"   cut_end="10" comment="Фильтр дискретного входа 2 энкодера 2" value="3"/>
+			</SUBBLK>
+			<SUBBLK name="Настройка выходов энкодера 2" struct_name="dout">
+				<VAR size="08" name="encoder2_Mode_DO1"     cut_end="8"  comment="Режим работы дискретного выхода 1 энкодера 2" value="0" values="4"/>
+				<VAR size="08" name="encoder2_Mode_DO2"     cut_end="8"  comment="Режим работы дискретного выхода 2 энкодера 2" value="0" values="4"/>
+				<VAR size="08" name="encoder2_impulse_DO1"  cut_end="11" comment="Длительность импульса дискретного выхода 1 энкодера 2" value="3"/>
+				<VAR size="08" name="encoder2_impulse_DO2"  cut_end="11" comment="Длительность импульса дискретного выхода 2 энкодера 2" value="3"/>
+				<VAR size="16" name="encoder2_hyst_DO1"     cut_end="8"  comment="Гистерезис дискретного выхода 1 энкодера 2" value="0"/>
+				<VAR size="16" name="encoder2_hyst_DO2"     cut_end="8"  comment="Гистерезис дискретного выхода 2 энкодера 2" value="0"/>
+			</SUBBLK>
+		</SUBBLK>
+		<SUBBLK name="Общие параметры" struct_name="common">
+			<VAR size="16" name="Timeout"        comment="Таймаут связи с мастером, мсек" value="0"/>
+		</SUBBLK>
+	</BLK>
+	<BLK num="4" attr="R" name="Рабочие данные на чтение" struct_name="in">
+		<SUBBLK type="STATE" name="Состояние" struct_name="state">
+			<VAR size="01" name="No_param"       comment="Нет параметров"/>
+			<VAR size="01" name="Err_hard"       comment="Аппаратная ошибка" ftype="Err_hard"/>
+			<VAR size="01" name="Err_ext_con"    comment="Ошибка внешних подключений"/>
+			<VAR size="01" name="Err_stbus"      comment="Ошибки связи STBUS"/>
+			<VAR size="01" name="Err_mod_power"  comment="Ошибка питания модуля"/>
+			<VAR size="01" name="Err_CH_power"   comment="Ошибка питания каналов"/>
+			<VAR size="02" name="rez1"           comment="резерв" hidden="all"/>
+		</SUBBLK>
+		<SUBBLK type="CH_DIAG" name="Поканальная диагностика" struct_name="error" cut_end="3">
+			<VAR size="04" name="Err_encoder1_counter" cut_end="7"  comment="Ошибки, энкодер 1" farg="1"  values="1"/>
+			<VAR size="04" name="Err_encoder1_DI1"     cut_end="3"  comment="Ошибки, дискретный вход 1 энкодера 1" farg="2" values="1"/>
+			<VAR size="04" name="Err_encoder1_DI2"     cut_end="3"  comment="Ошибки, дискретный вход 2 энкодера 1" farg="3" values="1"/>
+			<VAR size="04" name="Err_encoder1_DO1"     cut_end="3"  comment="Ошибки, дискретный выход 1 энкодера 1" farg="4" values="1"/>
+			<VAR size="04" name="Err_encoder1_DO2"     cut_end="3"  comment="Ошибки, дискретный выход 2 энкодера 1" farg="5" values="1"/>
+			<VAR size="04" name="Err_encoder2_counter" cut_end="7"  comment="Ошибки, энкодер 2" farg="6"  values="1"/>
+			<VAR size="04" name="Err_encoder2_DI1"     cut_end="3"  comment="Ошибки, дискретный вход 1 энкодера 2" farg="7" values="1"/>
+			<VAR size="04" name="Err_encoder2_DI2"     cut_end="3"  comment="Ошибки, дискретный вход 2 энкодера 2" farg="8" values="1"/>
+			<VAR size="04" name="Err_encoder2_DO1"     cut_end="3"  comment="Ошибки, дискретный выход 1 энкодера 2" farg="9" values="1"/>
+			<VAR size="04" name="Err_encoder2_DO2"     cut_end="3"  comment="Ошибки, дискретный выход 2 энкодера 2" farg="10" values="1"/>
+		</SUBBLK>
+		<SUBBLK type="CANAL" name="Каналы" struct_name="value">
+			<SUBBLK name="Каналы энкодера 1" struct_name="encoder1">
+				<VAR type="32"  name="encoder1_counter"   cut_end="7" comment="Значение счетчика энкодера 1" farg="1"/>
+				<VAR type="32"  name="encoder1_captured"  cut_end="8" comment="Последнее захваченное значение счетчика энкодера 1"/>
+				<VAR size="rea" name="encoder1_freq"      cut_end="4" comment="Частота входного сигнала в герцах энкодера 1"/>
+				<VAR size="01"  name="encoder1_DI1_state" cut_end="9" comment="Состояние дискретного входа 1 энкодера 1" farg="2"/>
+				<VAR size="07"  name="Reserv"                         comment="Резерв" hidden="all" />
+				<VAR size="01"  name="encoder1_DI2_state" cut_end="9" comment="Состояние дискретного входа 2 энкодера 1" farg="3"/>
+				<VAR size="07"  name="Reserv"                         comment="Резерв" hidden="all" />
+				<VAR size="01"  name="encoder1_DO1_state" cut_end="9" comment="Состояние дискретного выхода 1 энкодера 1" farg="4"/>
+				<VAR size="07"  name="Reserv"                         comment="Резерв" hidden="all" />
+				<VAR size="01"  name="encoder1_DO2_state" cut_end="9" comment="Состояние дискретного выхода 2 энкодера 1" farg="5"/>
+				<VAR size="07"  name="Reserv"                         comment="Резерв" hidden="all" />
+			</SUBBLK>
+			<SUBBLK name="Каналы энкодера 2" struct_name="encoder2">
+				<VAR type="32"  name="encoder2_counter"   cut_end="7" comment="Значение счетчика энкодера 2" farg="6"/>
+				<VAR type="32"  name="encoder2_captured"  cut_end="8" comment="Последнее захваченное значение счетчика энкодера 2"/>
+				<VAR size="rea" name="encoder2_freq"      cut_end="4" comment="Частота входного сигнала в герцах энкодера 2"/>
+				<VAR size="01"  name="encoder2_DI1_state" cut_end="9" comment="Состояние дискретного входа 1 энкодера 2" farg="7"/>
+				<VAR size="07"  name="Reserv"                         comment="Резерв" hidden="all" />
+				<VAR size="01"  name="encoder2_DI2_state" cut_end="9" comment="Состояние дискретного входа 2 энкодера 2" farg="8"/>
+				<VAR size="07"  name="Reserv"                         comment="Резерв" hidden="all" />
+				<VAR size="01"  name="encoder2_DO1_state" cut_end="9" comment="Состояние дискретного выхода 1 энкодера 2" farg="9"/>
+				<VAR size="07"  name="Reserv"                         comment="Резерв" hidden="all" />
+				<VAR size="01"  name="encoder2_DO2_state" cut_end="9" comment="Состояние дискретного выхода 2 энкодера 2" farg="10"/>
+				<VAR size="07"  name="Reserv"                         comment="Резерв" hidden="all" />
+			</SUBBLK>
+		</SUBBLK>
+	</BLK>
+        <BLK num="7" attr="REQ" type="CFG" name="Заводские идентификаторы" hidden="all" struct_name="factory_id">
+		<VAR size="32" name="datetime"               comment="дата изготовления"/>
+		<VAR size="64" name="serial"                 comment="серийный номер"/>
+		<VAR size="16" name="type"                   comment="подтип"/>
+		<VAR size="32" name="CRC_FW"                 comment="контрольная сумма прошивки"/>
+		<VAR size="16" name="CRC_PRJ"                comment="контрольная сумма проекта"/>
+		<VAR size="16" name="CRC_METRO__CALIB_TERMO" comment="контрольная сумма метрологии и калибровка термодатчика"/>
+		<VAR size="16" name="HW_VER"                 comment="аппаратная версия платы"/>
+	</BLK>
+		<BLK num="8" attr="W" name="Рабочие данные на запись" struct_name="out">
+		<SUBBLK type="CANAL" name="Каналы">
+			<VAR size="01" name="encoder1_DO1" comment="Значение дискретного выхода 1 энкодера 1"/>
+			<VAR size="01" name="encoder1_DO2" comment="Значение дискретного выхода 2 энкодера 1"/>
+			<VAR size="01" name="encoder2_DO1" comment="Значение дискретного выхода 1 энкодера 2"/>
+			<VAR size="01" name="encoder2_DO2" comment="Значение дискретного выхода 2 энкодера 2"/>
+			<VAR size="04" name="Reserv"       comment="Резерв" hidden="all" />
+		</SUBBLK>
+	</BLK>
+	<BLK num="9" attr="REQ" type="FW_CTL" name="Управление загрузкой firmware" hidden="all" struct_name="fw_ctrl">
+		<VAR size="08" comment="команда управления"/>
+	</BLK>
+	<BLK num="10" attr="REQ" type="FW" name="Загрузка firmware" hidden="all" struct_name="fw">
+		<VAR size="32"   comment="адрес"/>
+		<VAR size="1984" comment="данные на запись"/> <!--248*8-->
+	</BLK>
+  <FIELD_VALUES>
+    <VALUES num="1" comment="Ошибки каналов">
+        <VALUE val="0" comment="нет ошибок"/>
+        <VALUE val="2" comment="значение недостоверно"/>
+        <VALUE val="3" comment="аппаратная ошибка"/>
+    </VALUES>
+    <VALUES num="2" comment="Режим работы энкодера">
+        <VALUE val="0" comment="Импульс (A)"/>
+        <VALUE val="1" comment="Импульс (A) и направление (B)"/>
+        <VALUE val="2" comment="Инкрементный энкодер (сигн. A B сдвинуты по фазе)"/>
+		<VALUE val="3" comment="Инкрементный энкодер (A, B, N)"/>
+    </VALUES>
+    <VALUES num="3" comment="Режим работы дискретных входов">
+        <VALUE val="0" comment="пользовательский дискретный вход"/>
+        <VALUE val="1" comment="захват значения CNT"/>
+    </VALUES>
+    <VALUES num="4" comment="Режим работы дискретных выходов">
+        <VALUE val="0" comment="пользовательский дискретный выход"/>
+        <VALUE val="1" comment="вкл при достижении CNT"/>
+        <VALUE val="2" comment="выкл при достижении CNT"/>
+    </VALUES>
+	<VALUES num="5" comment="Фильтр входов энкодера">
+        <VALUE val="0" comment="100 Гц"/>
+        <VALUE val="1" comment="1000 Гц"/>
+        <VALUE val="2" comment="10000 Гц"/>
+		<VALUE val="3" comment="100000 Гц"/>
+    </VALUES>
+  </FIELD_VALUES>
+</CONF>

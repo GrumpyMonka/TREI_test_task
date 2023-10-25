@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CONF test="1" type="15380" name="M441R" comment="16-канальный релейный вывод"> <!--0x3C14-->
+	<PARAMS_MST ver="2">
+		<SETTINGS_SERVICE>
+			<PARAM size="08"  name="Reaction Time" value="10"  comment="Время реакции модуля (*10мкс)" hidden="dict"/>
+			<PARAM size="08"  name="Protocol Version" value="5" comment="Версия протокола обмена" hidden="dict"/>
+		</SETTINGS_SERVICE>
+	</PARAMS_MST>
+	<BLK num="0" attr="RREQ" name="Конфигурация блоков" hidden="dict">
+		<VAR size="16" value="15380" comment="тип модуля"/>
+		<VAR size="16"              comment="версия ПО"/>
+		<VAR size="16"              comment="версия аппаратной части"/>
+		<VAR size="16" value="4"    comment="версия конфигурации"/>
+		<VAR size="16" value="8"    comment="кол-во блоков"/>
+		<VAR size="16" value="0"    comment="номер блока"/>
+		<VAR size="16" value="42"   comment="размер блока"/>
+		<VAR size="16" value="1"    comment="номер блока"/>
+		<VAR size="16" value="13"   comment="размер блока"/>
+		<VAR size="16" value="3"    comment="номер блока"/>
+		<VAR size="16" value="16"   comment="размер блока"/>
+		<VAR size="16" value="4"    comment="номер блока"/>
+		<VAR size="16" value="8"    comment="размер блока"/>
+		<VAR size="16" value="7"    comment="номер блока"/>
+		<VAR size="16" value="28"   comment="размер блока"/>
+		<VAR size="16" value="8"    comment="номер блока"/>
+		<VAR size="16" value="2"    comment="размер блока"/>
+		<VAR size="16" value="11"   comment="номер блока"/>
+		<VAR size="16" value="1"    comment="размер блока"/>
+		<VAR size="16" value="13"   comment="номер блока"/>
+		<VAR size="16" value="12"   comment="размер блока"/>		
+	</BLK>
+	<BLK num="1" attr="RREQ" type="STAT" name="Статистика" options="duplicate">
+		<VAR size="32" name="Work_Time"     comment="Время наработки, сек"/>
+		<VAR size="32" name="Line1_Err"     comment="Счетчик ошибок STBUS по линии1"/>
+		<VAR size="32" name="Line2_Err"     comment="Счетчик ошибок STBUS по линии2"/>
+		<VAR size="08" name="Reset_code"    comment="Код сброса"/>
+	</BLK>
+	<BLK num="3" attr="REQ" type="PARAM" name="Параметры">
+		<SUBBLK name="Значение при обрыве связи">
+		<VAR size="01" name="Default_CH_01" comment="Значение при обрыве связи, канал  1"/>
+		<VAR size="01" name="Default_CH_02" comment="Значение при обрыве связи, канал  2"/>
+		<VAR size="01" name="Default_CH_03" comment="Значение при обрыве связи, канал  3"/>
+		<VAR size="01" name="Default_CH_04" comment="Значение при обрыве связи, канал  4"/>
+		<VAR size="01" name="Default_CH_05" comment="Значение при обрыве связи, канал  5"/>
+		<VAR size="01" name="Default_CH_06" comment="Значение при обрыве связи, канал  6"/>
+		<VAR size="01" name="Default_CH_07" comment="Значение при обрыве связи, канал  7"/>
+		<VAR size="01" name="Default_CH_08" comment="Значение при обрыве связи, канал  8"/>
+		<VAR size="01" name="Default_CH_09" comment="Значение при обрыве связи, канал  9"/>
+		<VAR size="01" name="Default_CH_10" comment="Значение при обрыве связи, канал 10"/>
+		<VAR size="01" name="Default_CH_11" comment="Значение при обрыве связи, канал 11"/>
+		<VAR size="01" name="Default_CH_12" comment="Значение при обрыве связи, канал 12"/>
+		<VAR size="01" name="Default_CH_13" comment="Значение при обрыве связи, канал 13"/>
+		<VAR size="01" name="Default_CH_14" comment="Значение при обрыве связи, канал 14"/>
+		<VAR size="01" name="Default_CH_15" comment="Значение при обрыве связи, канал 15"/>
+		<VAR size="01" name="Default_CH_16" comment="Значение при обрыве связи, канал 16"/>
+		</SUBBLK>
+		<SUBBLK name="Двойное предохранит. отключение">
+		<VAR size="01" name="Double_CH_01" value="1"  comment="Двойное предохранит. отключение, канал  1"/>
+		<VAR size="01" name="Double_CH_02" value="1"  comment="Двойное предохранит. отключение, канал  2"/>
+		<VAR size="01" name="Double_CH_03" value="1"  comment="Двойное предохранит. отключение, канал  3"/>
+		<VAR size="01" name="Double_CH_04" value="1"  comment="Двойное предохранит. отключение, канал  4"/>
+		<VAR size="01" name="Double_CH_05" value="1"  comment="Двойное предохранит. отключение, канал  5"/>
+		<VAR size="01" name="Double_CH_06" value="1"  comment="Двойное предохранит. отключение, канал  6"/>
+		<VAR size="01" name="Double_CH_07" value="1"  comment="Двойное предохранит. отключение, канал  7"/>
+		<VAR size="01" name="Double_CH_08" value="1"  comment="Двойное предохранит. отключение, канал  8"/>
+		<VAR size="01" name="Double_CH_09" value="1"  comment="Двойное предохранит. отключение, канал  9"/>
+		<VAR size="01" name="Double_CH_10" value="1"  comment="Двойное предохранит. отключение, канал 10"/>
+		<VAR size="01" name="Double_CH_11" value="1"  comment="Двойное предохранит. отключение, канал 11"/>
+		<VAR size="01" name="Double_CH_12" value="1"  comment="Двойное предохранит. отключение, канал 12"/>
+		<VAR size="01" name="Double_CH_13" value="1"  comment="Двойное предохранит. отключение, канал 13"/>
+		<VAR size="01" name="Double_CH_14" value="1"  comment="Двойное предохранит. отключение, канал 14"/>
+		<VAR size="01" name="Double_CH_15" value="1"  comment="Двойное предохранит. отключение, канал 15"/>
+		<VAR size="01" name="Double_CH_16" value="1"  comment="Двойное предохранит. отключение, канал 16"/>
+		</SUBBLK>
+		<SUBBLK name="Контроль обрыва">
+		<VAR size="01" name="Break_Ctl_CH_01" value="1" comment="Контроль обрыва, канал  1"/>
+		<VAR size="01" name="Break_Ctl_CH_02" value="1" comment="Контроль обрыва, канал  2"/>
+		<VAR size="01" name="Break_Ctl_CH_03" value="1" comment="Контроль обрыва, канал  3"/>
+		<VAR size="01" name="Break_Ctl_CH_04" value="1" comment="Контроль обрыва, канал  4"/>
+		<VAR size="01" name="Break_Ctl_CH_05" value="1" comment="Контроль обрыва, канал  5"/>
+		<VAR size="01" name="Break_Ctl_CH_06" value="1" comment="Контроль обрыва, канал  6"/>
+		<VAR size="01" name="Break_Ctl_CH_07" value="1" comment="Контроль обрыва, канал  7"/>
+		<VAR size="01" name="Break_Ctl_CH_08" value="1" comment="Контроль обрыва, канал  8"/>
+		<VAR size="01" name="Break_Ctl_CH_09" value="1" comment="Контроль обрыва, канал  9"/>
+		<VAR size="01" name="Break_Ctl_CH_10" value="1" comment="Контроль обрыва, канал 10"/>
+		<VAR size="01" name="Break_Ctl_CH_11" value="1" comment="Контроль обрыва, канал 11"/>
+		<VAR size="01" name="Break_Ctl_CH_12" value="1" comment="Контроль обрыва, канал 12"/>
+		<VAR size="01" name="Break_Ctl_CH_13" value="1" comment="Контроль обрыва, канал 13"/>
+		<VAR size="01" name="Break_Ctl_CH_14" value="1" comment="Контроль обрыва, канал 14"/>
+		<VAR size="01" name="Break_Ctl_CH_15" value="1" comment="Контроль обрыва, канал 15"/>
+		<VAR size="01" name="Break_Ctl_CH_16" value="1" comment="Контроль обрыва, канал 16"/>
+		</SUBBLK>
+		<SUBBLK name="Тест инвертирования">
+		<VAR size="01" name="Invert_CH_01" value="1" comment="Тест инвертирования, канал  1"/>
+		<VAR size="01" name="Invert_CH_02" value="1" comment="Тест инвертирования, канал  2"/>
+		<VAR size="01" name="Invert_CH_03" value="1" comment="Тест инвертирования, канал  3"/>
+		<VAR size="01" name="Invert_CH_04" value="1" comment="Тест инвертирования, канал  4"/>
+		<VAR size="01" name="Invert_CH_05" value="1" comment="Тест инвертирования, канал  5"/>
+		<VAR size="01" name="Invert_CH_06" value="1" comment="Тест инвертирования, канал  6"/>
+		<VAR size="01" name="Invert_CH_07" value="1" comment="Тест инвертирования, канал  7"/>
+		<VAR size="01" name="Invert_CH_08" value="1" comment="Тест инвертирования, канал  8"/>
+		<VAR size="01" name="Invert_CH_09" value="1" comment="Тест инвертирования, канал  9"/>
+		<VAR size="01" name="Invert_CH_10" value="1" comment="Тест инвертирования, канал 10"/>
+		<VAR size="01" name="Invert_CH_11" value="1" comment="Тест инвертирования, канал 11"/>
+		<VAR size="01" name="Invert_CH_12" value="1" comment="Тест инвертирования, канал 12"/>
+		<VAR size="01" name="Invert_CH_13" value="1" comment="Тест инвертирования, канал 13"/>
+		<VAR size="01" name="Invert_CH_14" value="1" comment="Тест инвертирования, канал 14"/>
+		<VAR size="01" name="Invert_CH_15" value="1" comment="Тест инвертирования, канал 15"/>
+		<VAR size="01" name="Invert_CH_16" value="1" comment="Тест инвертирования, канал 16"/>
+		</SUBBLK>
+		<SUBBLK name="Повторное включение">
+		<VAR size="01" name="Repeat_CH_01" value="1" comment="Повторное включение, канал  1"/>
+		<VAR size="01" name="Repeat_CH_02" value="1" comment="Повторное включение, канал  2"/>
+		<VAR size="01" name="Repeat_CH_03" value="1" comment="Повторное включение, канал  3"/>
+		<VAR size="01" name="Repeat_CH_04" value="1" comment="Повторное включение, канал  4"/>
+		<VAR size="01" name="Repeat_CH_05" value="1" comment="Повторное включение, канал  5"/>
+		<VAR size="01" name="Repeat_CH_06" value="1" comment="Повторное включение, канал  6"/>
+		<VAR size="01" name="Repeat_CH_07" value="1" comment="Повторное включение, канал  7"/>
+		<VAR size="01" name="Repeat_CH_08" value="1" comment="Повторное включение, канал  8"/>
+		<VAR size="01" name="Repeat_CH_09" value="1" comment="Повторное включение, канал  9"/>
+		<VAR size="01" name="Repeat_CH_10" value="1" comment="Повторное включение, канал 10"/>
+		<VAR size="01" name="Repeat_CH_11" value="1" comment="Повторное включение, канал 11"/>
+		<VAR size="01" name="Repeat_CH_12" value="1" comment="Повторное включение, канал 12"/>
+		<VAR size="01" name="Repeat_CH_13" value="1" comment="Повторное включение, канал 13"/>
+		<VAR size="01" name="Repeat_CH_14" value="1" comment="Повторное включение, канал 14"/>
+		<VAR size="01" name="Repeat_CH_15" value="1" comment="Повторное включение, канал 15"/>
+		<VAR size="01" name="Repeat_CH_16" value="1" comment="Повторное включение, канал 16"/>
+		</SUBBLK>
+		<SUBBLK name="Общие параметры">
+		<VAR size="08" name="Module_config"         comment="Конфигурация модуля. 0 - 16 каналов, 1 - 8 каналов" values="3"/>
+		<VAR size="08" name="Select"    value="1"   comment="Алгоритм выбора данных" values="1"/>
+		<VAR size="16" name="Safe_Time" value="500" comment="Время безопасности, мсек"/>
+		<VAR size="16" name="Timeout"               comment="Таймаут связи с мастером, мсек"/>
+		</SUBBLK>
+	</BLK>
+	<BLK num="4" attr="R" name="Рабочие данные на чтение" options="duplicate">
+		<SUBBLK type="STATE" name="Состояние">
+		<VAR size="01" name="No_param"          comment="Нет параметров"/>
+		<VAR size="01" name="No_power1"         comment="Ошибка питания модуля в каркасе (линия 1)"/>
+		<VAR size="01" name="No_power2"         comment="Ошибка питания модуля в каркасе (линии 2)"/>
+		<VAR size="01" name="Err_line1"         comment="Ошибка связи с мастером (линия 1)"/>
+		<VAR size="01" name="Err_line2"         comment="Ошибка связи с мастером (линия 2)"/>
+		<VAR size="01" name="CH_power"          comment="Ошибка напряжения питания каналов"/>
+		<VAR size="01" name="TPRO_power1"       comment="Ошибка питания TPRO (линия 1)"/>
+		<VAR size="01" name="TPRO_power2"       comment="Ошибка питания TPRO (линия 2)"/>
+		<VAR size="01" name="Diff_data"         comment="Разные значения от мастеров"/>
+		<VAR size="01" name="Not_ready"         comment="Значения модуля недостоверны"/>
+		<VAR size="01" name="Err_CH"            comment="Наличие ошибок каналов"/>
+		<VAR size="01" name="ch16_mode"         comment="16-ти канальный режим"/>
+		<VAR size="01" name="ch8_mode"          comment="8-ми канальный режим"/>
+		<VAR size="03" name="Reserv"            comment="Резерв" hidden="all"/>
+		</SUBBLK>
+		<SUBBLK type="CH_DIAG" name="Поканальная диагностика">
+		<VAR size="03" name="Err_CH_01"   comment="Ошибки, канал  1" farg="1"  values="2"/>
+		<VAR size="03" name="Err_CH_02"   comment="Ошибки, канал  2" farg="2"  values="2"/>
+		<VAR size="03" name="Err_CH_03"   comment="Ошибки, канал  3" farg="3"  values="2"/>
+		<VAR size="03" name="Err_CH_04"   comment="Ошибки, канал  4" farg="4"  values="2"/>
+		<VAR size="03" name="Err_CH_05"   comment="Ошибки, канал  5" farg="5"  values="2"/>
+		<VAR size="03" name="Err_CH_06"   comment="Ошибки, канал  6" farg="6"  values="2"/>
+		<VAR size="03" name="Err_CH_07"   comment="Ошибки, канал  7" farg="7"  values="2"/>
+		<VAR size="03" name="Err_CH_08"   comment="Ошибки, канал  8" farg="8"  values="2"/>
+		<VAR size="03" name="Err_CH_09"   comment="Ошибки, канал  9" farg="9"  values="2"/>
+		<VAR size="03" name="Err_CH_10"   comment="Ошибки, канал 10" farg="10" values="2"/>
+		<VAR size="03" name="Err_CH_11"   comment="Ошибки, канал 11" farg="11" values="2"/>
+		<VAR size="03" name="Err_CH_12"   comment="Ошибки, канал 12" farg="12" values="2"/>
+		<VAR size="03" name="Err_CH_13"   comment="Ошибки, канал 13" farg="13" values="2"/>
+		<VAR size="03" name="Err_CH_14"   comment="Ошибки, канал 14" farg="14" values="2"/>
+		<VAR size="03" name="Err_CH_15"   comment="Ошибки, канал 15" farg="15" values="2"/>
+		<VAR size="03" name="Err_CH_16"   comment="Ошибки, канал 16" farg="16" values="2"/>
+		</SUBBLK>
+	</BLK>
+	<BLK num="7" attr="REQ" type="CFG" name="Заводские идентификаторы" hidden="all">
+		<VAR size="32" comment="дата изготовления"/>
+		<VAR size="32" comment="серийный номер"/>
+		<VAR size="32" comment="серийный номер"/>
+		<VAR size="16" comment="подтип"/>
+		<VAR size="32" comment="контрольная сумма прошивки CPU1"/>
+		<VAR size="16" comment="версия ПО CPU1"/>
+		<VAR size="32" comment="контрольная сумма прошивки CPU2"/>
+		<VAR size="16" comment="версия ПО CPU2"/>
+		<VAR size="16" comment="версия аппаратной части"/>
+	</BLK>
+	<BLK num="8" attr="W" name="Рабочие данные на запись">
+		<SUBBLK type="CANAL" name="Каналы">
+		<VAR size="01" name="CH_01" comment="Значение канала  1" farg="1"/>
+		<VAR size="01" name="CH_02" comment="Значение канала  2" farg="2"/>
+		<VAR size="01" name="CH_03" comment="Значение канала  3" farg="3"/>
+		<VAR size="01" name="CH_04" comment="Значение канала  4" farg="4"/>
+		<VAR size="01" name="CH_05" comment="Значение канала  5" farg="5"/>
+		<VAR size="01" name="CH_06" comment="Значение канала  6" farg="6"/>
+		<VAR size="01" name="CH_07" comment="Значение канала  7" farg="7"/>
+		<VAR size="01" name="CH_08" comment="Значение канала  8" farg="8"/>
+		<VAR size="01" name="CH_09" comment="Значение канала  9" farg="9"/>
+		<VAR size="01" name="CH_10" comment="Значение канала 10" farg="10"/>
+		<VAR size="01" name="CH_11" comment="Значение канала 11" farg="11"/>
+		<VAR size="01" name="CH_12" comment="Значение канала 12" farg="12"/>
+		<VAR size="01" name="CH_13" comment="Значение канала 13" farg="13"/>
+		<VAR size="01" name="CH_14" comment="Значение канала 14" farg="14"/>
+		<VAR size="01" name="CH_15" comment="Значение канала 15" farg="15"/>
+		<VAR size="01" name="CH_16" comment="Значение канала 16" farg="16"/>
+		</SUBBLK>
+	</BLK>
+	<BLK num="11" attr="REQ" type="ERR_TEST" name="Внесение ошибок в тесты" hidden="all">
+		<VAR size="08" comment="Вид ошибки"/>
+	</BLK>
+	<FIELD_VALUES>
+		<VALUES num="1">
+		<VALUE val="0" comment="Последнее одинаковое"/>
+		<VALUE val="1" comment="Логическое И"/>
+		<VALUE val="2" comment="Логическое ИЛИ"/>
+		</VALUES>
+    <VALUES num="2">
+      <VALUE val="0" comment="Нет ошибок"/>
+      <VALUE val="1" comment="Обрыв c TPRO"/>
+      <VALUE val="2" comment="Перегрузка"/>
+      <VALUE val="3" comment="Перегрев"/>
+      <VALUE val="4" comment="Короткое замыкание c TPRO"/>
+      <VALUE val="5" comment="Неисправность"/>
+      <VALUE val="6" comment="Неисправность реле TPRO"/>
+    </VALUES>
+    <VALUES num="3">
+      <VALUE val="0" comment="16 каналов"/>
+      <VALUE val="1" comment="8 каналов по 2"/>
+    </VALUES>
+</FIELD_VALUES>
+</CONF>
