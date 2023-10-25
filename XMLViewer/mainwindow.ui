@@ -15,20 +15,23 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="1">
+     <widget class="QTabWidget" name="tabWidget">
+      <property name="currentIndex">
+       <number>-1</number>
+      </property>
+     </widget>
+    </item>
     <item row="0" column="0">
-     <widget class="QTreeWidget" name="treeWidget">
+     <widget class="QListView" name="listView">
       <property name="maximumSize">
        <size>
         <width>200</width>
         <height>16777215</height>
        </size>
       </property>
-     </widget>
-    </item>
-    <item row="0" column="1">
-     <widget class="QTabWidget" name="tabWidget">
-      <property name="currentIndex">
-       <number>-1</number>
+      <property name="editTriggers">
+       <set>QAbstractItemView::NoEditTriggers</set>
       </property>
      </widget>
     </item>
