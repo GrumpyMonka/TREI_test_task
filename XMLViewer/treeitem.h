@@ -14,9 +14,14 @@ public:
 
     int columnCount() const;
 
-    QVariant data( int column ) const;
-
+    void appendChild( TreeItem* child );
     TreeItem* parent();
+    TreeItem* child( int row );
+
+    int childCount() const;
+    int childNumber() const;
+    QVariant data( int column ) const;
+    bool setData( int column, const QVariant& value );
 
 private:
     QList<TreeItem*> childItems;

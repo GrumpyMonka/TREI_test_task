@@ -25,3 +25,37 @@ TreeItem* TreeItem::parent()
 {
     return parentItem;
 }
+
+void TreeItem::appendChild( TreeItem* child )
+{
+    childItems.append( child );
+}
+
+TreeItem* TreeItem::child( int row )
+{
+    return childItems.at( row );
+}
+
+int TreeItem::childCount() const
+{
+    return childItems.count();
+}
+
+int TreeItem::childNumber() const
+{
+    if ( nullptr != parentItem )
+    {
+        return parentItem->childItems.indexOf( const_cast<TreeItem*>( this ) );
+    }
+    return 0;
+}
+
+bool TreeItem::setData( int column, const QVariant& value )
+{
+    if ( 0 > column || itemData.size() < column )
+    {
+        return false;
+    }
+    itemData[column] = value;
+    return true;
+}

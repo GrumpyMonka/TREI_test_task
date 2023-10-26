@@ -29,6 +29,10 @@ XMlTable::XMlTable( const QString& path_to_file, QWidget* parent )
     model = new TreeModel( QStringList() << "lol"
                                          << "kek",
         xmlDoc.documentElement(), this );
+    for ( int column = 0; column < model->columnCount(); ++column )
+    {
+        resizeColumnToContents( column );
+    }
 }
 
 XMlTable::~XMlTable()
