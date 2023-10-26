@@ -1,9 +1,33 @@
 #ifndef XMLTABLE_H
 #define XMLTABLE_H
 
+#include <QDomDocument>
+#include <QPainter>
+#include <QStandardItemModel>
+#include <QStyledItemDelegate>
 #include <QTreeView>
 
-#include <treemodel.h>
+#include <QDebug>
+
+class CustomItemDelegate : public QStyledItemDelegate
+{
+public:
+    CustomItemDelegate( QObject* parent = nullptr )
+        : QStyledItemDelegate( parent )
+    {
+    }
+
+    void paint( QPainter* painter, const QStyleOptionViewItem& option, const QModelIndex& index ) const override
+    {
+        QModelIndex newIndex = index.sibling( index.row(), 1 );
+        auto data = newIndex.data( Qt::DisplayRole ).toString();
+        if ( data.isEmpty() )
+        {
+            painter->fillRect( option.rect, Qt::green );
+        }
+        QStyledItemDelegate::paint( painter, option, index );
+    }
+};
 
 class XMlTable : public QTreeView
 {
@@ -13,9 +37,15 @@ public:
     explicit XMlTable( const QString& path_to_file, QWidget* parent = nullptr );
     ~XMlTable();
 
+    void LoadDataFromXML( const QDomDocument& xmlDocument );
+    QList<QStandardItem*> ConvertXmlToRow( const QDomElement& xmlElement );
+
 private:
     QString path_to_file;
-    TreeModel* model;
+    QStandardItemModel* model;
+
+    const QVector<QString> main_tags = { "CONF", "PARAM", "BLK", "SUBBLK", "VAR" };
+    const QString elem_tag = "VAR";
 };
 
 #endif // XMLTABLE_H

@@ -1,8 +1,9 @@
 #include "xmltable.h"
 
-#include <QDomDocument>
 #include <QFile>
+#include <QHeaderView>
 #include <QMessageBox>
+#include <QStandardItemModel>
 
 #include <QDebug>
 
@@ -26,15 +27,71 @@ XMlTable::XMlTable( const QString& path_to_file, QWidget* parent )
     }
     file.close();
 
-    model = new TreeModel( QStringList() << "lol"
-                                         << "kek",
-        xmlDoc.documentElement(), this );
-    for ( int column = 0; column < model->columnCount(); ++column )
-    {
-        resizeColumnToContents( column );
-    }
+    model = new QStandardItemModel( this );
+    model->setHorizontalHeaderLabels( QStringList() << "Имя"
+                                                    << "Тип"
+                                                    << "Значение"
+                                                    << "Комментарий" );
+
+    setStyleSheet( "*::item{"
+                   "    border-top-width: 0px;"
+                   "    border-right-width: 1px;"
+                   "    border-bottom-width: 1px;"
+                   "    border-left-width: 0px;"
+                   "    border-style: solid;"
+                   "    border-color: silver;"
+                   "}"
+                   "*::item:selected{"
+                   "    background: palette(Highlight);"
+                   "}" );
+
+    LoadDataFromXML( xmlDoc );
+    setModel( model );
+    header()->setSectionResizeMode( QHeaderView::Stretch );
+    setItemDelegate( new CustomItemDelegate( this ) );
+    expandAll();
 }
 
 XMlTable::~XMlTable()
 {
+}
+
+void XMlTable::LoadDataFromXML( const QDomDocument& xmlDocument )
+{
+    model->appendRow( ConvertXmlToRow( xmlDocument.documentElement() ) );
+}
+
+QList<QStandardItem*> XMlTable::ConvertXmlToRow( const QDomElement& xmlElement )
+{
+    QList<QStandardItem*> result_row;
+    result_row.push_back( new QStandardItem( xmlElement.attribute( "name" ) ) );
+    int size = xmlElement.attribute( "size" ).toInt();
+    QString type = "";
+    if ( 1 == size )
+    {
+        type = "булевский";
+    }
+    else if ( 1 < size )
+    {
+        type = "целый";
+    }
+    result_row.push_back( new QStandardItem( type ) );
+    result_row.push_back( new QStandardItem( xmlElement.attribute( "value" ) ) );
+    result_row.push_back( new QStandardItem( xmlElement.attribute( "comment" ) ) );
+
+    if ( xmlElement.tagName() == elem_tag )
+    {
+        return result_row;
+    }
+
+    for ( const auto& tag : main_tags )
+    {
+        QDomElement itemElement = xmlElement.firstChildElement( tag );
+        while ( !itemElement.isNull() )
+        {
+            result_row.first()->appendRow( ConvertXmlToRow( itemElement ) );
+            itemElement = itemElement.nextSiblingElement( tag );
+        }
+    }
+    return result_row;
 }

@@ -11,14 +11,10 @@ CONFIG += c++11
 SOURCES += \
     main.cpp \
     mainwindow.cpp \
-    treeitem.cpp \
-    treemodel.cpp \
     xmltable.cpp
 
 HEADERS += \
     mainwindow.h \
-    treeitem.h \
-    treemodel.h \
     xmltable.h
 
 FORMS += \
