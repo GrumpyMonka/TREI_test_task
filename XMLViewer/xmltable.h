@@ -23,7 +23,7 @@ public:
         auto data = newIndex.data( Qt::DisplayRole ).toString();
         if ( data.isEmpty() )
         {
-            painter->fillRect( option.rect, Qt::green );
+            painter->fillRect( option.rect, QColor( "#A8E4A0" ) );
         }
         QStyledItemDelegate::paint( painter, option, index );
     }

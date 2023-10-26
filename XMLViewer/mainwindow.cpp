@@ -16,6 +16,7 @@ MainWindow::MainWindow( QWidget* parent )
     ui->setupUi( this );
 
     settings = new QSettings( "settings.ini", QSettings::IniFormat, this );
+    setGeometry( settings->value( "geometry" ).toRect() );
 
     path_to_files = settings->value( "path_to_files", "" ).toString();
     if ( "" == path_to_files )
@@ -39,6 +40,7 @@ MainWindow::MainWindow( QWidget* parent )
 
 MainWindow::~MainWindow()
 {
+    settings->setValue( "geometry", geometry() );
     delete ui;
 }
 
@@ -58,24 +60,21 @@ void MainWindow::loadTabs()
 
 void MainWindow::saveOpenTabs()
 {
-    QStringList tabs_list;
-    for ( auto it = tabs.begin(); it != tabs.end(); ++it )
-    {
-        tabs_list.push_back( it.key() );
-    }
-    settings->setValue( "tabs", tabs_list );
+    settings->setValue( "tabs", openFiles );
 }
 
 void MainWindow::listViewItemChanged( const QModelIndex& index )
 {
-    if ( !tabs.contains( index.data().toString() ) )
+    auto fileName = index.data().toString();
+    if ( !openFiles.contains( fileName ) )
     {
         XMlTable* table = new XMlTable( path_to_files + "/" + index.data().toString(), this );
         ui->tabWidget->addTab( table, index.data().toString() );
         ui->tabWidget->setCurrentWidget( table );
-        tabs.insert( index.data().toString(), table );
+        openFiles.push_back( fileName );
+        saveOpenTabs();
     }
-    saveOpenTabs();
+    ui->tabWidget->setCurrentIndex( openFiles.indexOf( fileName ) );
 }
 
 void MainWindow::tabClosed( int index )
@@ -87,7 +86,7 @@ void MainWindow::tabClosed( int index )
 
     QWidget* tabItem = ui->tabWidget->widget( index );
     ui->tabWidget->removeTab( index );
-    tabs.remove( tabs.key( tabItem ) );
+    openFiles.removeAt( index );
 
     delete ( tabItem );
     tabItem = nullptr;

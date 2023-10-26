@@ -33,7 +33,7 @@ private:
 
     QString path_to_files;
     QSettings* settings;
-    QHash<QString, QWidget*> tabs;
+    QStringList openFiles;
     QStringListModel* filesModel;
 };
 #endif // MAINWINDOW_H
