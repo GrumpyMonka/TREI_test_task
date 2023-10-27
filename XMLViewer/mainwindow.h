@@ -7,6 +7,8 @@
 #include <QStringListModel>
 #include <QWidget>
 
+#include <xmltable.h>
+
 QT_BEGIN_NAMESPACE
 namespace Ui
 {
@@ -27,6 +29,18 @@ public slots:
     void tabClosed( int index );
     void loadTabs();
     void saveOpenTabs();
+
+private slots:
+    void on_actionOpenFolder_triggered();
+    void loadFiles();
+
+    void on_actionExit_triggered();
+
+    void on_actionExportFileToCSV_triggered();
+
+    void on_actionExportSelectedRowsToCSV_triggered();
+
+    XMLTable* currentTable();
 
 private:
     Ui::MainWindow* ui;

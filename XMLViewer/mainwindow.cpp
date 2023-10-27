@@ -15,6 +15,8 @@ MainWindow::MainWindow( QWidget* parent )
 {
     ui->setupUi( this );
 
+    filesModel = new QStringListModel( this );
+    ui->listView->setModel( filesModel );
     settings = new QSettings( "settings.ini", QSettings::IniFormat, this );
     setGeometry( settings->value( "geometry" ).toRect() );
 
@@ -25,16 +27,12 @@ MainWindow::MainWindow( QWidget* parent )
         path_to_files = QFileDialog::getExistingDirectory( this, "Выберите папку" );
         settings->setValue( "path_to_files", path_to_files );
     }
-    filesModel = new QStringListModel( QDir( path_to_files ).entryList( QDir::Files ), this );
-    ui->listView->setModel( filesModel );
-
+    loadFiles();
     loadTabs();
-
     connect( ui->listView, &QListView::clicked,
         this, &MainWindow::listViewItemChanged );
     connect( ui->tabWidget, &QTabWidget::tabCloseRequested,
         this, &MainWindow::tabClosed );
-
     saveOpenTabs();
 }
 
@@ -46,11 +44,10 @@ MainWindow::~MainWindow()
 
 void MainWindow::loadTabs()
 {
-    QStringList tabs_list = settings->value( "tabs" ).toStringList();
+    auto tabs_list = settings->value( "tabs" ).toStringList();
     for ( const auto& tab : tabs_list )
     {
-        QModelIndexList indexList = filesModel->match( filesModel->index( 0, 0 ), Qt::DisplayRole, tab, -1, Qt::MatchExactly | Qt::MatchCaseSensitive );
-
+        auto indexList = filesModel->match( filesModel->index( 0, 0 ), Qt::DisplayRole, tab, -1, Qt::MatchExactly | Qt::MatchCaseSensitive );
         if ( !indexList.isEmpty() )
         {
             listViewItemChanged( indexList.first() );
@@ -68,7 +65,7 @@ void MainWindow::listViewItemChanged( const QModelIndex& index )
     auto fileName = index.data().toString();
     if ( !openFiles.contains( fileName ) )
     {
-        XMlTable* table = new XMlTable( path_to_files + "/" + index.data().toString(), this );
+        auto table = new XMLTable( path_to_files + "/" + index.data().toString(), this );
         ui->tabWidget->addTab( table, index.data().toString() );
         ui->tabWidget->setCurrentWidget( table );
         openFiles.push_back( fileName );
@@ -84,11 +81,74 @@ void MainWindow::tabClosed( int index )
         return;
     }
 
-    QWidget* tabItem = ui->tabWidget->widget( index );
+    auto tabItem = ui->tabWidget->widget( index );
     ui->tabWidget->removeTab( index );
     openFiles.removeAt( index );
 
     delete ( tabItem );
     tabItem = nullptr;
     saveOpenTabs();
+}
+
+void MainWindow::on_actionOpenFolder_triggered()
+{
+    path_to_files = QFileDialog::getExistingDirectory( this, "Выберите папку" );
+    settings->setValue( "path_to_files", path_to_files );
+    loadFiles();
+}
+
+void MainWindow::loadFiles()
+{
+    filesModel->setStringList( QDir( path_to_files ).entryList( QDir::Files ) );
+    while ( ui->tabWidget->count() )
+    {
+        tabClosed( 0 );
+    }
+}
+
+void MainWindow::on_actionExit_triggered()
+{
+    close();
+}
+
+XMLTable* MainWindow::currentTable()
+{
+    auto widget = ui->tabWidget->currentWidget();
+    if ( nullptr != widget )
+    {
+        return static_cast<XMLTable*>( widget );
+    }
+    return nullptr;
+}
+
+void MainWindow::on_actionExportFileToCSV_triggered()
+{
+    if ( nullptr != currentTable() )
+    {
+        QString filePath = QFileDialog::getSaveFileName( this, tr( "Сохранить в CSV" ), "", tr( "CSV Files (*.csv);;All Files (*)" ) );
+
+        if ( !filePath.isEmpty() )
+        {
+            currentTable()->exportAllToCSV( filePath );
+        }
+        else
+        {
+        }
+    }
+}
+
+void MainWindow::on_actionExportSelectedRowsToCSV_triggered()
+{
+    if ( nullptr != currentTable() )
+    {
+        QString filePath = QFileDialog::getSaveFileName( this, tr( "Сохранить в CSV" ), "", tr( "CSV Files (*.csv);;All Files (*)" ) );
+
+        if ( !filePath.isEmpty() )
+        {
+            currentTable()->exportSelectedRowsToCSV( filePath );
+        }
+        else
+        {
+        }
+    }
 }

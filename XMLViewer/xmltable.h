@@ -29,16 +29,23 @@ public:
     }
 };
 
-class XMlTable : public QTreeView
+class XMLTable : public QTreeView
 {
     Q_OBJECT
 
 public:
-    explicit XMlTable( const QString& path_to_file, QWidget* parent = nullptr );
-    ~XMlTable();
+    explicit XMLTable( const QString& path_to_file, QWidget* parent = nullptr );
+    ~XMLTable();
 
-    void LoadDataFromXML( const QDomDocument& xmlDocument );
-    QList<QStandardItem*> ConvertXmlToRow( const QDomElement& xmlElement );
+    void loadDataFromXML( const QDomDocument& xmlDocument );
+    QList<QStandardItem*> convertXmlToRow( const QDomElement& xmlElement );
+
+    void exportAllToCSV( const QString& path );
+    void exportSelectedRowsToCSV( const QString& path );
+
+private:
+    void exportToCSVFile( const QList<QList<QStandardItem*>>& rows_for_export, const QString& path );
+    QList<QList<QStandardItem*>> getRowsItemsFromIndexs( const QList<int>& indexs );
 
 private:
     QString path_to_file;
