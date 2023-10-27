@@ -41,6 +41,7 @@ private slots:
     void on_actionExportSelectedRowsToCSV_triggered();
 
     XMLTable* currentTable();
+    QString getPathToFile( const QString& file_format );
 
 private:
     Ui::MainWindow* ui;

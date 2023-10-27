@@ -121,12 +121,22 @@ XMLTable* MainWindow::currentTable()
     return nullptr;
 }
 
+QString MainWindow::getPathToFile( const QString& file_format )
+{
+    QString filePath = QFileDialog::getSaveFileName( this, QString( "Сохранить в %1" ).arg( file_format.toUpper() ),
+        "", QString( "%1 Files (*.%2);;All Files (*)" ).arg( file_format.toUpper() ).arg( file_format ) );
+    if ( !filePath.endsWith( file_format, Qt::CaseInsensitive ) )
+    {
+        filePath += "." + file_format;
+    }
+    return filePath;
+}
+
 void MainWindow::on_actionExportFileToCSV_triggered()
 {
     if ( nullptr != currentTable() )
     {
-        QString filePath = QFileDialog::getSaveFileName( this, tr( "Сохранить в CSV" ), "", tr( "CSV Files (*.csv);;All Files (*)" ) );
-
+        auto filePath = getPathToFile( "csv" );
         if ( !filePath.isEmpty() )
         {
             currentTable()->exportAllToCSV( filePath );
@@ -141,8 +151,7 @@ void MainWindow::on_actionExportSelectedRowsToCSV_triggered()
 {
     if ( nullptr != currentTable() )
     {
-        QString filePath = QFileDialog::getSaveFileName( this, tr( "Сохранить в CSV" ), "", tr( "CSV Files (*.csv);;All Files (*)" ) );
-
+        auto filePath = getPathToFile( "csv" );
         if ( !filePath.isEmpty() )
         {
             currentTable()->exportSelectedRowsToCSV( filePath );

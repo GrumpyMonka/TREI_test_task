@@ -45,7 +45,7 @@ public:
 
 private:
     void exportToCSVFile( const QList<QList<QStandardItem*>>& rows_for_export, const QString& path );
-    QList<QList<QStandardItem*>> getRowsItemsFromIndexs( const QList<int>& indexs );
+    QList<QList<QStandardItem*>> getRowsItems( bool using_indexs = false, const QModelIndexList& indexs = {} );
 
 private:
     QString path_to_file;

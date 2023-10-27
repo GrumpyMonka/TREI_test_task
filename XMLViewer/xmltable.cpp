@@ -49,7 +49,7 @@ XMLTable::XMLTable( const QString& path_to_file, QWidget* parent )
     loadDataFromXML( xmlDoc );
     setModel( model );
     header()->setSectionResizeMode( QHeaderView::Stretch );
-    setSelectionMode( QAbstractItemView::MultiSelection );
+    setSelectionMode( QAbstractItemView::ExtendedSelection );
     setItemDelegate( new CustomItemDelegate( this ) );
     expandAll();
 }
@@ -98,7 +98,7 @@ QList<QStandardItem*> XMLTable::convertXmlToRow( const QDomElement& xmlElement )
     return result_row;
 }
 
-QList<QList<QStandardItem*>> XMLTable::getRowsItemsFromIndexs( const QList<int>& indexs )
+QList<QList<QStandardItem*>> XMLTable::getRowsItems( bool using_indexs, const QModelIndexList& indexs )
 {
     QList<QList<QStandardItem*>> rows_items;
     QList<QList<QStandardItem*>> stack;
@@ -114,9 +114,12 @@ QList<QList<QStandardItem*>> XMLTable::getRowsItemsFromIndexs( const QList<int>&
 
     while ( !stack.isEmpty() )
     {
-        rows_items.push_back( stack.back() );
+        if ( !using_indexs || ( using_indexs && indexs.contains( stack.back().at( 0 )->index() ) ) )
+        {
+            rows_items.push_back( stack.back() );
+        }
+        auto parentItem = stack.back().at( 0 );
         stack.pop_back();
-        auto parentItem = rows_items.back().at( 0 );
 
         if ( parentItem->hasChildren() )
         {
@@ -137,23 +140,13 @@ QList<QList<QStandardItem*>> XMLTable::getRowsItemsFromIndexs( const QList<int>&
 
 void XMLTable::exportAllToCSV( const QString& path )
 {
-    exportToCSVFile( getRowsItemsFromIndexs( {} ), path );
+    exportToCSVFile( getRowsItems(), path );
 }
 
 void XMLTable::exportSelectedRowsToCSV( const QString& path )
 {
     auto index_list = selectionModel()->selectedRows();
-    QList<QList<QStandardItem*>> rows_for_export;
-    for ( const auto& index : index_list )
-    {
-        QList<QStandardItem*> row;
-        for ( int k = 0; k < model->columnCount(); ++k )
-        {
-            row.push_back( model->item( index.row(), k ) );
-        }
-        rows_for_export.push_back( row );
-    }
-    exportToCSVFile( rows_for_export, path );
+    exportToCSVFile( getRowsItems( true, index_list ), path );
 }
 
 void XMLTable::exportToCSVFile( const QList<QList<QStandardItem*>>& rows_for_export, const QString& path )
@@ -161,11 +154,21 @@ void XMLTable::exportToCSVFile( const QList<QList<QStandardItem*>>& rows_for_exp
     QFile file( path );
     if ( file.open( QIODevice::WriteOnly | QIODevice::Text ) )
     {
+        for ( int i = 0; i < model->columnCount(); ++i )
+        {
+            QStandardItem* item = model->horizontalHeaderItem( i );
+            if ( nullptr != item )
+            {
+                file.write( item->text().toUtf8() + ";" );
+            }
+        }
+        file.write( "\n" );
+
         for ( const auto& row : rows_for_export )
         {
             for ( const auto& item : row )
             {
-                file.write( ( item->text() + ";" ).toUtf8() );
+                file.write( item->text().toUtf8() + ";" );
             }
             file.write( "\n" );
         }
