@@ -17,8 +17,8 @@ MainWindow::MainWindow( QWidget* parent )
 
     filesModel = new QStringListModel( this );
     ui->listView->setModel( filesModel );
-    settings = new QSettings( "settings.ini", QSettings::IniFormat, this );
-    setGeometry( settings->value( "geometry" ).toRect() );
+    settings = new QSettings( "xml_viewer", "xml_viewer", this );
+    setGeometry( settings->value( "geometry", QRect( 200, 200, 800, 600 ) ).toRect() );
 
     path_to_files = settings->value( "path_to_files", "" ).toString();
     if ( "" == path_to_files )

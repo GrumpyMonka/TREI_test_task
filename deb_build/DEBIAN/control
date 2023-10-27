@@ -1,0 +1,8 @@
+Package: xml-viewer
+Version: 1.0.0
+Architecture: amd64
+Maintainer: Dmitry Muromsy <murom.d@mail.ru>
+Depends: libqt5widgets5, libqt5sql5, libqt5gui5, libqt5core5a, libstdc++6, libgcc-s1, libc6
+Description: XML Viewer
+ XML Viewer is a simple Python program for viewing XML files in a
+ user-friendly way.
